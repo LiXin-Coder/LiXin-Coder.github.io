@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>hyperledger fabric网络架构和交易流程 | Always Be Coding</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="fabric网络架构目前，超级账本Fabric架构上核心特性主要包括:   解耦交易处理节点的逻辑角色为背书节点(Endorser)、 确认节点(Committer)，可以根据负载进行灵活部署;  加强了身份证书管理服务，作为单独的Fabric CA项目，提 供更多功能;  支持多通道特性，不同通道之间的数据彼此隔离，提高隔离 安全性;  支持可拔插的架构，包括共识、权限管理、加解密、账本机 制都">
+<meta name="keywords" content="hyperledger-fabric">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hyperledger fabric网络架构和交易流程">
+<meta property="og:url" content="http://yoursite.com/2018/05/03/hyperledger-fabric02/index.html">
+<meta property="og:site_name" content="Always Be Coding">
+<meta property="og:description" content="fabric网络架构目前，超级账本Fabric架构上核心特性主要包括:   解耦交易处理节点的逻辑角色为背书节点(Endorser)、 确认节点(Committer)，可以根据负载进行灵活部署;  加强了身份证书管理服务，作为单独的Fabric CA项目，提 供更多功能;  支持多通道特性，不同通道之间的数据彼此隔离，提高隔离 安全性;  支持可拔插的架构，包括共识、权限管理、加解密、账本机 制都">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/007330Aply1fqyb6s1bncj310x0nltj8.jpg">
+<meta property="og:updated_time" content="2018-05-03T10:09:05.504Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hyperledger fabric网络架构和交易流程">
+<meta name="twitter:description" content="fabric网络架构目前，超级账本Fabric架构上核心特性主要包括:   解耦交易处理节点的逻辑角色为背书节点(Endorser)、 确认节点(Committer)，可以根据负载进行灵活部署;  加强了身份证书管理服务，作为单独的Fabric CA项目，提 供更多功能;  支持多通道特性，不同通道之间的数据彼此隔离，提高隔离 安全性;  支持可拔插的架构，包括共识、权限管理、加解密、账本机 制都">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/007330Aply1fqyb6s1bncj310x0nltj8.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Always Be Coding" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Always Be Coding</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-hyperledger-fabric02" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/03/hyperledger-fabric02/" class="article-date">
+  <time datetime="2018-05-03T09:36:26.000Z" itemprop="datePublished">2018-05-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      hyperledger fabric网络架构和交易流程
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="fabric网络架构"><a href="#fabric网络架构" class="headerlink" title="fabric网络架构"></a>fabric网络架构</h2><p>目前，超级账本Fabric架构上核心特性主要包括: </p>
+<ul>
+<li>解耦交易处理节点的逻辑角色为背书节点(Endorser)、 确认节点(Committer)，可以根据负载进行灵活部署; <ul>
+<li>加强了身份证书管理服务，作为单独的Fabric CA项目，提 供更多功能; </li>
+<li>支持多通道特性，不同通道之间的数据彼此隔离，提高隔离 安全性; </li>
+<li>支持可拔插的架构，包括共识、权限管理、加解密、账本机 制都模块，支持多种类型; </li>
+<li>引入系统链码来实现区块链系统的处理，支持可编程和第三方扩展</li>
+</ul>
+</li>
+</ul>
+<h3 id="Peer节点"><a href="#Peer节点" class="headerlink" title="Peer节点"></a>Peer节点</h3><p>Peer节点是记账节点。Peer节点可以有以下三种角色：</p>
+<ul>
+<li>背书节点(Endorse Peer): 背书节点和具体的chaincode绑定，每个chaincode在实例化时会设置背书策略，在chaincode调用时需满足背书策略从背书节点收集足够的签名背书时交易才有效</li>
+<li>主节点(Leader Peer)：Leader Peer负责和排序节点Orderer进行通信，然后将交易分发给其他的普通peer同步交易记录。Leader Peer可通过选举产生。</li>
+<li>记账节点(普通的Peer)：只负责验证交易和记账。</li>
+</ul>
+<p>每个peer节点都是committer peer，但是只有部分节点是endorser peer,因为执行背书需要算力，并不是每个节点都需要参与。但是同步账本的操作需要每个peer都加入，所以每个peer都是committer。</p>
+<h3 id="排序节点-Orderer"><a href="#排序节点-Orderer" class="headerlink" title="排序节点(Orderer)"></a>排序节点(Orderer)</h3><p>即排序服务节点(Ordering Service Nodek, OSN)接收包含背书签名的交易，完成对交易的排序并打包成区块。目前Hyperledger Fabric的多个Orderer节点连接到Kafka集群利用Kafka的共识功能完成交易的排序和打包。</p>
+<h3 id="CA节点"><a href="#CA节点" class="headerlink" title="CA节点"></a>CA节点</h3><p>Hyperledger Fabric的证书颁发机构，对节点的加入和离开进行身份认证</p>
+<h2 id="fabric交易流程"><a href="#fabric交易流程" class="headerlink" title="fabric交易流程"></a>fabric交易流程</h2><ol start="0">
+<li>应用程序通过CA进行身份认证</li>
+<li>应用程序创建交易提案并提交给背书节点</li>
+<li>背书节点模拟执行交易并完成背书签名，</li>
+<li>背书节点将背书签名和模拟交易结果返回给应用程序</li>
+<li>应用程序需收集足够的交易背书，构建交易请求后发送给排序节点</li>
+<li>排序节点对交易进行排序并生成区块</li>
+<li>排序节点生成区块后会广播给通道上不同组织的主节点</li>
+<li>记账节点从主节点同步区块，验证区块内容并写入区块(注:所有的Peer节点都是记账节点)</li>
+</ol>
+<p>交易流程图如下：<br><img src="http://ww1.sinaimg.cn/large/007330Aply1fqyb6s1bncj310x0nltj8.jpg" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/05/03/hyperledger-fabric02/" data-id="cjgqddwry0001458onwgdx9mx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hyperledger-fabric/">hyperledger-fabric</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/05/03/hyperledger-fabric01/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">hyperledger fabric初体验</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hyperledger-fabric/">hyperledger-fabric</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/hyperledger-fabric/" style="font-size: 10px;">hyperledger-fabric</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/05/03/hyperledger-fabric02/">hyperledger fabric网络架构和交易流程</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/03/hyperledger-fabric01/">hyperledger fabric初体验</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/03/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
