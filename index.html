@@ -62,6 +62,49 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-ReverseLinkedListII" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/06/ReverseLinkedListII/" class="article-date">
+  <time datetime="2018-06-06T11:45:26.000Z" itemprop="datePublished">2018-06-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/06/ReverseLinkedListII/">Reverse Linked List II</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="92-Reverse-Linked-List-II"><a href="#92-Reverse-Linked-List-II" class="headerlink" title="92. Reverse Linked List II"></a>92. Reverse Linked List II</h2><p>Reverse a linked list from position m to n. Do it in one-pass.</p>
+<p>Note: 1 ≤ m ≤ n ≤ length of list.</p>
+<p>Example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, m = 2, n = 4</span><br><span class="line">Output: 1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;NULL</span><br></pre></td></tr></table></figure>
+<p>思路：<br>首先需要根据m移动head到要翻转的位置。然后根据change_len长度进行翻转。需要注意的是判断是否从第一个节点开始翻转来返回最后的链表头。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverseBetween</span><span class="params">(ListNode* head, <span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        ListNode *result = head;</span><br><span class="line">        ListNode *pre_head = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">int</span> change_len = n - m + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (head &amp;&amp; --m) &#123;</span><br><span class="line">            pre_head = head;</span><br><span class="line">            head = head-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode *modify_list_tail = head;</span><br><span class="line">        ListNode *new_head = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">while</span> (head &amp;&amp; change_len--) &#123;</span><br><span class="line">            ListNode *temp = head-&gt;next;</span><br><span class="line">            head-&gt;next = new_head;</span><br><span class="line">            new_head = head;</span><br><span class="line">            head = temp;</span><br><span class="line">        &#125;</span><br><span class="line">        modify_list_tail-&gt;next = head;</span><br><span class="line">        <span class="keyword">if</span> (pre_head) &#123;</span><br><span class="line">            pre_head-&gt;next = new_head;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            result = new_head;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/06/06/ReverseLinkedListII/" data-id="cji32t2ww00031m8occtr7naf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-ReverseLinkedList" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/06/06/ReverseLinkedList/" class="article-date">
@@ -92,50 +135,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/06/ReverseLinkedList/" data-id="cji32q3bq0000zz8o0rb4myqb" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-ReverseLinkedListII" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/06/06/ReverseLinkedListII/" class="article-date">
-  <time datetime="2018-06-06T07:45:26.000Z" itemprop="datePublished">2018-06-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/06/ReverseLinkedListII/">Reverse Linked List II</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Reverse a linked list from position m to n. Do it in one-pass.</p>
-<p>Note: 1 ≤ m ≤ n ≤ length of list.</p>
-<p>Example:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, m = 2, n = 4</span><br><span class="line">Output: 1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;NULL</span><br></pre></td></tr></table></figure>
-<p>思路：<br>首先需要根据m移动head到要翻转的位置。然后根据change_len长度进行翻转。需要注意的是判断是否从第一个节点开始翻转来返回最后的链表头。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverseBetween</span><span class="params">(ListNode* head, <span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        ListNode *result = head;</span><br><span class="line">        ListNode *pre_head = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">int</span> change_len = n - m + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (head &amp;&amp; --m) &#123;</span><br><span class="line">            pre_head = head;</span><br><span class="line">            head = head-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode *modify_list_tail = head;</span><br><span class="line">        ListNode *new_head = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">while</span> (head &amp;&amp; change_len--) &#123;</span><br><span class="line">            ListNode *temp = head-&gt;next;</span><br><span class="line">            head-&gt;next = new_head;</span><br><span class="line">            new_head = head;</span><br><span class="line">            head = temp;</span><br><span class="line">        &#125;</span><br><span class="line">        modify_list_tail-&gt;next = head;</span><br><span class="line">        <span class="keyword">if</span> (pre_head) &#123;</span><br><span class="line">            pre_head-&gt;next = new_head;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            result = new_head;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/06/ReverseLinkedListII/" data-id="cji32q3bv0001zz8oyaeh77pc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/06/ReverseLinkedList/" data-id="cji32t2wn00001m8o62zvzc33" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
@@ -203,7 +203,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/03/hyperledger-fabric02/" data-id="cji32q3c20004zz8opy964jvf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/05/03/hyperledger-fabric02/" data-id="cji32t2wz00051m8ozlyd9fnx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -262,7 +262,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/03/hyperledger-fabric01/" data-id="cji32q3c00003zz8otbsy8gte" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/05/03/hyperledger-fabric01/" data-id="cji32t2wy00041m8oa1kx0p1w" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hyperledger-fabric/">hyperledger-fabric</a></li></ul>
@@ -309,7 +309,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/03/hello-world/" data-id="cji32q3c30005zz8od6fx3iet" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/05/03/hello-world/" data-id="cji32t2wr00011m8oklhdx9s2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -364,11 +364,11 @@
       <ul>
         
           <li>
-            <a href="/2018/06/06/ReverseLinkedList/">Reverse Linked List</a>
+            <a href="/2018/06/06/ReverseLinkedListII/">Reverse Linked List II</a>
           </li>
         
           <li>
-            <a href="/2018/06/06/ReverseLinkedListII/">Reverse Linked List II</a>
+            <a href="/2018/06/06/ReverseLinkedList/">Reverse Linked List</a>
           </li>
         
           <li>
