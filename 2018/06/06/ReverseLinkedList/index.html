@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Always Be Coding">
 <meta property="og:description" content="206. Reverse Linked ListReverse a singly linked list. Example:12Input: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5-&amp;gt;NULLOutput: 5-&amp;gt;4-&amp;gt;3-&amp;gt;2-&amp;gt;1-&amp;gt;NULL 解题思路：依次遍历链表节点， 每遍历一个节点就逆置一个节点，注意保持链表不中断（存储当前逆置节点的下一个">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-06T08:45:45.377Z">
+<meta property="og:updated_time" content="2018-06-06T08:59:14.221Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Reverse Linked List">
 <meta name="twitter:description" content="206. Reverse Linked ListReverse a singly linked list. Example:12Input: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5-&amp;gt;NULLOutput: 5-&amp;gt;4-&amp;gt;3-&amp;gt;2-&amp;gt;1-&amp;gt;NULL 解题思路：依次遍历链表节点， 每遍历一个节点就逆置一个节点，注意保持链表不中断（存储当前逆置节点的下一个">
@@ -87,7 +87,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="206-Reverse-Linked-List"><a href="#206-Reverse-Linked-List" class="headerlink" title="206. Reverse Linked List"></a>206. Reverse Linked List</h1><p>Reverse a singly linked list.</p>
+        <h2 id="206-Reverse-Linked-List"><a href="#206-Reverse-Linked-List" class="headerlink" title="206. Reverse Linked List"></a>206. Reverse Linked List</h2><p>Reverse a singly linked list.</p>
 <h2 id="Example"><a href="#Example" class="headerlink" title="Example:"></a>Example:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL</span><br><span class="line">Output: 5-&gt;4-&gt;3-&gt;2-&gt;1-&gt;NULL</span><br></pre></td></tr></table></figure>
 <p>解题思路：<br>依次遍历链表节点， 每遍历一个节点就逆置一个节点，注意保持链表不中断（存储当前逆置节点的下一个节点）。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        ListNode *new_head = <span class="literal">NULL</span>, *temp = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">while</span> (head) &#123;</span><br><span class="line">            temp = head-&gt;next;</span><br><span class="line">            head-&gt;next = new_head;</span><br><span class="line">            new_head = head;</span><br><span class="line">            head = temp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> new_head;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -95,7 +95,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/06/ReverseLinkedList/" data-id="cji2vcftk0000vd8ov5gruuye" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/06/ReverseLinkedList/" data-id="cji2vt9hi0000008oxbzjev7r" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
