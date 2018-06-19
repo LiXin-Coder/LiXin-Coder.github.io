@@ -87,12 +87,12 @@
         <ol>
 <li>变量定义</li>
 </ol>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">variableZeroValue</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> a <span class="keyword">int</span> <span class="comment">//变量名在前，类型在后</span></span><br><span class="line">	<span class="keyword">var</span> s <span class="keyword">string</span></span><br><span class="line">	fmt.Printf(<span class="string">"%d %q\n"</span>, a, s)<span class="comment">//%q表示quotation的意思，会打出引号</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">variableInitialValue</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> a, b <span class="keyword">int</span> = <span class="number">3</span>, <span class="number">4</span><span class="comment">//可以连续定义多个变量并分别赋初值</span></span><br><span class="line">	<span class="keyword">var</span> s <span class="keyword">string</span> = <span class="string">"abc"</span></span><br><span class="line">	fmt.Println(a, b, s)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">variableZeroValue</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> a <span class="keyword">int</span> <span class="comment">//变量名在前，类型在后</span></span><br><span class="line">	<span class="keyword">var</span> s <span class="keyword">string</span></span><br><span class="line">	fmt.Printf(<span class="string">"%d %q\n"</span>, a, s)<span class="comment">//%q表示quotation的意思，会打出引号</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">variableInitialValue</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> a, b <span class="keyword">int</span> = <span class="number">3</span>, <span class="number">4</span><span class="comment">//可以连续定义多个变量并分别赋初值</span></span><br><span class="line">	<span class="keyword">var</span> s <span class="keyword">string</span> = <span class="string">"abc"</span></span><br><span class="line">	fmt.Println(a, b, s)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">variableTypeDeduction</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> a, b, c, s = <span class="number">3</span>, <span class="number">4</span>, <span class="literal">true</span>, <span class="string">"def"</span><span class="comment">//不同类型的变量可以定义在同一行，并且具有类型推断</span></span><br><span class="line">	fmt.Println(a, b, c, s)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">variableShorter</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a, b, c, s := <span class="number">3</span>, <span class="number">4</span>, <span class="literal">true</span>, <span class="string">"def"</span><span class="comment">//定义时可以省略var关键字，用:=来表示定义</span></span><br><span class="line">	b = <span class="number">5</span></span><br><span class="line">	fmt.Println(a, b, c, s)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/19/learn-golang-md/" data-id="cjiljchqj000fog8opqnni8ap" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/19/learn-golang-md/" data-id="cjiljgqah000iqr8oburw9rft" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li></ul>
@@ -139,7 +139,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/08/ImplementStackusingQueues/" data-id="cjiljchq50001og8owyawcvbn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/08/ImplementStackusingQueues/" data-id="cjiljgqa00001qr8obr27wr8o" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/stack-queue/">stack&&queue</a></li></ul>
@@ -182,7 +182,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/08/CopyListWithRandomPointer/" data-id="cjiljchq10000og8oe48u6w7n" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/08/CopyListWithRandomPointer/" data-id="cjiljgq9v0000qr8okuhwc84w" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linked-List/">Linked List</a></li></ul>
@@ -232,7 +232,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/07/rails/" data-id="cjiljchql000hog8ovryt4rg7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/07/rails/" data-id="cjiljgqaj000kqr8or8bwbl8p" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/stack-queue/">stack&&queue</a></li></ul>
@@ -277,7 +277,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/06/LinkedListCycleII/" data-id="cjiljchqa0004og8odxqqnubl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/06/LinkedListCycleII/" data-id="cjiljgqa60004qr8ofgazz6dq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linked-List/">Linked List</a></li></ul>
@@ -328,7 +328,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/06/IntersectionOfTwoLinkedLists/" data-id="cjiljchq80003og8ocxpzue8l" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/06/IntersectionOfTwoLinkedLists/" data-id="cjiljgqa40003qr8o6jglsi4p" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linked-List/">Linked List</a></li></ul>
@@ -371,7 +371,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/06/ReverseLinkedListII/" data-id="cjiljchqc0008og8o6c6u1ua6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/06/ReverseLinkedListII/" data-id="cjiljgqa90008qr8o57iav5gb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linked-List/">Linked List</a></li></ul>
@@ -413,7 +413,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/06/ReverseLinkedList/" data-id="cjiljchqb0005og8o6wr8buto" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/06/ReverseLinkedList/" data-id="cjiljgqa70005qr8ozbcstx3o" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linked-List/">Linked List</a></li></ul>
@@ -481,7 +481,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/03/hyperledger-fabric02/" data-id="cjiljchqh000dog8osnre9gxn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/05/03/hyperledger-fabric02/" data-id="cjiljgqaf000fqr8oe1vqz5uz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -540,7 +540,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/03/hyperledger-fabric01/" data-id="cjiljchqn000kog8ohoi6y6ws" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/05/03/hyperledger-fabric01/" data-id="cjiljgqad000dqr8orbvsmijb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hyperledger-fabric/">hyperledger-fabric</a></li></ul>
