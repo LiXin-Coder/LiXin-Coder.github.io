@@ -5,15 +5,20 @@
   
 
   
-  <title>Tag: Linked List | Always Be Coding</title>
+  <title>learn_golang.md | Always Be Coding</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Always Be Coding">
-<meta property="og:url" content="http://yoursite.com/tags/Linked-List/index.html">
+  <meta name="description" content="变量定义  1234567891011func variableZeroValue() &amp;#123;	var a int //变量名在前，类型在后	var s string	fmt.Printf(&quot;%d %q\n&quot;, a, s)//%q表示quotation的意思，会打出引号&amp;#125;func variableInitialValue() &amp;#123;	var a, b int = 3, 4/">
+<meta name="keywords" content="golang">
+<meta property="og:type" content="article">
+<meta property="og:title" content="learn_golang.md">
+<meta property="og:url" content="http://yoursite.com/2018/06/19/learn-golang-md/index.html">
 <meta property="og:site_name" content="Always Be Coding">
+<meta property="og:description" content="变量定义  1234567891011func variableZeroValue() &amp;#123;	var a int //变量名在前，类型在后	var s string	fmt.Printf(&quot;%d %q\n&quot;, a, s)//%q表示quotation的意思，会打出引号&amp;#125;func variableInitialValue() &amp;#123;	var a, b int = 3, 4/">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-06-19T10:17:57.848Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Always Be Coding">
+<meta name="twitter:title" content="learn_golang.md">
+<meta name="twitter:description" content="变量定义  1234567891011func variableZeroValue() &amp;#123;	var a int //变量名在前，类型在后	var s string	fmt.Printf(&quot;%d %q\n&quot;, a, s)//%q表示quotation的意思，会打出引号&amp;#125;func variableInitialValue() &amp;#123;	var a, b int = 3, 4/">
   
     <link rel="alternate" href="/atom.xml" title="Always Be Coding" type="application/atom+xml">
   
@@ -60,116 +65,57 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/08/CopyListWithRandomPointer/" class="archive-article-date">
-  <time datetime="2018-06-08T08:22:55.000Z" itemprop="datePublished">Jun 8</time>
+        <section id="main"><article id="post-learn-golang-md" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/19/learn-golang-md/" class="article-date">
+  <time datetime="2018-06-19T10:09:20.000Z" itemprop="datePublished">2018-06-19</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/08/CopyListWithRandomPointer/">Copy List with Random Pointer</a>
+    <h1 class="article-title" itemprop="name">
+      learn_golang.md
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/06/LinkedListCycleII/" class="archive-article-date">
-  <time datetime="2018-06-06T12:41:49.000Z" itemprop="datePublished">Jun 6</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/06/LinkedListCycleII/">Linked List Cycle II</a>
-    </h1>
-  
+        <ol>
+<li>变量定义</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">variableZeroValue</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> a <span class="keyword">int</span> <span class="comment">//变量名在前，类型在后</span></span><br><span class="line">	<span class="keyword">var</span> s <span class="keyword">string</span></span><br><span class="line">	fmt.Printf(<span class="string">"%d %q\n"</span>, a, s)<span class="comment">//%q表示quotation的意思，会打出引号</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">variableInitialValue</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> a, b <span class="keyword">int</span> = <span class="number">3</span>, <span class="number">4</span><span class="comment">//可以连续定义多个变量并分别赋初值</span></span><br><span class="line">	<span class="keyword">var</span> s <span class="keyword">string</span> = <span class="string">"abc"</span></span><br><span class="line">	fmt.Println(a, b, s)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/06/IntersectionOfTwoLinkedLists/" class="archive-article-date">
-  <time datetime="2018-06-06T12:25:31.000Z" itemprop="datePublished">Jun 6</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/06/IntersectionOfTwoLinkedLists/">Intersection of Two Linked Lists</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/06/ReverseLinkedListII/" class="archive-article-date">
-  <time datetime="2018-06-06T11:45:26.000Z" itemprop="datePublished">Jun 6</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/06/19/learn-golang-md/" data-id="cjiljchqj000fog8opqnni8ap" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/06/ReverseLinkedListII/">Reverse Linked List II</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/06/ReverseLinkedList/" class="archive-article-date">
-  <time datetime="2018-06-06T08:13:37.000Z" itemprop="datePublished">Jun 6</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/06/ReverseLinkedList/">Reverse Linked List</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li></ul>
 
-    </header>
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/06/08/ImplementStackusingQueues/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Implement Stack using Queues</div>
+    </a>
   
+</nav>
 
+  
+</article>
 
 </section>
         
