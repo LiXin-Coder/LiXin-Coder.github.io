@@ -62,6 +62,67 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-hyperledger-fabric01" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/03/hyperledger-fabric01/" class="article-date">
+  <time datetime="2018-05-03T07:45:26.000Z" itemprop="datePublished">2018-05-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/03/hyperledger-fabric01/">hyperledger fabric初体验</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-下载Fabric源码"><a href="#1-下载Fabric源码" class="headerlink" title="1.下载Fabric源码"></a>1.下载Fabric源码</h2><p>这里我们下载的是Fabric1.0.6的源码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/hyperledger/fabric/archive/v1.0.6.tar.gz</span><br><span class="line">tar -zxvf v1.0.6.tar.gz</span><br></pre></td></tr></table></figure>
+<h2 id="2-下载所需的docker镜像"><a href="#2-下载所需的docker镜像" class="headerlink" title="2.下载所需的docker镜像"></a>2.下载所需的docker镜像</h2><p>进入scripts文件夹下，执行bootstrap.sh，会下载对应fabric版本需要的二进制文件和docker镜像文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd fabric-1.0.6/scripts</span><br><span class="line">./bootstrap.sh</span><br></pre></td></tr></table></figure>
+<p>查看下载fabric二进制文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bin/</span><br><span class="line">configtxgen  configtxlator  cryptogen  get-byfn.sh  get-docker-images.sh  orderer  peer</span><br></pre></td></tr></table></figure>
+<p>查看pull的docker镜像：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">hyperledger/fabric-couchdb                                                                                   latest              380446aa57b6        2 months ago        1.5GB</span><br><span class="line">hyperledger/fabric-couchdb                                                                                   x86_64-1.0.6        380446aa57b6        2 months ago        1.5GB</span><br><span class="line">hyperledger/fabric-kafka                                                                                     latest              4e726a9527ec        2 months ago        1.29GB</span><br><span class="line">hyperledger/fabric-kafka                                                                                     x86_64-1.0.6        4e726a9527ec        2 months ago        1.29GB</span><br><span class="line">hyperledger/fabric-zookeeper                                                                                 latest              205a873eee5d        2 months ago        1.32GB</span><br><span class="line">hyperledger/fabric-zookeeper                                                                                 x86_64-1.0.6        205a873eee5d        2 months ago        1.32GB</span><br><span class="line">hyperledger/fabric-tools                                                                                     latest              322eaa2b8786        2 months ago        1.33GB</span><br><span class="line">hyperledger/fabric-tools                                                                                     x86_64-1.0.6        322eaa2b8786        2 months ago        1.33GB</span><br><span class="line">hyperledger/fabric-orderer                                                                                   latest              659d92c1be85        2 months ago        151MB</span><br><span class="line">hyperledger/fabric-orderer                                                                                   x86_64-1.0.6        659d92c1be85        2 months ago        151MB</span><br><span class="line">hyperledger/fabric-peer                                                                                      latest              28c7c07db540        2 months ago        154MB</span><br><span class="line">hyperledger/fabric-peer                                                                                      x86_64-1.0.6        28c7c07db540        2 months ago        154MB</span><br><span class="line">hyperledger/fabric-javaenv                                                                                   latest              b39e5e521f2a        2 months ago        1.41GB</span><br><span class="line">hyperledger/fabric-javaenv                                                                                   x86_64-1.0.6        b39e5e521f2a        2 months ago        1.41GB</span><br><span class="line">hyperledger/fabric-ca                                                                                        latest              fe3c9b6542cf        2 months ago        238MB</span><br><span class="line">hyperledger/fabric-ca                                                                                        x86_64-1.0.6        fe3c9b6542cf        2 months ago        238MB</span><br><span class="line">hyperledger/fabric-ccenv                                                                                     latest              2e695012bcff        2 months ago        1.28GB</span><br><span class="line">hyperledger/fabric-ccenv                                                                                     x86_64-1.0.6        2e695012bcff        2 months ago        1.28GB</span><br><span class="line">hyperledger/fabric-baseos                                                                                    x86_64-0.3.2        bbcbb9da2d83        8 months ago        129MB</span><br></pre></td></tr></table></figure>
+<h2 id="3-下载fabric-samples"><a href="#3-下载fabric-samples" class="headerlink" title="3.下载fabric-samples"></a>3.下载fabric-samples</h2><p>fabric-samples已经提供了很多配置好的例子程序，可以直接体验：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/hyperledger/fabric-samples/archive/v1.0.6.tar.gz -O fabric-samples-v1.0.6.tar.gz</span><br><span class="line">tar -zxvf fabric-samples-v1.0.6.tar.gz</span><br><span class="line"></span><br><span class="line">ls fabric-samples-1.0.6/</span><br><span class="line">balance-transfer  chaincode                 fabcar         high-throughput  MAINTAINERS.md  scripts</span><br><span class="line">basic-network     chaincode-docker-devmode  first-network  LICENSE          README.md</span><br></pre></td></tr></table></figure>
+<p>进入到basic-network下并启动docker-compose</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd fabric-samples-1.0.6/basic-network/</span><br><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+<p>查看已经启动的容器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br><span class="line">CONTAINER ID        IMAGE                                                                                                        COMMAND                  CREATED             STATUS              PORTS                                            NAMES</span><br><span class="line">6e02712684e2        hyperledger/fabric-peer                                                                                      &quot;peer node start&quot;        3 hours ago         Up 3 hours          0.0.0.0:7051-&gt;7051/tcp, 0.0.0.0:7053-&gt;7053/tcp   peer0.org1.example.com</span><br><span class="line">6df02d3219c2        hyperledger/fabric-tools                                                                                     &quot;/bin/bash&quot;              3 hours ago         Up 3 hours                                                           cli</span><br><span class="line">1c5381154064        hyperledger/fabric-orderer                                                                                   &quot;orderer&quot;                3 hours ago         Up 3 hours          0.0.0.0:7050-&gt;7050/tcp                           orderer.example.com</span><br><span class="line">fe8bbbc3cd87        hyperledger/fabric-couchdb                                                                                   &quot;tini -- /docker-ent…&quot;   3 hours ago         Up 3 hours          4369/tcp, 9100/tcp, 0.0.0.0:5984-&gt;5984/tcp       couchdb</span><br><span class="line">86c34cf9149d        hyperledger/fabric-ca                                                                                        &quot;sh -c &apos;fabric-ca-se…&quot;   3 hours ago         Up 3 hours          0.0.0.0:7054-&gt;7054/tcp                           ca.example.com</span><br></pre></td></tr></table></figure>
+<h2 id="4-创建通道"><a href="#4-创建通道" class="headerlink" title="4. 创建通道"></a>4. 创建通道</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -e &quot;CORE_PEER_LOCALMSPID=Org1MSP&quot; -e &quot;CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/users/Admin@org1.example.com/msp&quot; peer0.org1.example.com peer channel create -o orderer.example.com:7050 -c mychannel -f /etc/hyperledger/configtx/channel.tx</span><br></pre></td></tr></table></figure>
+<h2 id="5-将peer0-org1-example-com加入到通道"><a href="#5-将peer0-org1-example-com加入到通道" class="headerlink" title="5.将peer0.org1.example.com加入到通道"></a>5.将peer0.org1.example.com加入到通道</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -e &quot;CORE_PEER_LOCALMSPID=Org1MSP&quot; -e &quot;CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/users/Admin@org1.example.com/msp&quot; peer0.org1.example.com peer channel join -b mychannel.block</span><br></pre></td></tr></table></figure>
+<h2 id="6-安装chaincode："><a href="#6-安装chaincode：" class="headerlink" title="6.安装chaincode："></a>6.安装chaincode：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it cli sh</span><br><span class="line"></span><br><span class="line">peer chaincode install -n mychaincode -v v0 -p github.com/chaincode_example02</span><br></pre></td></tr></table></figure>
+<h2 id="7-实例化chaincode："><a href="#7-实例化chaincode：" class="headerlink" title="7.实例化chaincode："></a>7.实例化chaincode：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer chaincode instantiate -o orderer.example.com:7050 -C mychannel -n mychaincode -v v0 -c &apos;&#123;&quot;Args&quot;: [&quot;init&quot;, &quot;foo&quot;, &quot;200&quot;, &quot;bar&quot;, &quot;100&quot;]&#125;&apos;</span><br></pre></td></tr></table></figure>
+<h2 id="8-查看foo和bar的值"><a href="#8-查看foo和bar的值" class="headerlink" title="8.查看foo和bar的值"></a>8.查看foo和bar的值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">peer chaincode query -C mychannel -n mychaincode -v v0 -c &apos;&#123;&quot;Args&quot;: [&quot;query&quot;, &quot;foo&quot;]&#125;&apos;</span><br><span class="line">Query Result: 200</span><br><span class="line"></span><br><span class="line">peer chaincode query -C mychannel -n mychaincode -v v0 -c &apos;&#123;&quot;Args&quot;: [&quot;query&quot;, &quot;bar&quot;]&#125;&apos;</span><br><span class="line">Query Result: 100</span><br></pre></td></tr></table></figure>
+<h2 id="9-调用invoke方法进行转账"><a href="#9-调用invoke方法进行转账" class="headerlink" title="9.调用invoke方法进行转账"></a>9.调用invoke方法进行转账</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peer chaincode invoke -C mychannel -n mychaincode -v v0 -c &apos;&#123;&quot;Args&quot;: [&quot;invoke&quot;, &quot;foo&quot;, &quot;bar&quot;, &quot;10&quot;]&#125;&apos;</span><br></pre></td></tr></table></figure>
+<h2 id="10-重新查询foo和bar的值"><a href="#10-重新查询foo和bar的值" class="headerlink" title="10.重新查询foo和bar的值"></a>10.重新查询foo和bar的值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">peer chaincode query -C mychannel -n mychaincode -v v0 -c &apos;&#123;&quot;Args&quot;: [&quot;query&quot;, &quot;foo&quot;]&#125;&apos;</span><br><span class="line">Query Result: 190</span><br><span class="line"></span><br><span class="line">peer chaincode query -C mychannel -n mychaincode -v v0 -c &apos;&#123;&quot;Args&quot;: [&quot;query&quot;, &quot;bar&quot;]&#125;&apos;</span><br><span class="line">Query Result: 110</span><br></pre></td></tr></table></figure>
+<h2 id="11-再次查看启动的容器"><a href="#11-再次查看启动的容器" class="headerlink" title="11. 再次查看启动的容器"></a>11. 再次查看启动的容器</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br><span class="line">CONTAINER ID        IMAGE                                                                                                        COMMAND                  CREATED             STATUS              PORTS                                            NAMES</span><br><span class="line">4191a42f0261        dev-peer0.org1.example.com-mychaincode-v0-5ab5a15a89bb7fbae29c151b1bfa8193df25c3abe5c181776abf779ce8550efe   &quot;chaincode -peer.add…&quot;   3 hours ago         Up 3 hours                                                           dev-peer0.org1.example.com-mychaincode-v0</span><br><span class="line">6e02712684e2        hyperledger/fabric-peer                                                                                      &quot;peer node start&quot;        3 hours ago         Up 3 hours          0.0.0.0:7051-&gt;7051/tcp, 0.0.0.0:7053-&gt;7053/tcp   peer0.org1.example.com</span><br><span class="line">6df02d3219c2        hyperledger/fabric-tools                                                                                     &quot;/bin/bash&quot;              3 hours ago         Up 3 hours                                                           cli</span><br><span class="line">1c5381154064        hyperledger/fabric-orderer                                                                                   &quot;orderer&quot;                3 hours ago         Up 3 hours          0.0.0.0:7050-&gt;7050/tcp                           orderer.example.com</span><br><span class="line">fe8bbbc3cd87        hyperledger/fabric-couchdb                                                                                   &quot;tini -- /docker-ent…&quot;   3 hours ago         Up 3 hours          4369/tcp, 9100/tcp, 0.0.0.0:5984-&gt;5984/tcp       couchdb</span><br><span class="line">86c34cf9149d        hyperledger/fabric-ca                                                                                        &quot;sh -c &apos;fabric-ca-se…&quot;   3 hours ago         Up 3 hours          0.0.0.0:7054-&gt;7054/tcp                           ca.example.com</span><br></pre></td></tr></table></figure>
+<p>可以看到多了一个<code>dev-peer0.org1.example.com-mychaincode-v0</code>容器，可以看到chaincode已经运行在容器中。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/05/03/hyperledger-fabric01/" data-id="cjin6mdlw000fe48onnusf6m5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hyperledger-fabric/">hyperledger-fabric</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/03/hello-world/" class="article-date">
@@ -97,7 +158,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/03/hello-world/" data-id="cjiljgqab000aqr8oeo3ex5oc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/05/03/hello-world/" data-id="cjin6mdlt000ae48oxq7r6ifq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -125,7 +186,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linked-List/">Linked List</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/golang/">golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hyperledger-fabric/">hyperledger-fabric</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stack-queue/">stack&&queue</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linked-List/">Linked List</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/golang/">golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hyperledger-fabric/">hyperledger-fabric</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stack-queue/">stack&&queue</a></li></ul>
     </div>
   </div>
 
@@ -135,7 +196,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Linked-List/" style="font-size: 20px;">Linked List</a> <a href="/tags/golang/" style="font-size: 10px;">golang</a> <a href="/tags/hyperledger-fabric/" style="font-size: 10px;">hyperledger-fabric</a> <a href="/tags/stack-queue/" style="font-size: 15px;">stack&&queue</a>
+      <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Linked-List/" style="font-size: 20px;">Linked List</a> <a href="/tags/golang/" style="font-size: 10px;">golang</a> <a href="/tags/hyperledger-fabric/" style="font-size: 10px;">hyperledger-fabric</a> <a href="/tags/stack-queue/" style="font-size: 15px;">stack&&queue</a>
     </div>
   </div>
 
@@ -157,6 +218,10 @@
       <ul>
         
           <li>
+            <a href="/2018/06/20/变量内存地址分析/">变量内存地址分析</a>
+          </li>
+        
+          <li>
             <a href="/2018/06/19/learn-golang-md/">learn_golang.md</a>
           </li>
         
@@ -170,10 +235,6 @@
         
           <li>
             <a href="/2018/06/07/rails/">Rails</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/06/LinkedListCycleII/">Linked List Cycle II</a>
           </li>
         
       </ul>
