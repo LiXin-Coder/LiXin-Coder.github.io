@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>51%攻击 | Always Be Coding</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="51%攻击解析近期都在说51%攻击，有夸大其词的，也有不屑一顾的，本人认为夸大和看轻都不是正确的，以下是本人对51%攻击的看法，不一定正确，仅供参考，欢迎探讨。 51%攻击是指掌握了比特币全网的51%算力之后，用这些算力来重新计算已经确认过的区块，使块链产生分叉并且获得利益的行为。 一、如何发动51%攻击？ 假定发动51%攻击的人是一个理性的人，攻击的目的为了利益，而不是为了其他，因而攻击者在发动">
+<meta name="keywords" content="blockchain">
+<meta property="og:type" content="article">
+<meta property="og:title" content="51%攻击">
+<meta property="og:url" content="http://yoursite.com/2018/07/05/51-攻击/index.html">
+<meta property="og:site_name" content="Always Be Coding">
+<meta property="og:description" content="51%攻击解析近期都在说51%攻击，有夸大其词的，也有不屑一顾的，本人认为夸大和看轻都不是正确的，以下是本人对51%攻击的看法，不一定正确，仅供参考，欢迎探讨。 51%攻击是指掌握了比特币全网的51%算力之后，用这些算力来重新计算已经确认过的区块，使块链产生分叉并且获得利益的行为。 一、如何发动51%攻击？ 假定发动51%攻击的人是一个理性的人，攻击的目的为了利益，而不是为了其他，因而攻击者在发动">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-05T15:30:18.669Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="51%攻击">
+<meta name="twitter:description" content="51%攻击解析近期都在说51%攻击，有夸大其词的，也有不屑一顾的，本人认为夸大和看轻都不是正确的，以下是本人对51%攻击的看法，不一定正确，仅供参考，欢迎探讨。 51%攻击是指掌握了比特币全网的51%算力之后，用这些算力来重新计算已经确认过的区块，使块链产生分叉并且获得利益的行为。 一、如何发动51%攻击？ 假定发动51%攻击的人是一个理性的人，攻击的目的为了利益，而不是为了其他，因而攻击者在发动">
+  
+    <link rel="alternate" href="/atom.xml" title="Always Be Coding" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Always Be Coding</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-51-攻击" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/05/51-攻击/" class="article-date">
+  <time datetime="2018-07-05T15:27:58.000Z" itemprop="datePublished">2018-07-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      51%攻击
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="51-攻击解析"><a href="#51-攻击解析" class="headerlink" title="51%攻击解析"></a>51%攻击解析</h2><p>近期都在说51%攻击，有夸大其词的，也有不屑一顾的，本人认为夸大和看轻都不是正确的，以下是本人对51%攻击的看法，不一定正确，仅供参考，欢迎探讨。</p>
+<p>51%攻击是指掌握了比特币全网的51%算力之后，用这些算力来重新计算已经确认过的区块，使块链产生分叉并且获得利益的行为。</p>
+<p>一、如何发动51%攻击？</p>
+<p>假定发动51%攻击的人是一个理性的人，攻击的目的为了利益，而不是为了其他，因而攻击者在发动攻击前有两个条件：</p>
+<p>1、掌握了比特币全网的51%算力<br>2、手里持有大量比特币</p>
+<p>攻击者发动攻击</p>
+<p>1、把比特币转到交易所或某个机构或个人，卖出所有比特币，并且收到钱、把钱提现到银行帐号(提现目的是为确保收益，也可不用提现)。这个时间越短越好，能大大节省攻击时间。</p>
+<p>2、用51%算力从还没向交易所转币的区块开始重新生成区块</p>
+<p>比如：向交易所转币的区块为第30万个区块，攻击者就在第29万9999个区块开始重新生成区块。</p>
+<p>3、因为攻击者有51%算力，而且假设他能在攻击过程中保证一直51%算力，所以他的攻击一定成功，也就是说他生成的攻击块链一定能追上原块链。</p>
+<p>4、当攻击块链的长度超过原块链2个区块，所有的客户端将丢弃原块链，接受攻击块链。至此，51%攻击成功。</p>
+<p>二、造成后果</p>
+<p>原块链上29万9999个区块之后交易全部作废，有以下影响：</p>
+<p>A   29万9999个区块之后没有交易的客户的币数量没有任何影响。<br>B   29万9999个区块之后转出比特币的人会发现：币回来了。<br>C   29万9999个区块之后接收到比特币的人会发现：币消失了。<br>D   最重要的后果是：人们对比特币网络的信心降到冰点，比特币的币值将受到重创。</p>
+<p>三、51%攻击方法说明如下</p>
+<p>1、这是一种能够获得最大利益的51%攻击方法，因为我们假定攻击者是理性的、为获得利益而攻击，而非一心置比特币于死地而不求任何回报的疯子。</p>
+<p>2、无需51%算力就可以发动51%攻击，比如45%算力，有成功可能性，但非确定性成功。有这么一个场景：原块链长度30万，攻击者具备45%算力，从29万9999个区块开始计算，运气好的话，攻击块链延长到30万零2个，而原块链还是30万长度，攻击就成功了。这种攻击影响的区块数量少，如果币数量小，则被发现的可能性很小。目前大家担心的是这种情况。本人认为，虽然连续产出3个区块的可能性不大，但不是没有出现过，ghash.io就出现过连续产出5-6个区块的情况。因而这种非51%攻击的可能性完全存在，比特币世界要时刻监控、密切注意。</p>
+<p>3、有人说多等几个确认就能避免51%攻击。这话有严重问题。如果是非51%算力的攻击，多等几个确认是有效的，数量特别大的比特币转帐应该等几天。但是如果是51%算力攻击，就应该知道，如果攻击者能一直保持51%算力，他可以从比特币最近检查点之后的区块开始重新计算，攻击块链能追上原块链，成功只是时间问题。如果攻击花费了1年时间，也要等1年的确认吗，因而这种认识不全面。</p>
+<p>4、攻击块链可以隐藏地计算，直到比原块链多两个块链后才放出，按照目前的比特币网络协议，可以马上取代原块链，因而整个攻击可以不为人所知，直至最后一时刻。</p>
+<p>四、51%攻击悖论</p>
+<p>我们原先假定发动51%攻击的人是为了利益，我们可以来计算一下攻击者的成本和收益。先回顾一下理解攻击者发动攻击的前提条件：</p>
+<p>1、掌握了比特币全网的51%算力</p>
+<p>分析第1点，掌握了比特币全网的51%算力，得需要多少钱。全网算力按照100P计算，矿机价格按照1T/8600元计算(这是目前最低的价格)</p>
+<p>51P矿机购买费用=100P <em> 51% </em> 1024 * 8600元=449,126,400=4.5亿</p>
+<p>要布署51P的算力以及发动攻击，我们精力估算额外需要1亿的其他费用和电费，因而计算为5.5亿。</p>
+<p>2、要卖掉多少比特币</p>
+<p>到底要卖掉多少比特币才能获得更多的利益呢。至少要获得至少5.5亿的收益，才能在帐面上收支平衡，但要做这么大的攻击，而且攻击后的币值会降低很多，因而一定要非常大的利益才能让攻击者这么做，因而我们按照卖掉比特币能获利20亿估计。</p>
+<p>持有比特币=20亿/4000=50万个比特币</p>
+<p>我们假设攻击者以1000元的成本拥有比特币，他原先的买币成本是2.5亿。<br>如果在短时间卖出50万个比特币，会把价格从4K打到谷底1K-2K了。<br>我们姑且假定，这是场外交易，对比特币价格没有影响。</p>
+<p>3、成功实施51%攻击后的比特币价值</p>
+<p>成功实施51%攻击后，我们认为在一段较长的时间内，人们对比特币的信心降低到冰点，比特币的价格会处于较低水平，如500元甚至更低，直至技术永远解决了51%攻击的可能性。</p>
+<p>因而，即便攻击者成功实施了攻击，他的50万比特币的价值也将处于一个较低水平=50万 * 500=2.5亿。</p>
+<p>4、攻击者的收支估算</p>
+<p>攻击者以4K卖掉50万个比特币，获利20亿。</p>
+<p>投入=5.5亿矿机+2.5亿比特币=8亿<br>收益=20亿-2.5亿-8亿+2.5亿=12亿</p>
+<p>投入8亿，净收益12亿，这对比特币行业，绝对不是好收益。</p>
+<p>5、8亿投资能获得多少收益</p>
+<p>目前每天产出3600个比特币，如果一直保持51%算力可得到1836个，每月获得55080个比特币，按照4K计算收益为2亿。</p>
+<p>攻击者持有的50万个比特币，当一个季度内比特币价格从4K到6K时，可以多获得10亿收益，这种价格上涨我认为是很正常的。</p>
+<p>6、两种投资的收益对比</p>
+<p>攻击是一种投资，诚实持币和挖矿也是一种投资。</p>
+<p>攻击冒了巨大风险，获得12亿，如果在交易所大量抛售，获利还会更低；</p>
+<p>诚实持币和挖矿，没有任何风险，一个季度内轻松获得收益=10亿+6亿=16亿。</p>
+<p>我们假定的有理性的人，为了获得更大收益而攻击的人，实际上是不会发动这样的攻击的，这就是51%攻击悖论。</p>
+<p>不过，如果是疯子或者国家，不惜血本只为毁灭比特币，我们没有办法阻止，也就没有必要讨论。</p>
+<p>五、关于双花和虚花</p>
+<p>关于这点已经在微博上说过多次，双花是指把一份币花了两次，且两次交易都被确认至少一次，其中一次交易一定是在孤立块中。目前大家所说的双花是交易可塑性问题：第一次交易不加交易费，被矿池排斥，欺骗某些无需确认的网站入帐后，再把币花到其他地方去。</p>
+<p>双花是需要算力来保证的，可以是51%算力，也可以是45%算力，具体情况请看本文的第三部分的第二点，但要再次提醒的是：某个矿池连续产出3个区块，就有可能产生非51%算力的双花攻击，ghash.io出现过连续产出5-6个区块的情况，完全有能力发起这种攻击，因而比特币世界要时刻监控、密切注意。一旦出现孤立块，而且里面的交易输入在接下来几个块中重新出现，那很可能就是双花。我们看到：从今年4月份开始，孤立块出现得越来越多，应该有些情况。不过，我奇怪的是为什么blockchain.info关于孤立块的页面一直有BUG，一直不显示具体的孤立块内容，我10天或半月前向blockchain.info提过BUG，但是到现在为止还没有正常，但愿这是BUG，而非因其他原因而隐瞒数据。防范方法是多等几个确认，大额交易建议等1天(在这一点上，比特币天空网的多等几个确认的说法是对的)。</p>
+<p>上文提到的交易可塑性问题，我们可以称之为虚花(这个名称从比特天空网的文章中借用而来，我觉得比较合适)，第一次交易未被纳入区块，第二次交易会被纳入区块，这种攻击无需算力，谁都可以发起攻击，接收方的防范也很简单，只需至少一个确认。</p>
+<p>六、本文小结</p>
+<p>1、真正的51%算力攻击一旦发生，后果会很严重，但51%攻击有悖论，使得它事实上难以发生，除非疯子或疯子国家。<br>2、双花攻击无需51%的算力，ghash.io的45%算力已经具备了双花攻击的条件，事情没有我们想像得那么乐观，比特币世界要重视这个事情。<br>3、双花和虚花可以多等几个确认来防范，真正的51%算力攻击多等几个确认也难以防范。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/05/51-攻击/" data-id="cjj8pjt6a0003i08orgzvhfe9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blockchain/">blockchain</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/07/02/learn-golang/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">learn_golang</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linked-List/">Linked List</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blockchain/">blockchain</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/golang/">golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hyperledger-fabric/">hyperledger-fabric</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stack-queue/">stack&&queue</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Linked-List/" style="font-size: 20px;">Linked List</a> <a href="/tags/blockchain/" style="font-size: 10px;">blockchain</a> <a href="/tags/golang/" style="font-size: 10px;">golang</a> <a href="/tags/hyperledger-fabric/" style="font-size: 10px;">hyperledger-fabric</a> <a href="/tags/stack-queue/" style="font-size: 15px;">stack&&queue</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/07/05/51-攻击/">51%攻击</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/02/learn-golang/">learn_golang</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/20/变量内存地址分析/">变量内存地址分析</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/08/ImplementStackusingQueues/">Implement Stack using Queues</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/08/CopyListWithRandomPointer/">Copy List with Random Pointer</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
