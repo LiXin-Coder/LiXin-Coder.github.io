@@ -62,6 +62,98 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-75-分类颜色" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/13/75-分类颜色/" class="article-date">
+  <time datetime="2018-07-13T07:45:29.000Z" itemprop="datePublished">2018-07-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/13/75-分类颜色/">75.分类颜色</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>给定一个包含红色、白色和蓝色，一共 n 个元素的数组，原地对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。</p>
+<p>此题中，我们使用整数 0、 1 和 2 分别表示红色、白色和蓝色。</p>
+<p>注意:<br>不能使用代码库中的排序函数来解决这道题。</p>
+<p>示例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [2,0,2,1,1,0]</span><br><span class="line">输出: [0,0,1,1,2,2]</span><br></pre></td></tr></table></figure>
+<p>进阶：</p>
+<p>一个直观的解决方案是使用计数排序的两趟扫描算法。<br>首先，迭代计算出0、1 和 2 元素的个数，然后按照0、1、2的排序，重写当前数组。<br>你能想出一个仅使用常数空间的一趟扫描算法吗？</p>
+<p>题解：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">sortColors</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> zero = <span class="number">-1</span>; <span class="comment">//nums[0,zero]为0</span></span><br><span class="line">        <span class="keyword">int</span> two = nums.size();<span class="comment">//nums[two, n-1]为2</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; two;) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] == <span class="number">1</span>)</span><br><span class="line">                ++i;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (nums[i] == <span class="number">0</span>) &#123;</span><br><span class="line">                ++zero;</span><br><span class="line">                swap(nums[i], nums[zero]);</span><br><span class="line">                ++i;</span><br><span class="line">                &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                --two;</span><br><span class="line">                swap(nums[i], nums[two]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/13/75-分类颜色/" data-id="cjjjoj97u0004wx8ofbj341xz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-80-删除排序数组中的重复项II" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/13/80-删除排序数组中的重复项II/" class="article-date">
+  <time datetime="2018-07-13T07:11:33.000Z" itemprop="datePublished">2018-07-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/13/80-删除排序数组中的重复项II/">80.删除排序数组中的重复项II</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素最多出现两次，返回移除后数组的新长度。</p>
+<p>不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。</p>
+<p>示例 1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">给定 nums = [1,1,1,2,2,3],</span><br><span class="line"></span><br><span class="line">函数应返回新长度 length = 5, 并且原数组的前五个元素被修改为 1, 1, 2, 2, 3 。</span><br><span class="line"></span><br><span class="line">你不需要考虑数组中超出新长度后面的元素。</span><br></pre></td></tr></table></figure>
+<p>示例 2:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">给定 nums = [0,0,1,1,1,1,2,3,3],</span><br><span class="line"></span><br><span class="line">函数应返回新长度 length = 7, 并且原数组的前五个元素被修改为 0, 0, 1, 1, 2, 3, 3 。</span><br><span class="line"></span><br><span class="line">你不需要考虑数组中超出新长度后面的元素。</span><br></pre></td></tr></table></figure>
+<p>题解：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int removeDuplicates(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        if (nums.size() == 0)</span><br><span class="line">            return 0;</span><br><span class="line">        if (nums.size() &lt; 2)</span><br><span class="line">            return nums.size();</span><br><span class="line">        int i = 0; //[0, i]中有效</span><br><span class="line">        int count = 1;</span><br><span class="line">        for (int j = 1; j &lt; nums.size(); ++j) &#123;</span><br><span class="line">            if (nums[j] != nums[j-1]) &#123;</span><br><span class="line">                nums[++i] = nums[j];</span><br><span class="line">                count = 1;</span><br><span class="line">            &#125;else &#123;</span><br><span class="line">                if (count &lt; 2) &#123;</span><br><span class="line">                    ++count;</span><br><span class="line">                    nums[++i] = nums[j];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;    </span><br><span class="line">        &#125;</span><br><span class="line">        return i + 1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/13/80-删除排序数组中的重复项II/" data-id="cjjjoj97v0005wx8onzb3545x" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-26-删除排序数组中重复项" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/13/26-删除排序数组中重复项/" class="article-date">
@@ -96,7 +188,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/13/26-删除排序数组中重复项/" data-id="cjjjdimru0000578oc2dv64o2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/13/26-删除排序数组中重复项/" data-id="cjjjoj97h0000wx8obmkpn3jx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -145,7 +237,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/12/283-移动零/" data-id="cjjjdimrz0001578okdszva12" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/12/283-移动零/" data-id="cjjjoj97s0003wx8or5tepdnq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -206,7 +298,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/12/比特币闪电网络/" data-id="cjjjdimt10015578owboe228u" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/12/比特币闪电网络/" data-id="cjjjoj98o0019wx8o39t2l44c" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bitcoin/">bitcoin</a></li></ul>
@@ -253,7 +345,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/11/二叉树层次遍历II/" data-id="cjjjdimst000u578ol8o4kv7k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/11/二叉树层次遍历II/" data-id="cjjjoj98k0013wx8obua7eayt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
@@ -300,7 +392,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/11/二叉树层次遍历I/" data-id="cjjjdimss000s578o7vrn10gb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/11/二叉树层次遍历I/" data-id="cjjjoj98i0011wx8omooxgku6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
@@ -351,7 +443,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/11/strStr/" data-id="cjjjdimsp000o578oa25n82ta" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/11/strStr/" data-id="cjjjoj98h000zwx8okp39em3x" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
@@ -394,7 +486,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/09/golang-container/" data-id="cjjjdimsd0009578oqz8aabjf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/09/golang-container/" data-id="cjjjoj989000mwx8o53o4i57s" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li></ul>
@@ -444,158 +536,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/09/数字货币简单分类/" data-id="cjjjdimsw000y578oevr2udlx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/09/数字货币简单分类/" data-id="cjjjoj98n0017wx8odg4zvo2r" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cryptocurrency/">cryptocurrency</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-比特币区块结构剖析" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/07/比特币区块结构剖析/" class="article-date">
-  <time datetime="2018-07-07T15:05:37.000Z" itemprop="datePublished">2018-07-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/07/比特币区块结构剖析/">比特币区块结构剖析</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>比特币的区块数据里包含了比特币链上的核心信息，包括比特币如何交易，区块扩容等问题。 比特币从诞生到现在，每10分钟诞生一个区块，访问 <a href="https://blockchain.info/" target="_blank" rel="noopener">https://blockchain.info/</a> 查看最近的区块信息，可以看到当前的区块大小已经是中本聪设置的1MB容量。</p>
-<p>比特币的区块数据里包含了比特币链上的核心信息，包括比特币如何交易，区块扩容等问题。</p>
-<p>比特币从诞生到现在，每10分钟诞生一个区块，访问 blockchain.info/ 查看最近的区块信息，可以看到当前的区块大小已经是中本聪设置的1MB容量。<br><img src="http://ww1.sinaimg.cn/large/883ddbbdly1ft1p8d5g4jj21ts0kated.jpg" alt=""></p>
-<h2 id="一、区块链数据结构"><a href="#一、区块链数据结构" class="headerlink" title="一、区块链数据结构"></a>一、区块链数据结构</h2><p>一个完整的区块结构主要由以下几部分构成：<br><img src="http://ww1.sinaimg.cn/large/883ddbbdly1ft1pf42c94j210e0k0q63.jpg" alt=""></p>
-<h2 id="二、区块信息解析"><a href="#二、区块信息解析" class="headerlink" title="二、区块信息解析"></a>二、区块信息解析</h2><p>我们从 webbtc.com 选择一个区块哈希值为000000000003ba27aa200b1cecaad478d2b00432346c3f1f3986da1afd33e506的早期区块进行分析。<br><img src="http://ww1.sinaimg.cn/large/883ddbbdly1ft1pg63aipj21uo0q0hcs.jpg" alt=""><br>可以看到该区块中包含了三笔交易信息，下面对区块信息字段进行解析。</p>
-<h3 id="1-区块头分析"><a href="#1-区块头分析" class="headerlink" title="1.区块头分析"></a>1.区块头分析</h3><p>前80个字节是区块头。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;hash&quot;: &quot;000000000003ba27aa200b1cecaad478d2b00432346c3f1f3986da1afd33e506&quot;,</span><br><span class="line">    &quot;ver&quot;: 1,</span><br><span class="line">    &quot;prev_block&quot;: &quot;000000000002d01c1fccc21636b607dfd930d31d01c3a62104612a1719011250&quot;,</span><br><span class="line">    &quot;mrkl_root&quot;: &quot;f3e94742aca4b5ef85488dc37c06c3282295ffec960994b2c0d5ac2a25a95766&quot;,</span><br><span class="line">    &quot;time&quot;: 1293623863,</span><br><span class="line">    &quot;bits&quot;: 453281356,</span><br><span class="line">    &quot;nonce&quot;: 274148111</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="http://ww1.sinaimg.cn/large/883ddbbdly1ft1pik0da0j21020poq86.jpg" alt=""><br>说明：</p>
-<ul>
-<li>版本、父区块头哈希值和Merkle根采用的是小端格式编码，即低有效位放在前面。</li>
-<li>时间戳表示的是自1970年1月1日0时0分0秒以来的秒数</li>
-</ul>
-<h3 id="2-Coinbase交易信息分析"><a href="#2-Coinbase交易信息分析" class="headerlink" title="2.Coinbase交易信息分析"></a>2.Coinbase交易信息分析</h3><p>一个区块第一个交易规定为coinbase交易，即由挖矿产生的比特币奖励，可以看到目前挖出每个区块的奖励是12.5个比特币，下一次减半会发生在2020年。除了挖矿奖励，“矿工”的激励还有新增账本记账的手续费，在未来比特币总量不增加之后，后者会成为矿工的主要收入。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;hash&quot;: &quot;8c14f0db3df150123e6f3dbbf30f8b955a8249b62ac1d1ff16284aefa3d06d87&quot;,</span><br><span class="line">    &quot;ver&quot;: 1,</span><br><span class="line">    &quot;vin_sz&quot;: 1,</span><br><span class="line">    &quot;vout_sz&quot;: 1,</span><br><span class="line">    &quot;lock_time&quot;: 0,</span><br><span class="line">    &quot;size&quot;: 135,</span><br><span class="line">    &quot;in&quot;: [&#123;</span><br><span class="line">        &quot;prev_out&quot;: &#123;</span><br><span class="line">            &quot;hash&quot;: &quot;0000000000000000000000000000000000000000000000000000000000000000&quot;,</span><br><span class="line">            &quot;n&quot;: 4294967295</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;coinbase&quot;: &quot;044c86041b020602&quot;</span><br><span class="line">    &#125;],</span><br><span class="line">    &quot;out&quot;: [&#123;</span><br><span class="line">        &quot;value&quot;: &quot;50.00000000&quot;,</span><br><span class="line">        &quot;scriptPubKey&quot;: &quot;041b0e8c2567c12536aa13357b79a073dc4444acb83c4ec7a0e2f99dd7457516c5817242da796924ca4e99947d087fedf9ce467cb9f7c6287078f801df276fdf84 OP_CHECKSIG&quot;,</span><br><span class="line">        &quot;next_in&quot;: &#123;</span><br><span class="line">            &quot;hash&quot;: &quot;f3e6066078e815bb24db0dfbff814f738943bddaaa76f8beba360cfe2882480a&quot;,</span><br><span class="line">            &quot;n&quot;: 12</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;],</span><br><span class="line">    &quot;nid&quot;: &quot;70ab531a68f973f7d20b8260cb5e7fecba3699c48715b8b44539ff9776d0b88e&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="http://ww1.sinaimg.cn/large/883ddbbdly1ft1pkjjresj2104112q81.jpg" alt=""></p>
-<h3 id="3-交易信息记录"><a href="#3-交易信息记录" class="headerlink" title="3.交易信息记录"></a>3.交易信息记录</h3><p>下面来看下普通的交易记录。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;hash&quot;: &quot;fff2525b8931402dd09222c50775608f75787bd2b87e56995a7bdd30f79702c4&quot;,</span><br><span class="line">    &quot;ver&quot;: 1,</span><br><span class="line">    &quot;vin_sz&quot;: 1,</span><br><span class="line">    &quot;vout_sz&quot;: 2,</span><br><span class="line">    &quot;lock_time&quot;: 0,</span><br><span class="line">    &quot;size&quot;: 259,</span><br><span class="line">    &quot;in&quot;: [&#123;</span><br><span class="line">        &quot;prev_out&quot;: &#123;</span><br><span class="line">            &quot;hash&quot;: &quot;87a157f3fd88ac7907c05fc55e271dc4acdc5605d187d646604ca8c0e9382e03&quot;,</span><br><span class="line">            &quot;n&quot;: 0</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;scriptSig&quot;: &quot;3046022100c352d3dd993a981beba4a63ad15c209275ca9470abfcd57da93b58e4eb5dce82022100840792bc1f456062819f15d33ee7055cf7b5ee1af1ebcc6028d9cdb1c3af774801 04f46db5e9d61a9dc27b8d64ad23e7383a4e6ca164593c2527c038c0857eb67ee8e825dca65046b82c9331586c82e0fd1f633f25f87c161bc6f8a630121df2b3d3&quot;</span><br><span class="line">    &#125;],</span><br><span class="line">    &quot;out&quot;: [&#123;</span><br><span class="line">            &quot;value&quot;: &quot;5.56000000&quot;,</span><br><span class="line">            &quot;scriptPubKey&quot;: &quot;OP_DUP OP_HASH160 c398efa9c392ba6013c5e04ee729755ef7f58b32 OP_EQUALVERIFY OP_CHECKSIG&quot;,</span><br><span class="line">            &quot;address&quot;: &quot;1JqDybm2nWTENrHvMyafbSXXtTk5Uv5QAn&quot;,</span><br><span class="line">            &quot;next_in&quot;: &#123;</span><br><span class="line">                &quot;hash&quot;: &quot;5aa8e36f9423ee5fcf17c1d0d45d6988b8a5773eae8ad25d945bf34352040009&quot;,</span><br><span class="line">                &quot;n&quot;: 6</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;value&quot;: &quot;44.44000000&quot;,</span><br><span class="line">            &quot;scriptPubKey&quot;: &quot;OP_DUP OP_HASH160 948c765a6914d43f2a7ac177da2c2f6b52de3d7c OP_EQUALVERIFY OP_CHECKSIG&quot;,</span><br><span class="line">            &quot;address&quot;: &quot;1EYTGtG4LnFfiMvjJdsU7GMGCQvsRSjYhx&quot;,</span><br><span class="line">            &quot;next_in&quot;: &#123;</span><br><span class="line">                &quot;hash&quot;: &quot;220ebc64e21abece964927322cba69180ed853bb187fbc6923bac7d010b9d87a&quot;,</span><br><span class="line">                &quot;n&quot;: 0</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    &quot;nid&quot;: &quot;fc7704fdd7ec5e69163e51b827fea2133990a26defee2b475408b3c16fd9a968&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="三、扩容问题如何解决"><a href="#三、扩容问题如何解决" class="headerlink" title="三、扩容问题如何解决"></a>三、扩容问题如何解决</h2><p>在比特币诞生初期，中本聪为了比特币系统的安全和稳定，防止比特币系统被攻击而把区块大小设置为1M。在当时比特币用户量少，比特币交易是不存在拥堵问题的。随着比特币网络的发展，单个区块存储的交易信息越来越多，1MB区块仅能容纳2000条左右交易，交易量大时需要排队等待区块写入确认，交易网络拥堵问题越来越严重，为此也出现了解决容量问题的几个方案。</p>
-<h3 id="1-区块扩容"><a href="#1-区块扩容" class="headerlink" title="1.区块扩容"></a>1.区块扩容</h3><p>解决区块过小问题，最直接的办法就是扩容。区块体积中位数在2015年里得到了翻番，从1月份的292KB快速增长至12月份的749KB。2015 年12月比特币香港扩容会议由Pieter Wuille提出了隔离见证(Segregated Witness)之后，扩容问题甚至已经简化为仅升级至2MB。为什么不把区块设置的更大一些，比如30MB？区块存储的是交易信息，若提高区块体积限制至30MB，最大的问题不是CPU计算能力瓶颈，而是块的传播与存储。30MB的块可能会导致全网孤块率和空块率大幅上升，一年产出1.5TB的区块链数据也超出大部分节点机器的硬盘容量。基于这1.5TB的数据，区块链浏览器、钱包服务商等则可能膨胀10倍达到15TB，对于目前来说已经远超普通机器/数据库的磁盘容量。除了扩容，还有另外的解决方案就是隔离见证和闪电网络。</p>
-<h3 id="2-隔离见证和闪电网络"><a href="#2-隔离见证和闪电网络" class="headerlink" title="2.隔离见证和闪电网络"></a>2.隔离见证和闪电网络</h3><p>隔离见证(SegWit)是把交易的签名数据从交易数据中剥离出来，用于解决延展性攻击。比特币交易主要是由两部分数据组成。其中一部分为交易数据，它负责记录比特币的来源和去处。而另外一部分则是见证数据，这部分数据由一些加密数据组成，用于证明这些交易请求是真实可信的。中本聪在设计比特币的时候直接把这两部分信息都放在了区块内，所以一个区块就承载不了更多的交易信息。如果隔离了“见证数据”，那么区块链只记录交易数据，那么一个区块可承载更多的交易。闪电网络（Lightning Network）方案是在比特币网络上再外加一个「闪电网络（Lightning Network）」，把原有比特币链上金额较少的交易，转移到这个闪电网络来处理，完成后再记录到原链上。这是一种链外交易（Off-chain transaction），目的是解决加快交易速度，以太坊（Ethereum）也有类似的方案叫Raiden Network。用搭乘公共汽车的来假设，试想像比特币的区块是一辆公共汽车，每隔十分钟，固定时间发车，当要乘车的人超过公共汽车容量，不能上车的人就要等待下一班。我们的目的就是让更多的人可以乘车，即承载更多的交易。</p>
-<p><img src="http://ww1.sinaimg.cn/large/883ddbbdly1ft1pn1iyw6j20ze0ky4h7.jpg" alt=""></p>
-<p>比特币区块链本身是可以根据交易费率来优先完成交易的，如果你想快速完成转账等功能，可以设置较高的手续费。这就类似公共汽车让出更高价格买票的人先上车，不愿付高车票的人就要一直等下去，直到坐车的人变少。隔离见证就是我们在公共汽车后面加挂一个货车（SegWit车箱），所有乘车的人都要把背包和行李放到这个货车上面，因为少了随身物品，每个人占的空间变少了，公共汽车就可以多载一些人，乘载量就变多了。闪电网络可以理解为在公交车路线旁边再架一条铁路，让挤不上公共汽车的人直接去坐火车，解决掉太多人要搭乘车（交易），而汽车太小的问题。隔离见证和闪电网络在技术上有可行性，但是同样有许多质疑。依赖于隔离见证的闪电网络等二层网络并不能被认为是比特币的扩容方案，因为闪电网络的交易并不等价于比特币的点对点的链上交易，大部分比特币交易的场景并不适用于闪电网络。假设闪电网络部署成功，也会存在大型支付中心的问题，这违背了比特币做为点对点支付系统的初衷。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/07/比特币区块结构剖析/" data-id="cjjjdimsy0010578o99ph8xvd" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blockchain/">blockchain</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-51-攻击" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/05/51-攻击/" class="article-date">
-  <time datetime="2018-07-05T15:27:58.000Z" itemprop="datePublished">2018-07-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/05/51-攻击/">51%攻击</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="51-攻击解析"><a href="#51-攻击解析" class="headerlink" title="51%攻击解析"></a>51%攻击解析</h2><p>51%攻击是指掌握了比特币全网的51%算力之后，用这些算力来重新计算已经确认过的区块，使块链产生分叉并且获得利益的行为。</p>
-<p>一、如何发动51%攻击？</p>
-<p>假定发动51%攻击的人是一个理性的人，攻击的目的为了利益，而不是为了其他，因而攻击者在发动攻击前有两个条件：</p>
-<p>1、掌握了比特币全网的51%算力<br>2、手里持有大量比特币</p>
-<p>攻击者发动攻击</p>
-<p>1、把比特币转到交易所或某个机构或个人，卖出所有比特币，并且收到钱、把钱提现到银行帐号(提现目的是为确保收益，也可不用提现)。这个时间越短越好，能大大节省攻击时间。</p>
-<p>2、用51%算力从还没向交易所转币的区块开始重新生成区块</p>
-<p>比如：向交易所转币的区块为第30万个区块，攻击者就在第29万9999个区块开始重新生成区块。</p>
-<p>3、因为攻击者有51%算力，而且假设他能在攻击过程中保证一直51%算力，所以他的攻击一定成功，也就是说他生成的攻击块链一定能追上原块链。</p>
-<p>4、当攻击块链的长度超过原块链2个区块，所有的客户端将丢弃原块链，接受攻击块链。至此，51%攻击成功。</p>
-<p>二、造成后果</p>
-<p>原块链上29万9999个区块之后交易全部作废，有以下影响：</p>
-<p>A   29万9999个区块之后没有交易的客户的币数量没有任何影响。<br>B   29万9999个区块之后转出比特币的人会发现：币回来了。<br>C   29万9999个区块之后接收到比特币的人会发现：币消失了。<br>D   最重要的后果是：人们对比特币网络的信心降到冰点，比特币的币值将受到重创。</p>
-<p>三、51%攻击方法说明如下</p>
-<p>1、这是一种能够获得最大利益的51%攻击方法，因为我们假定攻击者是理性的、为获得利益而攻击，而非一心置比特币于死地而不求任何回报的疯子。</p>
-<p>2、无需51%算力就可以发动51%攻击，比如45%算力，有成功可能性，但非确定性成功。有这么一个场景：原块链长度30万，攻击者具备45%算力，从29万9999个区块开始计算，运气好的话，攻击块链延长到30万零2个，而原块链还是30万长度，攻击就成功了。这种攻击影响的区块数量少，如果币数量小，则被发现的可能性很小。目前大家担心的是这种情况。本人认为，虽然连续产出3个区块的可能性不大，但不是没有出现过，ghash.io就出现过连续产出5-6个区块的情况。因而这种非51%攻击的可能性完全存在，比特币世界要时刻监控、密切注意。</p>
-<p>3、有人说多等几个确认就能避免51%攻击。这话有严重问题。如果是非51%算力的攻击，多等几个确认是有效的，数量特别大的比特币转帐应该等几天。但是如果是51%算力攻击，就应该知道，如果攻击者能一直保持51%算力，他可以从比特币最近检查点之后的区块开始重新计算，攻击块链能追上原块链，成功只是时间问题。如果攻击花费了1年时间，也要等1年的确认吗，因而这种认识不全面。</p>
-<p>4、攻击块链可以隐藏地计算，直到比原块链多两个块链后才放出，按照目前的比特币网络协议，可以马上取代原块链，因而整个攻击可以不为人所知，直至最后一时刻。</p>
-<p>四、51%攻击悖论</p>
-<p>我们原先假定发动51%攻击的人是为了利益，我们可以来计算一下攻击者的成本和收益。先回顾一下理解攻击者发动攻击的前提条件：</p>
-<p>1、掌握了比特币全网的51%算力</p>
-<p>分析第1点，掌握了比特币全网的51%算力，得需要多少钱。全网算力按照100P计算，矿机价格按照1T/8600元计算(这是目前最低的价格)</p>
-<p>51P矿机购买费用=100P <em> 51% </em> 1024 * 8600元=449,126,400=4.5亿</p>
-<p>要布署51P的算力以及发动攻击，我们精力估算额外需要1亿的其他费用和电费，因而计算为5.5亿。</p>
-<p>2、要卖掉多少比特币</p>
-<p>到底要卖掉多少比特币才能获得更多的利益呢。至少要获得至少5.5亿的收益，才能在帐面上收支平衡，但要做这么大的攻击，而且攻击后的币值会降低很多，因而一定要非常大的利益才能让攻击者这么做，因而我们按照卖掉比特币能获利20亿估计。</p>
-<p>持有比特币=20亿/4000=50万个比特币</p>
-<p>我们假设攻击者以1000元的成本拥有比特币，他原先的买币成本是2.5亿。<br>如果在短时间卖出50万个比特币，会把价格从4K打到谷底1K-2K了。<br>我们姑且假定，这是场外交易，对比特币价格没有影响。</p>
-<p>3、成功实施51%攻击后的比特币价值</p>
-<p>成功实施51%攻击后，我们认为在一段较长的时间内，人们对比特币的信心降低到冰点，比特币的价格会处于较低水平，如500元甚至更低，直至技术永远解决了51%攻击的可能性。</p>
-<p>因而，即便攻击者成功实施了攻击，他的50万比特币的价值也将处于一个较低水平=50万 * 500=2.5亿。</p>
-<p>4、攻击者的收支估算</p>
-<p>攻击者以4K卖掉50万个比特币，获利20亿。</p>
-<p>投入=5.5亿矿机+2.5亿比特币=8亿<br>收益=20亿-2.5亿-8亿+2.5亿=12亿</p>
-<p>投入8亿，净收益12亿，这对比特币行业，绝对不是好收益。</p>
-<p>5、8亿投资能获得多少收益</p>
-<p>目前每天产出3600个比特币，如果一直保持51%算力可得到1836个，每月获得55080个比特币，按照4K计算收益为2亿。</p>
-<p>攻击者持有的50万个比特币，当一个季度内比特币价格从4K到6K时，可以多获得10亿收益，这种价格上涨我认为是很正常的。</p>
-<p>6、两种投资的收益对比</p>
-<p>攻击是一种投资，诚实持币和挖矿也是一种投资。</p>
-<p>攻击冒了巨大风险，获得12亿，如果在交易所大量抛售，获利还会更低；</p>
-<p>诚实持币和挖矿，没有任何风险，一个季度内轻松获得收益=10亿+6亿=16亿。</p>
-<p>我们假定的有理性的人，为了获得更大收益而攻击的人，实际上是不会发动这样的攻击的，这就是51%攻击悖论。</p>
-<p>不过，如果是疯子或者国家，不惜血本只为毁灭比特币，我们没有办法阻止，也就没有必要讨论。</p>
-<p>五、关于双花和虚花</p>
-<p>关于这点已经在微博上说过多次，双花是指把一份币花了两次，且两次交易都被确认至少一次，其中一次交易一定是在孤立块中。目前大家所说的双花是交易可塑性问题：第一次交易不加交易费，被矿池排斥，欺骗某些无需确认的网站入帐后，再把币花到其他地方去。</p>
-<p>双花是需要算力来保证的，可以是51%算力，也可以是45%算力，具体情况请看本文的第三部分的第二点，但要再次提醒的是：某个矿池连续产出3个区块，就有可能产生非51%算力的双花攻击，ghash.io出现过连续产出5-6个区块的情况，完全有能力发起这种攻击，因而比特币世界要时刻监控、密切注意。一旦出现孤立块，而且里面的交易输入在接下来几个块中重新出现，那很可能就是双花。我们看到：从今年4月份开始，孤立块出现得越来越多，应该有些情况。不过，我奇怪的是为什么blockchain.info关于孤立块的页面一直有BUG，一直不显示具体的孤立块内容，我10天或半月前向blockchain.info提过BUG，但是到现在为止还没有正常，但愿这是BUG，而非因其他原因而隐瞒数据。防范方法是多等几个确认，大额交易建议等1天(在这一点上，比特币天空网的多等几个确认的说法是对的)。</p>
-<p>上文提到的交易可塑性问题，我们可以称之为虚花(这个名称从比特天空网的文章中借用而来，我觉得比较合适)，第一次交易未被纳入区块，第二次交易会被纳入区块，这种攻击无需算力，谁都可以发起攻击，接收方的防范也很简单，只需至少一个确认。</p>
-<p>六、本文小结</p>
-<p>1、真正的51%算力攻击一旦发生，后果会很严重，但51%攻击有悖论，使得它事实上难以发生，除非疯子或疯子国家。<br>2、双花攻击无需51%的算力，ghash.io的45%算力已经具备了双花攻击的条件，事情没有我们想像得那么乐观，比特币世界要重视这个事情。<br>3、双花和虚花可以多等几个确认来防范，真正的51%算力攻击多等几个确认也难以防范。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/05/51-攻击/" data-id="cjjjdims40003578otix17j4j" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blockchain/">blockchain</a></li></ul>
 
     </footer>
   </div>
@@ -632,7 +576,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Linked-List/" style="font-size: 20px;">Linked List</a> <a href="/tags/arrays/" style="font-size: 13.33px;">arrays</a> <a href="/tags/bitcoin/" style="font-size: 10px;">bitcoin</a> <a href="/tags/blockchain/" style="font-size: 13.33px;">blockchain</a> <a href="/tags/cryptocurrency/" style="font-size: 10px;">cryptocurrency</a> <a href="/tags/golang/" style="font-size: 13.33px;">golang</a> <a href="/tags/hyperledger-fabric/" style="font-size: 10px;">hyperledger-fabric</a> <a href="/tags/leetcode/" style="font-size: 16.67px;">leetcode</a> <a href="/tags/stack-queue/" style="font-size: 13.33px;">stack&&queue</a>
+      <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Linked-List/" style="font-size: 20px;">Linked List</a> <a href="/tags/arrays/" style="font-size: 17.5px;">arrays</a> <a href="/tags/bitcoin/" style="font-size: 10px;">bitcoin</a> <a href="/tags/blockchain/" style="font-size: 12.5px;">blockchain</a> <a href="/tags/cryptocurrency/" style="font-size: 10px;">cryptocurrency</a> <a href="/tags/golang/" style="font-size: 12.5px;">golang</a> <a href="/tags/hyperledger-fabric/" style="font-size: 10px;">hyperledger-fabric</a> <a href="/tags/leetcode/" style="font-size: 15px;">leetcode</a> <a href="/tags/stack-queue/" style="font-size: 12.5px;">stack&&queue</a>
     </div>
   </div>
 
@@ -654,6 +598,14 @@
       <ul>
         
           <li>
+            <a href="/2018/07/13/75-分类颜色/">75.分类颜色</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/13/80-删除排序数组中的重复项II/">80.删除排序数组中的重复项II</a>
+          </li>
+        
+          <li>
             <a href="/2018/07/13/26-删除排序数组中重复项/">26.删除排序数组中重复项</a>
           </li>
         
@@ -663,14 +615,6 @@
         
           <li>
             <a href="/2018/07/12/比特币闪电网络/">比特币闪电网络</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/11/二叉树层次遍历II/">二叉树层次遍历II</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/11/二叉树层次遍历I/">二叉树层次遍历I</a>
           </li>
         
       </ul>
