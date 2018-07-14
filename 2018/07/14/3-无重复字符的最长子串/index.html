@@ -5,20 +5,20 @@
   
 
   
-  <title>167.两数之和II-输入有序数组 | Always Be Coding</title>
+  <title>3.无重复字符的最长子串 | Always Be Coding</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="给定一个已按照升序排列 的有序数组，找到两个数使得它们相加之和等于目标数。 函数应该返回这两个下标值 index1 和 index2，其中 index1 必须小于 index2。 说明:  返回的下标值（index1 和 index2）不是从零开始的。 你可以假设每个输入只对应唯一的答案，而且你不可以重复使用相同的元素。  示例: 123输入: numbers = [2, 7, 11, 15],">
+  <meta name="description" content="给定一个字符串，找出不含有重复字符的最长子串的长度。 示例： 给定 “abcabcbb” ，没有重复字符的最长子串是 “abc” ，那么长度就是3。 给定 “bbbbb” ，最长的子串就是 “b” ，长度是1。 给定 “pwwkew” ，最长子串是 “wke” ，长度是3。请注意答案必须是一个子串，”pwke” 是 子序列  而不是子串。 题解：滑动窗口 123456789101112131415">
 <meta name="keywords" content="arrays">
 <meta property="og:type" content="article">
-<meta property="og:title" content="167.两数之和II-输入有序数组">
-<meta property="og:url" content="http://yoursite.com/2018/07/14/167-两数之和II-输入有序数组/index.html">
+<meta property="og:title" content="3.无重复字符的最长子串">
+<meta property="og:url" content="http://yoursite.com/2018/07/14/3-无重复字符的最长子串/index.html">
 <meta property="og:site_name" content="Always Be Coding">
-<meta property="og:description" content="给定一个已按照升序排列 的有序数组，找到两个数使得它们相加之和等于目标数。 函数应该返回这两个下标值 index1 和 index2，其中 index1 必须小于 index2。 说明:  返回的下标值（index1 和 index2）不是从零开始的。 你可以假设每个输入只对应唯一的答案，而且你不可以重复使用相同的元素。  示例: 123输入: numbers = [2, 7, 11, 15],">
+<meta property="og:description" content="给定一个字符串，找出不含有重复字符的最长子串的长度。 示例： 给定 “abcabcbb” ，没有重复字符的最长子串是 “abc” ，那么长度就是3。 给定 “bbbbb” ，最长的子串就是 “b” ，长度是1。 给定 “pwwkew” ，最长子串是 “wke” ，长度是3。请注意答案必须是一个子串，”pwke” 是 子序列  而不是子串。 题解：滑动窗口 123456789101112131415">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-14T08:17:09.681Z">
+<meta property="og:updated_time" content="2018-07-14T12:33:56.121Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="167.两数之和II-输入有序数组">
-<meta name="twitter:description" content="给定一个已按照升序排列 的有序数组，找到两个数使得它们相加之和等于目标数。 函数应该返回这两个下标值 index1 和 index2，其中 index1 必须小于 index2。 说明:  返回的下标值（index1 和 index2）不是从零开始的。 你可以假设每个输入只对应唯一的答案，而且你不可以重复使用相同的元素。  示例: 123输入: numbers = [2, 7, 11, 15],">
+<meta name="twitter:title" content="3.无重复字符的最长子串">
+<meta name="twitter:description" content="给定一个字符串，找出不含有重复字符的最长子串的长度。 示例： 给定 “abcabcbb” ，没有重复字符的最长子串是 “abc” ，那么长度就是3。 给定 “bbbbb” ，最长的子串就是 “b” ，长度是1。 给定 “pwwkew” ，最长子串是 “wke” ，长度是3。请注意答案必须是一个子串，”pwke” 是 子序列  而不是子串。 题解：滑动窗口 123456789101112131415">
   
     <link rel="alternate" href="/atom.xml" title="Always Be Coding" type="application/atom+xml">
   
@@ -65,10 +65,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-167-两数之和II-输入有序数组" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-3-无重复字符的最长子串" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/07/14/167-两数之和II-输入有序数组/" class="article-date">
-  <time datetime="2018-07-14T08:15:24.000Z" itemprop="datePublished">2018-07-14</time>
+    <a href="/2018/07/14/3-无重复字符的最长子串/" class="article-date">
+  <time datetime="2018-07-14T12:32:11.000Z" itemprop="datePublished">2018-07-14</time>
 </a>
     
   </div>
@@ -79,7 +79,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      167.两数之和II-输入有序数组
+      3.无重复字符的最长子串
     </h1>
   
 
@@ -87,22 +87,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>给定一个已按照升序排列 的有序数组，找到两个数使得它们相加之和等于目标数。</p>
-<p>函数应该返回这两个下标值 index1 和 index2，其中 index1 必须小于 index2。</p>
-<p>说明:</p>
-<ul>
-<li>返回的下标值（index1 和 index2）不是从零开始的。</li>
-<li>你可以假设每个输入只对应唯一的答案，而且你不可以重复使用相同的元素。</li>
-</ul>
-<p>示例:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: numbers = [2, 7, 11, 15], target = 9</span><br><span class="line">输出: [1,2]</span><br><span class="line">解释: 2 与 7 之和等于目标数 9 。因此 index1 = 1, index2 = 2 。</span><br></pre></td></tr></table></figure>
-<p>题解：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; twoSum(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; numbers, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        assert(numbers.size() &gt;= <span class="number">2</span>);</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, j = numbers.size()<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; j) &#123;</span><br><span class="line">            <span class="keyword">if</span> (numbers[i] + numbers[j] == target) &#123;</span><br><span class="line">                <span class="keyword">int</span> res[<span class="number">2</span>] = &#123;i+<span class="number">1</span>, j+<span class="number">1</span>&#125;;</span><br><span class="line">                <span class="keyword">return</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(res, res+<span class="number">2</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span> (numbers[i] + numbers[j] &lt; target)</span><br><span class="line">                i++;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                j--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+        <p>给定一个字符串，找出不含有重复字符的最长子串的长度。</p>
+<p>示例：</p>
+<p>给定 “abcabcbb” ，没有重复字符的最长子串是 “abc” ，那么长度就是3。</p>
+<p>给定 “bbbbb” ，最长的子串就是 “b” ，长度是1。</p>
+<p>给定 “pwwkew” ，最长子串是 “wke” ，长度是3。请注意答案必须是一个子串，”pwke” 是 子序列  而不是子串。</p>
+<p>题解：<br>滑动窗口</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>, r = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> freq[<span class="number">256</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> (l &lt; s.size()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (r + <span class="number">1</span> &lt; s.size() &amp;&amp; freq[s[r+<span class="number">1</span>]] == <span class="number">0</span>)</span><br><span class="line">                freq[s[++r]]++;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                freq[s[l++]]--;</span><br><span class="line">            res = max(res, r-l+<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/167-两数之和II-输入有序数组/" data-id="cjjle7l4500034b8oupster98" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/14/3-无重复字符的最长子串/" data-id="cjjle7l4e000d4b8omdq8su6v" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -113,19 +109,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/07/14/215-数组中的第K个最大元素/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          215.数组中的第K个最大元素
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/07/13/88-合并两个有序数组/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/07/14/209-长度最小的子数组/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">88.合并两个有序数组</div>
+      <div class="article-nav-title">209.长度最小的子数组</div>
     </a>
   
 </nav>
