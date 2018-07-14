@@ -5,15 +5,20 @@
   
 
   
-  <title>Archives: 2018 | Always Be Coding</title>
+  <title>344.反转字符串 | Always Be Coding</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Always Be Coding">
-<meta property="og:url" content="http://yoursite.com/archives/2018/page/3/index.html">
+  <meta name="description" content="请编写一个函数，其功能是将输入的字符串反转过来。 示例： 12输入：s = &amp;quot;hello&amp;quot;返回：&amp;quot;olleh&amp;quot; 题解： 12345678class Solution &amp;#123;public:    string reverseString(string s) &amp;#123;        for (int i = 0, j = s.size()-1; i &amp;">
+<meta name="keywords" content="arrays">
+<meta property="og:type" content="article">
+<meta property="og:title" content="344.反转字符串">
+<meta property="og:url" content="http://yoursite.com/2018/07/14/344-反转字符串/index.html">
 <meta property="og:site_name" content="Always Be Coding">
+<meta property="og:description" content="请编写一个函数，其功能是将输入的字符串反转过来。 示例： 12输入：s = &amp;quot;hello&amp;quot;返回：&amp;quot;olleh&amp;quot; 题解： 12345678class Solution &amp;#123;public:    string reverseString(string s) &amp;#123;        for (int i = 0, j = s.size()-1; i &amp;">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-14T08:42:58.228Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Always Be Coding">
+<meta name="twitter:title" content="344.反转字符串">
+<meta name="twitter:description" content="请编写一个函数，其功能是将输入的字符串反转过来。 示例： 12输入：s = &amp;quot;hello&amp;quot;返回：&amp;quot;olleh&amp;quot; 题解： 12345678class Solution &amp;#123;public:    string reverseString(string s) &amp;#123;        for (int i = 0, j = s.size()-1; i &amp;">
   
     <link rel="alternate" href="/atom.xml" title="Always Be Coding" type="application/atom+xml">
   
@@ -60,197 +65,58 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/08/CopyListWithRandomPointer/" class="archive-article-date">
-  <time datetime="2018-06-08T08:22:55.000Z" itemprop="datePublished">Jun 8</time>
+        <section id="main"><article id="post-344-反转字符串" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/14/344-反转字符串/" class="article-date">
+  <time datetime="2018-07-14T08:41:44.000Z" itemprop="datePublished">2018-07-14</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/08/CopyListWithRandomPointer/">Copy List with Random Pointer</a>
+    <h1 class="article-title" itemprop="name">
+      344.反转字符串
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/07/rails/" class="archive-article-date">
-  <time datetime="2018-06-07T12:56:27.000Z" itemprop="datePublished">Jun 7</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/07/rails/">Rails</a>
-    </h1>
-  
+        <p>请编写一个函数，其功能是将输入的字符串反转过来。</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：s = &quot;hello&quot;</span><br><span class="line">返回：&quot;olleh&quot;</span><br></pre></td></tr></table></figure>
+<p>题解：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">reverseString</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, j = s.size()<span class="number">-1</span>; i &lt; j; ++i, --j)</span><br><span class="line">            swap(s[i], s[j]);</span><br><span class="line">        <span class="keyword">return</span> s;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/06/LinkedListCycleII/" class="archive-article-date">
-  <time datetime="2018-06-06T12:41:49.000Z" itemprop="datePublished">Jun 6</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/06/LinkedListCycleII/">Linked List Cycle II</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/06/IntersectionOfTwoLinkedLists/" class="archive-article-date">
-  <time datetime="2018-06-06T12:25:31.000Z" itemprop="datePublished">Jun 6</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/14/344-反转字符串/" data-id="cjjl5ykeh0003438o3nitd435" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/06/IntersectionOfTwoLinkedLists/">Intersection of Two Linked Lists</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/06/ReverseLinkedListII/" class="archive-article-date">
-  <time datetime="2018-06-06T11:45:26.000Z" itemprop="datePublished">Jun 6</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/06/ReverseLinkedListII/">Reverse Linked List II</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/07/14/125-验证回文串/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">125.验证回文串</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/06/ReverseLinkedList/" class="archive-article-date">
-  <time datetime="2018-06-06T08:13:37.000Z" itemprop="datePublished">Jun 6</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/06/ReverseLinkedList/">Reverse Linked List</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/05/03/hyperledger-fabric02/" class="archive-article-date">
-  <time datetime="2018-05-03T10:13:37.000Z" itemprop="datePublished">May 3</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/03/hyperledger-fabric02/">hyperledger fabric网络架构和交易流程</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/05/03/hyperledger-fabric01/" class="archive-article-date">
-  <time datetime="2018-05-03T07:45:26.000Z" itemprop="datePublished">May 3</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/03/hyperledger-fabric01/">hyperledger fabric初体验</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/05/03/hello-world/" class="archive-article-date">
-  <time datetime="2018-05-03T06:52:13.776Z" itemprop="datePublished">May 3</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/03/hello-world/">Hello World</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/archives/2018/page/2/">&laquo; Prev</a><a class="page-number" href="/archives/2018/">1</a><a class="page-number" href="/archives/2018/page/2/">2</a><span class="page-number current">3</span>
-  </nav>
 
 </section>
         
