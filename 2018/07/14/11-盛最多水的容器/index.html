@@ -5,15 +5,20 @@
   
 
   
-  <title>Tag: stack&amp;&amp;queue | Always Be Coding</title>
+  <title>11.盛最多水的容器 | Always Be Coding</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Always Be Coding">
-<meta property="og:url" content="http://yoursite.com/tags/stack-queue/index.html">
+  <meta name="description" content="给定 n 个非负整数 a1，a2，…，an，每个数代表坐标中的一个点 (i, ai) 。画 n 条垂直线，使得垂直线 i 的两个端点分别为 (i, ai) 和 (i, 0)。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。 注意：你不能倾斜容器，n 至少是2。 题解： 1234567891011121314class Solution &amp;#123;public:    int">
+<meta name="keywords" content="arrays">
+<meta property="og:type" content="article">
+<meta property="og:title" content="11.盛最多水的容器">
+<meta property="og:url" content="http://yoursite.com/2018/07/14/11-盛最多水的容器/index.html">
 <meta property="og:site_name" content="Always Be Coding">
+<meta property="og:description" content="给定 n 个非负整数 a1，a2，…，an，每个数代表坐标中的一个点 (i, ai) 。画 n 条垂直线，使得垂直线 i 的两个端点分别为 (i, ai) 和 (i, 0)。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。 注意：你不能倾斜容器，n 至少是2。 题解： 1234567891011121314class Solution &amp;#123;public:    int">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-14T09:13:08.781Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Always Be Coding">
+<meta name="twitter:title" content="11.盛最多水的容器">
+<meta name="twitter:description" content="给定 n 个非负整数 a1，a2，…，an，每个数代表坐标中的一个点 (i, ai) 。画 n 条垂直线，使得垂直线 i 的两个端点分别为 (i, ai) 和 (i, 0)。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。 注意：你不能倾斜容器，n 至少是2。 题解： 1234567891011121314class Solution &amp;#123;public:    int">
   
     <link rel="alternate" href="/atom.xml" title="Always Be Coding" type="application/atom+xml">
   
@@ -60,59 +65,57 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/08/ImplementStackusingQueues/" class="archive-article-date">
-  <time datetime="2018-06-08T09:34:51.000Z" itemprop="datePublished">Jun 8</time>
+        <section id="main"><article id="post-11-盛最多水的容器" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/14/11-盛最多水的容器/" class="article-date">
+  <time datetime="2018-07-14T09:12:26.000Z" itemprop="datePublished">2018-07-14</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/08/ImplementStackusingQueues/">Implement Stack using Queues</a>
+    <h1 class="article-title" itemprop="name">
+      11.盛最多水的容器
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/07/rails/" class="archive-article-date">
-  <time datetime="2018-06-07T12:56:27.000Z" itemprop="datePublished">Jun 7</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/07/rails/">Rails</a>
-    </h1>
-  
+        <p>给定 n 个非负整数 a1，a2，…，an，每个数代表坐标中的一个点 (i, ai) 。画 n 条垂直线，使得垂直线 i 的两个端点分别为 (i, ai) 和 (i, 0)。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。</p>
+<p>注意：你不能倾斜容器，n 至少是2。</p>
+<p>题解：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxArea</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; height)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> water = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, j = height.size() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; j) &#123;</span><br><span class="line">            <span class="keyword">int</span> h = min(height[i], height[j]);</span><br><span class="line">            water = max(water, (j - i) * h);</span><br><span class="line">            <span class="keyword">while</span> (height[i] &lt;= h &amp;&amp; i &lt; j) i++;</span><br><span class="line">            <span class="keyword">while</span> (height[j] &lt;= h &amp;&amp; i &lt; j) j--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> water;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-    </header>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/14/11-盛最多水的容器/" data-id="cjjl71dpx0000b08o2uz55ca4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
+
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/07/14/345-反转字符串中的元音字母/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">345.反转字符串中的元音字母</div>
+    </a>
   
+</nav>
 
+  
+</article>
 
 </section>
         
