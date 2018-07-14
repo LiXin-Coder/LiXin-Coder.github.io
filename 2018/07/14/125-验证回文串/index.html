@@ -5,20 +5,20 @@
   
 
   
-  <title>75.分类颜色 | Always Be Coding</title>
+  <title>125.验证回文串 | Always Be Coding</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="给定一个包含红色、白色和蓝色，一共 n 个元素的数组，原地对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。 此题中，我们使用整数 0、 1 和 2 分别表示红色、白色和蓝色。 注意:不能使用代码库中的排序函数来解决这道题。 示例: 12输入: [2,0,2,1,1,0]输出: [0,0,1,1,2,2] 进阶： 一个直观的解决方案是使用计数排序的两趟扫描算法。首先，迭代计算">
+  <meta name="description" content="给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。 说明：本题中，我们将空字符串定义为有效的回文串。示例 1: 12输入: &amp;quot;A man, a plan, a canal: Panama&amp;quot;输出: true 示例 2: 12输入: &amp;quot;race a car&amp;quot;输出: false 题解： 123456789101112131415161">
 <meta name="keywords" content="arrays">
 <meta property="og:type" content="article">
-<meta property="og:title" content="75.分类颜色">
-<meta property="og:url" content="http://yoursite.com/2018/07/13/75-分类颜色/index.html">
+<meta property="og:title" content="125.验证回文串">
+<meta property="og:url" content="http://yoursite.com/2018/07/14/125-验证回文串/index.html">
 <meta property="og:site_name" content="Always Be Coding">
-<meta property="og:description" content="给定一个包含红色、白色和蓝色，一共 n 个元素的数组，原地对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。 此题中，我们使用整数 0、 1 和 2 分别表示红色、白色和蓝色。 注意:不能使用代码库中的排序函数来解决这道题。 示例: 12输入: [2,0,2,1,1,0]输出: [0,0,1,1,2,2] 进阶： 一个直观的解决方案是使用计数排序的两趟扫描算法。首先，迭代计算">
+<meta property="og:description" content="给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。 说明：本题中，我们将空字符串定义为有效的回文串。示例 1: 12输入: &amp;quot;A man, a plan, a canal: Panama&amp;quot;输出: true 示例 2: 12输入: &amp;quot;race a car&amp;quot;输出: false 题解： 123456789101112131415161">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-13T07:47:23.611Z">
+<meta property="og:updated_time" content="2018-07-14T08:37:19.672Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="75.分类颜色">
-<meta name="twitter:description" content="给定一个包含红色、白色和蓝色，一共 n 个元素的数组，原地对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。 此题中，我们使用整数 0、 1 和 2 分别表示红色、白色和蓝色。 注意:不能使用代码库中的排序函数来解决这道题。 示例: 12输入: [2,0,2,1,1,0]输出: [0,0,1,1,2,2] 进阶： 一个直观的解决方案是使用计数排序的两趟扫描算法。首先，迭代计算">
+<meta name="twitter:title" content="125.验证回文串">
+<meta name="twitter:description" content="给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。 说明：本题中，我们将空字符串定义为有效的回文串。示例 1: 12输入: &amp;quot;A man, a plan, a canal: Panama&amp;quot;输出: true 示例 2: 12输入: &amp;quot;race a car&amp;quot;输出: false 题解： 123456789101112131415161">
   
     <link rel="alternate" href="/atom.xml" title="Always Be Coding" type="application/atom+xml">
   
@@ -65,10 +65,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-75-分类颜色" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-125-验证回文串" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/07/13/75-分类颜色/" class="article-date">
-  <time datetime="2018-07-13T07:45:29.000Z" itemprop="datePublished">2018-07-13</time>
+    <a href="/2018/07/14/125-验证回文串/" class="article-date">
+  <time datetime="2018-07-14T08:35:54.000Z" itemprop="datePublished">2018-07-14</time>
 </a>
     
   </div>
@@ -79,7 +79,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      75.分类颜色
+      125.验证回文串
     </h1>
   
 
@@ -87,20 +87,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>给定一个包含红色、白色和蓝色，一共 n 个元素的数组，原地对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。</p>
-<p>此题中，我们使用整数 0、 1 和 2 分别表示红色、白色和蓝色。</p>
-<p>注意:<br>不能使用代码库中的排序函数来解决这道题。</p>
-<p>示例:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [2,0,2,1,1,0]</span><br><span class="line">输出: [0,0,1,1,2,2]</span><br></pre></td></tr></table></figure>
-<p>进阶：</p>
-<p>一个直观的解决方案是使用计数排序的两趟扫描算法。<br>首先，迭代计算出0、1 和 2 元素的个数，然后按照0、1、2的排序，重写当前数组。<br>你能想出一个仅使用常数空间的一趟扫描算法吗？</p>
+        <p>给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。</p>
+<p>说明：本题中，我们将空字符串定义为有效的回文串。<br>示例 1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;A man, a plan, a canal: Panama&quot;</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
+<p>示例 2:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;race a car&quot;</span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure>
 <p>题解：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">sortColors</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> zero = <span class="number">-1</span>; <span class="comment">//nums[0,zero]为0</span></span><br><span class="line">        <span class="keyword">int</span> two = nums.size();<span class="comment">//nums[two, n-1]为2</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; two;) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] == <span class="number">1</span>)</span><br><span class="line">                ++i;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (nums[i] == <span class="number">0</span>) &#123;</span><br><span class="line">                ++zero;</span><br><span class="line">                swap(nums[i], nums[zero]);</span><br><span class="line">                ++i;</span><br><span class="line">                &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                --two;</span><br><span class="line">                swap(nums[i], nums[two]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPalindrome</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>, r = s.size()<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span> (l &lt; r) &#123;</span><br><span class="line">            <span class="keyword">while</span> (!<span class="built_in">isalnum</span>(s[l]) &amp;&amp; l &lt; r)</span><br><span class="line">                l++;</span><br><span class="line">            <span class="keyword">while</span> (!<span class="built_in">isalnum</span>(s[r]) &amp;&amp; l &lt; r)</span><br><span class="line">                r--;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">toupper</span>(s[l]) != <span class="built_in">toupper</span>(s[r]))</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            l++;</span><br><span class="line">            r--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/13/75-分类颜色/" data-id="cjjl5rdnk000a238ou6uoxu73" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/14/125-验证回文串/" data-id="cjjl5rdn50000238orq8l4zuq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -111,19 +109,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/07/13/88-合并两个有序数组/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          88.合并两个有序数组
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/07/13/80-删除排序数组中的重复项II/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/07/14/215-数组中的第K个最大元素/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">80.删除排序数组中的重复项II</div>
+      <div class="article-nav-title">215.数组中的第K个最大元素</div>
     </a>
   
 </nav>
