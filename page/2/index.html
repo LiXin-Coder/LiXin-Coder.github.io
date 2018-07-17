@@ -62,6 +62,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-区块链中的软分叉与硬分叉详解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/14/区块链中的软分叉与硬分叉详解/" class="article-date">
+  <time datetime="2018-07-14T15:07:21.000Z" itemprop="datePublished">2018-07-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/14/区块链中的软分叉与硬分叉详解/">区块链中的软分叉与硬分叉详解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>说到分叉，我们首先了解一下在软件开发中的分叉是什么？</p>
+<h3 id="软件项目中的分叉"><a href="#软件项目中的分叉" class="headerlink" title="软件项目中的分叉"></a>软件项目中的分叉</h3><p>软件开发中的分叉指的是：在开源项目中如果有人Fork了一个项目（一个项目分叉为两个项目），然后开发者沿着这个Fork向另外一个不同的方向独立发展这个项目。例如Litecoin就是bitcoin的一个分叉，litecoin的基础代码就是bitcoin的，不过litecoin后来慢慢的发展成了一个另外一个独立的项目。但是依然和bitcoin有着非常紧密的相关性。但litecoin和bitcoin是两种不同的加密货币。</p>
+<h3 id="Bitcoin术语中的软分叉与硬分叉"><a href="#Bitcoin术语中的软分叉与硬分叉" class="headerlink" title="Bitcoin术语中的软分叉与硬分叉"></a>Bitcoin术语中的软分叉与硬分叉</h3><p>比特币中的软分叉和硬分叉主要指因比特币协议的突发改变而导致的兼容性的问题。比特币协议发生改变，会有两个不同版本的比特币协议在同时使，他们对其他区块的接受规则不同会导致区块链长期分叉，这两个不同的链都会被不同的网络认为是有效的。链分叉也导致网络分叉。</p>
+<h3 id="软分叉是向前兼容的"><a href="#软分叉是向前兼容的" class="headerlink" title="软分叉是向前兼容的"></a>软分叉是向前兼容的</h3><p><img src="http://ww1.sinaimg.cn/large/007330Apgy1ft9skvbn89j310q0gwwga.jpg" alt=""><br>如上图软分叉的新的规则是以前旧规则的子集，所有被新版本认为是合法的区块也会被以前旧版本认为是合法的。旧版本会接受新版本创建的区块。新版本和旧版本是兼容的。</p>
+<p>如果有至少51%的矿工的算力转向的新版本，那么网络自动完成软分叉：一开始旧版本创建的区块在新协议下被认为是不合法的，这时会出现一个短暂的分叉，但最终新版本的分叉会赶超旧版本的分叉成为最长链。因为在旧版本上的算力是小于新版本的。</p>
+<p>但是如果小于51%的矿工算力转向新版本，那么软分叉将不会出现，因为旧版本比新版本有更多的算力支持，同时旧版本不兼容新版本。</p>
+<h3 id="硬分叉不向前兼容："><a href="#硬分叉不向前兼容：" class="headerlink" title="硬分叉不向前兼容："></a>硬分叉不向前兼容：</h3><p><img src="http://ww1.sinaimg.cn/large/007330Apgy1ft9sll1rcoj313a0d6gn0.jpg" alt=""><br>旧版本不会接受新版本创建的合法区块，认为新版本的合法区块是不合法的。所以很明显硬分叉是不向前兼容。要实现硬分叉所有的用户（矿工，交易所，普通用户）都要切换的新的协议版本上。</p>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>软分叉向前兼容，旧的版本会接受新版本创建的区块，在软分叉中只需要矿工升级到新版本即可，用户可以继续使用旧版本的协议，他们仍然会接受新版本协议创建的区块。</p>
+<p>硬分叉不向前兼容，旧版本不会接受新版本创建的区块。要实现硬分叉所有用户都需要切换到新版本协议上。</p>
+<p>为什么硬分叉不需要51%以上的算力，因为即便旧链的长度大于新链也没用，新版本是不会接受旧链上的区块，如果所有用户都更新到新的版本那么客户的钱包会认为旧链上的资产是非法的，旧链上的货币无法使用。</p>
+<p>THE DAO 为什么要进行硬分叉而不是软分叉：如果进行软分叉，由于新版本是和旧版本兼容的，所以旧版本上的资产同样也是可以在新版本上消费的，那么就不能达到回滚黑客资产的目的。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/14/区块链中的软分叉与硬分叉详解/" data-id="cjjps0pbl002dqz8ooqxjl3oi" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blockchain/">blockchain</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-3-无重复字符的最长子串" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/14/3-无重复字符的最长子串/" class="article-date">
@@ -95,7 +144,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/3-无重复字符的最长子串/" data-id="cjjpgsbx4000tm48o4lkpb5j8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/14/3-无重复字符的最长子串/" data-id="cjjps0pao000sqz8o0uugmyiu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -138,7 +187,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/209-长度最小的子数组/" data-id="cjjpgsbwx000hm48oxysbbnv4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/14/209-长度最小的子数组/" data-id="cjjps0pam000nqz8ombwwf4gy" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -180,7 +229,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/11-盛最多水的容器/" data-id="cjjpgsbwk0003m48ouqwfrgv8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/14/11-盛最多水的容器/" data-id="cjjps0pa90005qz8ozi98vw63" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -224,7 +273,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/345-反转字符串中的元音字母/" data-id="cjjpgsbx7000xm48ohttv7grl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/14/345-反转字符串中的元音字母/" data-id="cjjps0paw0014qz8onxyd2a83" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -267,7 +316,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/344-反转字符串/" data-id="cjjpgsbx5000vm48ofotxtsrt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/14/344-反转字符串/" data-id="cjjps0pas0010qz8ocxeui8y4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -312,7 +361,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/125-验证回文串/" data-id="cjjpgsbwt000dm48og7rvr3kx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/14/125-验证回文串/" data-id="cjjps0paf000dqz8o08x6qd4k" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -358,7 +407,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/215-数组中的第K个最大元素/" data-id="cjjpgsbwy000jm48opa7dgsqc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/14/215-数组中的第K个最大元素/" data-id="cjjps0paj000iqz8onzv2f81d" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -407,7 +456,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/167-两数之和II-输入有序数组/" data-id="cjjpgsbwv000fm48o7qkwsu0w" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/14/167-两数之和II-输入有序数组/" data-id="cjjps0pag000fqz8ozv70wtxi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -456,54 +505,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/13/88-合并两个有序数组/" data-id="cjjpgsbxd0018m48oadjl85uh" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-75-分类颜色" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/13/75-分类颜色/" class="article-date">
-  <time datetime="2018-07-13T07:45:29.000Z" itemprop="datePublished">2018-07-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/13/75-分类颜色/">75.分类颜色</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>给定一个包含红色、白色和蓝色，一共 n 个元素的数组，原地对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。</p>
-<p>此题中，我们使用整数 0、 1 和 2 分别表示红色、白色和蓝色。</p>
-<p>注意:<br>不能使用代码库中的排序函数来解决这道题。</p>
-<p>示例:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [2,0,2,1,1,0]</span><br><span class="line">输出: [0,0,1,1,2,2]</span><br></pre></td></tr></table></figure>
-<p>进阶：</p>
-<p>一个直观的解决方案是使用计数排序的两趟扫描算法。<br>首先，迭代计算出0、1 和 2 元素的个数，然后按照0、1、2的排序，重写当前数组。<br>你能想出一个仅使用常数空间的一趟扫描算法吗？</p>
-<p>题解：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">sortColors</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> zero = <span class="number">-1</span>; <span class="comment">//nums[0,zero]为0</span></span><br><span class="line">        <span class="keyword">int</span> two = nums.size();<span class="comment">//nums[two, n-1]为2</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; two;) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] == <span class="number">1</span>)</span><br><span class="line">                ++i;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (nums[i] == <span class="number">0</span>) &#123;</span><br><span class="line">                ++zero;</span><br><span class="line">                swap(nums[i], nums[zero]);</span><br><span class="line">                ++i;</span><br><span class="line">                &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                --two;</span><br><span class="line">                swap(nums[i], nums[two]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/13/75-分类颜色/" data-id="cjjpgsbxb0013m48okxianzyk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/13/88-合并两个有序数组/" data-id="cjjps0pb1001dqz8or487jc1d" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -533,7 +535,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linked-List/">Linked List</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/arrays/">arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitcoin/">bitcoin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blockchain/">blockchain</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cryptocurrency/">cryptocurrency</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/golang/">golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hyperledger-fabric/">hyperledger-fabric</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stack-queue/">stack&&queue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linked-List/">Linked List</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/arrays/">arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitcoin/">bitcoin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blockchain/">blockchain</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cryptocurrency/">cryptocurrency</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ethereum/">ethereum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/golang/">golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hyperledger-fabric/">hyperledger-fabric</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stack-queue/">stack&&queue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a></li></ul>
     </div>
   </div>
 
@@ -543,7 +545,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Linked-List/" style="font-size: 16px;">Linked List</a> <a href="/tags/arrays/" style="font-size: 20px;">arrays</a> <a href="/tags/bitcoin/" style="font-size: 10px;">bitcoin</a> <a href="/tags/blockchain/" style="font-size: 14px;">blockchain</a> <a href="/tags/cryptocurrency/" style="font-size: 10px;">cryptocurrency</a> <a href="/tags/golang/" style="font-size: 12px;">golang</a> <a href="/tags/hyperledger-fabric/" style="font-size: 10px;">hyperledger-fabric</a> <a href="/tags/leetcode/" style="font-size: 14px;">leetcode</a> <a href="/tags/stack-queue/" style="font-size: 12px;">stack&&queue</a> <a href="/tags/tree/" style="font-size: 18px;">tree</a>
+      <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Linked-List/" style="font-size: 16px;">Linked List</a> <a href="/tags/arrays/" style="font-size: 20px;">arrays</a> <a href="/tags/bitcoin/" style="font-size: 10px;">bitcoin</a> <a href="/tags/blockchain/" style="font-size: 14px;">blockchain</a> <a href="/tags/cryptocurrency/" style="font-size: 10px;">cryptocurrency</a> <a href="/tags/ethereum/" style="font-size: 10px;">ethereum</a> <a href="/tags/golang/" style="font-size: 12px;">golang</a> <a href="/tags/hyperledger-fabric/" style="font-size: 10px;">hyperledger-fabric</a> <a href="/tags/leetcode/" style="font-size: 14px;">leetcode</a> <a href="/tags/stack-queue/" style="font-size: 12px;">stack&&queue</a> <a href="/tags/tree/" style="font-size: 18px;">tree</a>
     </div>
   </div>
 
@@ -565,6 +567,10 @@
       <ul>
         
           <li>
+            <a href="/2018/07/17/以太坊入门/">以太坊入门</a>
+          </li>
+        
+          <li>
             <a href="/2018/07/17/404-左叶子之和/">404.左叶子之和</a>
           </li>
         
@@ -578,10 +584,6 @@
         
           <li>
             <a href="/2018/07/17/222-完全二叉树的节点个数/">222.完全二叉树的节点个数</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/17/101-对称二叉树/">101.对称二叉树</a>
           </li>
         
       </ul>
