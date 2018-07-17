@@ -62,6 +62,53 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-二叉树层次遍历I" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/11/二叉树层次遍历I/" class="article-date">
+  <time datetime="2018-07-11T12:39:40.000Z" itemprop="datePublished">2018-07-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/11/二叉树层次遍历I/">二叉树层次遍历I</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>给定一个二叉树，返回其按层次遍历的节点值。 （即逐层地，从左到右访问所有节点）。</p>
+<p>例如:<br>给定二叉树: [3,9,20,null,null,15,7],</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line"> / \</span><br><span class="line">9  20</span><br><span class="line">  /  \</span><br><span class="line"> 15   7</span><br></pre></td></tr></table></figure>
+<p>返回其层次遍历结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  [3],</span><br><span class="line">  [9,20],</span><br><span class="line">  [15,7]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>思路：</p>
+<p>与普通层次遍历稍微不一样的地方就是，需要分出每一层的结点数据来。</p>
+<p>如果提前知道每一层数据的个数n，那么只需要循环n次即可取出这一层的数据。那么刚好保持队列内一直为同一层的数据即可。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; levelOrder(TreeNode* root) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; result;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">NULL</span>)</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        <span class="built_in">queue</span>&lt;TreeNode*&gt; que;</span><br><span class="line">        que.push(root);</span><br><span class="line">        <span class="keyword">while</span> (!que.empty()) &#123;</span><br><span class="line">            <span class="keyword">int</span> size = que.size();</span><br><span class="line">            <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; temp;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; ++i) &#123;</span><br><span class="line">                TreeNode* node = que.front();</span><br><span class="line">                que.pop();</span><br><span class="line">                temp.push_back(node-&gt;val);</span><br><span class="line">                <span class="keyword">if</span> (node-&gt;left != <span class="literal">NULL</span>)que.push(node-&gt;left);</span><br><span class="line">                <span class="keyword">if</span> (node-&gt;right != <span class="literal">NULL</span>)que.push(node-&gt;right);</span><br><span class="line">            &#125;</span><br><span class="line">            result.push_back(temp);</span><br><span class="line">        &#125;</span><br><span class="line">         <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/11/二叉树层次遍历I/" data-id="cjjp9z5cp001tiq8o69jjnueo" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-strStr" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/11/strStr/" class="article-date">
@@ -101,7 +148,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/11/strStr/" data-id="cjjp9ouen001lga8ohs71hnij" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/11/strStr/" data-id="cjjp9z5ct0020iq8obd7bzx8j" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
@@ -144,7 +191,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/09/golang-container/" data-id="cjjp9ouei001dga8oyfupdjup" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/09/golang-container/" data-id="cjjp9z5ch001fiq8ogimduygd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li></ul>
@@ -194,7 +241,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/09/数字货币简单分类/" data-id="cjjp9ouew0022ga8oojx6aztv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/09/数字货币简单分类/" data-id="cjjp9z5cv0022iq8o4b66b38q" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cryptocurrency/">cryptocurrency</a></li></ul>
@@ -254,7 +301,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/07/比特币区块结构剖析/" data-id="cjjp9ouez0027ga8oyrn1nvv1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/07/比特币区块结构剖析/" data-id="cjjp9z5d0002aiq8ozy7zwgzj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blockchain/">blockchain</a></li></ul>
@@ -342,7 +389,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/05/51-攻击/" data-id="cjjp9oue7000uga8oo3a633rv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/05/51-攻击/" data-id="cjjp9z5c4000uiq8ob366il46" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blockchain/">blockchain</a></li></ul>
@@ -396,7 +443,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/02/learn-golang/" data-id="cjjp9oueo001nga8owm22xwlj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/02/learn-golang/" data-id="cjjp9z5co001riq8o0ki0yjvj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li></ul>
@@ -437,7 +484,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/20/变量内存地址分析/" data-id="cjjp9ouey0024ga8o8kbwzrma" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/20/变量内存地址分析/" data-id="cjjp9z5cx0025iq8oj3dzbspl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li></ul>
@@ -484,7 +531,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/08/ImplementStackusingQueues/" data-id="cjjp9oueb0011ga8ojcj2qq1e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/08/ImplementStackusingQueues/" data-id="cjjp9z5ca0016iq8osgikvrbo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/stack-queue/">stack&&queue</a></li></ul>
@@ -527,60 +574,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/08/CopyListWithRandomPointer/" data-id="cjjp9ouea000zga8oeadgupku" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/08/CopyListWithRandomPointer/" data-id="cjjp9z5c70011iq8o4t8vzdq1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linked-List/">Linked List</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-rails" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/06/07/rails/" class="article-date">
-  <time datetime="2018-06-07T12:56:27.000Z" itemprop="datePublished">2018-06-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/07/rails/">Rails</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Rails<br>Time Limit: 1000MS        Memory Limit: 10000K<br>Total Submissions: 37325        Accepted: 14466<br>Description</p>
-<p>There is a famous railway station in PopPush City. Country there is incredibly hilly. The station was built in last century. Unfortunately, funds were extremely limited that time. It was possible to establish only a surface track. Moreover, it turned out that the station could be only a dead-end one (see picture) and due to lack of available space it could have only one track. </p>
-<p>The local tradition is that every train arriving from the direction A continues in the direction B with coaches reorganized in some way. Assume that the train arriving from the direction A has N &lt;= 1000 coaches numbered in increasing order 1, 2, …, N. The chief for train reorganizations must know whether it is possible to marshal coaches continuing in the direction B so that their order will be a1, a2, …, aN. Help him and write a program that decides whether it is possible to get the required order of coaches. You can assume that single coaches can be disconnected from the train before they enter the station and that they can move themselves until they are on the track in the direction B. You can also suppose that at any time there can be located as many coaches as necessary in the station. But once a coach has entered the station it cannot return to the track in the direction A and also once it has left the station in the direction B it cannot return back to the station. </p>
-<p>Input</p>
-<p>The input consists of blocks of lines. Each block except the last describes one train and possibly more requirements for its reorganization. In the first line of the block there is the integer N described above. In each of the next lines of the block there is a permutation of 1, 2, …, N. The last line of the block contains just 0. </p>
-<p>The last block consists of just one line containing 0.<br>Output</p>
-<p>The output contains the lines corresponding to the lines with permutations in the input. A line of the output contains Yes if it is possible to marshal the coaches in the order required on the corresponding line of the input. Otherwise it contains No. In addition, there is one empty line after the lines corresponding to one block of the input. There is no line in the output corresponding to the last <code></code>null’’ block of the input.<br>Sample Input</p>
-<p>5<br>1 2 3 4 5<br>5 4 1 2 3<br>0<br>6<br>6 5 4 3 2 1<br>0<br>0<br>Sample Output</p>
-<p>Yes<br>No</p>
-<p>Yes<br>Source</p>
-<p>Central Europe 1997</p>
-<p>–<br>题目解析：已知从1至n的数字序列，按顺序入栈，每个数字入栈后即可出栈， 也可在栈中停留，等待后面的数字入栈出栈后，该数字再出栈，求该数字序列<br><img src="http://ww1.sinaimg.cn/large/007330Aply1fs2x6edfh7j31o00i8wgz.jpg" alt=""><br>的出栈序列是否合法?<br>思路：利用栈与队列模拟入栈、出栈过程<br><img src="http://ww1.sinaimg.cn/large/007330Aply1fs2ww5ymbtj31j60y4wp5.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/007330Aply1fs2wwtpum4j31ia0ykn3q.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/007330Aply1fs2wy3fmywj31ci0je0w9.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/007330Aply1fs2wykwwadj31660ky41c.jpg" alt=""><br><img src="http://ww1.sinaimg.cn/large/007330Aply1fs2wysxjtqj31m20y27gh.jpg" alt=""></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check_is_valid_order</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; &amp;order)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; S;</span><br><span class="line">	<span class="keyword">int</span> n = order.size();</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">		S.push(i);</span><br><span class="line">		<span class="keyword">while</span> (!S.empty() &amp;&amp; order.front() == S.top()) &#123;</span><br><span class="line">			S.pop();</span><br><span class="line">			order.pop();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (!S.empty())</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="keyword">int</span> train;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">	<span class="keyword">while</span> (n) &#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;train);</span><br><span class="line">		<span class="keyword">while</span> (train) &#123;</span><br><span class="line">			<span class="built_in">std</span>::<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; order;</span><br><span class="line">			order.push(train);</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; ++i) &#123;</span><br><span class="line">				<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;train);</span><br><span class="line">				order.push(train);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (check_is_valid_order(order))</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"Yes\n"</span>);</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"No\n);</span></span><br><span class="line"><span class="string">			scanf("</span>%d<span class="string">", &amp;train);</span></span><br><span class="line"><span class="string">		&#125;</span></span><br><span class="line"><span class="string">		printf("</span>\n<span class="string">");</span></span><br><span class="line"><span class="string">		scanf("</span>%d<span class="string">", &amp;n);</span></span><br><span class="line"><span class="string">	&#125;</span></span><br><span class="line"><span class="string">	return 0;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/07/rails/" data-id="cjjp9oues001uga8o80vwhi90" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/stack-queue/">stack&&queue</a></li></ul>
 
     </footer>
   </div>
@@ -617,7 +614,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Linked-List/" style="font-size: 17.5px;">Linked List</a> <a href="/tags/arrays/" style="font-size: 20px;">arrays</a> <a href="/tags/bitcoin/" style="font-size: 10px;">bitcoin</a> <a href="/tags/blockchain/" style="font-size: 15px;">blockchain</a> <a href="/tags/cryptocurrency/" style="font-size: 10px;">cryptocurrency</a> <a href="/tags/golang/" style="font-size: 12.5px;">golang</a> <a href="/tags/hyperledger-fabric/" style="font-size: 10px;">hyperledger-fabric</a> <a href="/tags/leetcode/" style="font-size: 15px;">leetcode</a> <a href="/tags/stack-queue/" style="font-size: 12.5px;">stack&&queue</a> <a href="/tags/tree/" style="font-size: 15px;">tree</a>
+      <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Linked-List/" style="font-size: 18px;">Linked List</a> <a href="/tags/arrays/" style="font-size: 20px;">arrays</a> <a href="/tags/bitcoin/" style="font-size: 10px;">bitcoin</a> <a href="/tags/blockchain/" style="font-size: 14px;">blockchain</a> <a href="/tags/cryptocurrency/" style="font-size: 10px;">cryptocurrency</a> <a href="/tags/golang/" style="font-size: 12px;">golang</a> <a href="/tags/hyperledger-fabric/" style="font-size: 10px;">hyperledger-fabric</a> <a href="/tags/leetcode/" style="font-size: 14px;">leetcode</a> <a href="/tags/stack-queue/" style="font-size: 12px;">stack&&queue</a> <a href="/tags/tree/" style="font-size: 16px;">tree</a>
     </div>
   </div>
 
@@ -639,6 +636,10 @@
       <ul>
         
           <li>
+            <a href="/2018/07/17/100-相同的树/">100.相同的树</a>
+          </li>
+        
+          <li>
             <a href="/2018/07/17/226-翻转二叉树/">226.翻转二叉树</a>
           </li>
         
@@ -652,10 +653,6 @@
         
           <li>
             <a href="/2018/07/14/区块链中的软分叉与硬分叉详解/">区块链中的软分叉与硬分叉详解</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/14/3-无重复字符的最长子串/">3.无重复字符的最长子串</a>
           </li>
         
       </ul>
