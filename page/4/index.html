@@ -62,6 +62,47 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-变量内存地址分析" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/20/变量内存地址分析/" class="article-date">
+  <time datetime="2018-06-20T13:46:16.000Z" itemprop="datePublished">2018-06-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/20/变量内存地址分析/">变量内存地址分析</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>话不多说，直接上代码做实验</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX_SIZE 10</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a;</span><br><span class="line"><span class="keyword">int</span> b = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> st1;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> st2 = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> e = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> src1[MAX_SIZE];</span><br><span class="line"><span class="keyword">char</span> src2[MAX_SIZE] = &#123;<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> c;</span><br><span class="line">    <span class="keyword">int</span> d = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> f = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> st3;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> st4 = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span> src3[MAX_SIZE];</span><br><span class="line">    <span class="keyword">char</span> src4[MAX_SIZE] = &#123;<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; &amp;a &lt;&lt; <span class="string">" "</span> &lt;&lt; &amp;b &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; &amp;st1 &lt;&lt; <span class="string">" "</span> &lt;&lt; &amp;st2&lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; &amp;st3 &lt;&lt; <span class="string">" "</span> &lt;&lt; &amp;st4 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; &amp;src1 &lt;&lt; <span class="string">" "</span> &lt;&lt; &amp;src2 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"------"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; &amp;e &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"------"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; &amp;c &lt;&lt; <span class="string">" "</span> &lt;&lt; &amp;d &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; &amp;f &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; &amp;src3 &lt;&lt; <span class="string">" "</span> &lt;&lt; &amp;src4 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/Users/hypermind/CLionProjects/namespace_test/cmake-build-debug/namespace_test</span><br><span class="line"><span class="number">0x10a3db108</span> <span class="number">0x10a3db0f0</span> <span class="comment">//全局变量a和b</span></span><br><span class="line"><span class="number">0x10a3db11c</span> <span class="number">0x10a3db104</span> <span class="comment">//静态全局变量st1和st2</span></span><br><span class="line"><span class="number">0x10a3db118</span> <span class="number">0x10a3db100</span> <span class="comment">//静态局部变量st3和st4</span></span><br><span class="line"><span class="number">0x10a3db10c</span> <span class="number">0x10a3db0f4</span> <span class="comment">//全局数组src1和src2</span></span><br><span class="line">------</span><br><span class="line"><span class="number">0x10a3daf08</span> <span class="comment">// 常全局变量e</span></span><br><span class="line">------</span><br><span class="line"><span class="number">0x7ffee5827988</span> <span class="number">0x7ffee5827984</span> <span class="comment">//局部变量c和d</span></span><br><span class="line"><span class="number">0x7ffee5827980</span> <span class="comment">//常局部变量f</span></span><br><span class="line"><span class="number">0x7ffee5827a3e</span> <span class="number">0x7ffee5827a34</span> <span class="comment">//局部数组src3和src4</span></span><br><span class="line"></span><br><span class="line">Process finished with <span class="built_in">exit</span> code <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>代码跑在MAC OS系统下，从测试结果可以明显看到，常全局变量在一个区域；局部变量、常局部变量、局部数组在一个区域；静态局部变量、全部变量、全局数组在一个区域。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/06/20/变量内存地址分析/" data-id="cjjpeqaws00298s8o816xxrfy" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-ImplementStackusingQueues" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/06/08/ImplementStackusingQueues/" class="article-date">
@@ -97,7 +138,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/08/ImplementStackusingQueues/" data-id="cjjpdpdih001c158o4es79vyy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/08/ImplementStackusingQueues/" data-id="cjjpeqaw6001i8s8okoui7ex6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/stack-queue/">stack&&queue</a></li></ul>
@@ -140,7 +181,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/08/CopyListWithRandomPointer/" data-id="cjjpdpdie0017158o8iiuz95g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/08/CopyListWithRandomPointer/" data-id="cjjpeqavy00168s8ong7jj9sd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linked-List/">Linked List</a></li></ul>
@@ -190,7 +231,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/07/rails/" data-id="cjjpdpdit001y158o0aa1q735" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/07/rails/" data-id="cjjpeqawh001y8s8o7lf234eu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/stack-queue/">stack&&queue</a></li></ul>
@@ -235,7 +276,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/06/LinkedListCycleII/" data-id="cjjpdpdii001e158o2u4nps36" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/06/LinkedListCycleII/" data-id="cjjpeqaw4001g8s8oljjrwqi0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linked-List/">Linked List</a></li></ul>
@@ -286,7 +327,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/06/IntersectionOfTwoLinkedLists/" data-id="cjjpdpdig0019158ocvj4i7k6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/06/IntersectionOfTwoLinkedLists/" data-id="cjjpeqaw1001b8s8onmwrnbo5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linked-List/">Linked List</a></li></ul>
@@ -329,7 +370,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/06/ReverseLinkedListII/" data-id="cjjpdpdil001j158ottqda176" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/06/ReverseLinkedListII/" data-id="cjjpeqaw8001l8s8o295dwy7b" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linked-List/">Linked List</a></li></ul>
@@ -371,7 +412,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/06/ReverseLinkedList/" data-id="cjjpdpdij001g158oq38iki5h" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/06/ReverseLinkedList/" data-id="cjjpeqaw2001d8s8otubkj6o9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linked-List/">Linked List</a></li></ul>
@@ -439,7 +480,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/03/hyperledger-fabric02/" data-id="cjjpdpdip001q158oxwhheput" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/05/03/hyperledger-fabric02/" data-id="cjjpeqawd001s8s8oql4mfa9c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -498,7 +539,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/03/hyperledger-fabric01/" data-id="cjjpdpdiq001t158o1mntfqu9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/05/03/hyperledger-fabric01/" data-id="cjjpeqawe001u8s8ofh9dg5of" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hyperledger-fabric/">hyperledger-fabric</a></li></ul>
@@ -510,56 +551,11 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/03/hello-world/" class="article-date">
-  <time datetime="2018-05-03T06:52:13.776Z" itemprop="datePublished">2018-05-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/03/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/03/hello-world/" data-id="cjjpdpdio001o158ohtx7y5p9" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -605,6 +601,10 @@
       <ul>
         
           <li>
+            <a href="/2018/07/17/110-平衡二叉树/">110.平衡二叉树</a>
+          </li>
+        
+          <li>
             <a href="/2018/07/17/222-完全二叉树的节点个数/">222.完全二叉树的节点个数</a>
           </li>
         
@@ -618,10 +618,6 @@
         
           <li>
             <a href="/2018/07/17/226-翻转二叉树/">226.翻转二叉树</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/17/111-二叉树的最小深度/">111.二叉树的最小深度</a>
           </li>
         
       </ul>

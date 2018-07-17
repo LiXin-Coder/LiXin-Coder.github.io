@@ -5,20 +5,20 @@
   
 
   
-  <title>167.两数之和II-输入有序数组 | Always Be Coding</title>
+  <title>110.平衡二叉树 | Always Be Coding</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="给定一个已按照升序排列 的有序数组，找到两个数使得它们相加之和等于目标数。 函数应该返回这两个下标值 index1 和 index2，其中 index1 必须小于 index2。 说明:  返回的下标值（index1 和 index2）不是从零开始的。 你可以假设每个输入只对应唯一的答案，而且你不可以重复使用相同的元素。  示例: 123输入: numbers = [2, 7, 11, 15],">
-<meta name="keywords" content="arrays">
+  <meta name="description" content="给定一个二叉树，判断它是否是高度平衡的二叉树。 本题中，一棵高度平衡二叉树定义为：一个二叉树每个节点 的左右两个子树的高度差的绝对值不超过1。 示例 1: 给定二叉树 [3,9,20,null,null,15,7] 12345  3 / \9  20  /  \ 15   7 返回 true 。 示例 2: 给定二叉树 [1,2,2,3,3,null,null,4,4] 1234567   1">
+<meta name="keywords" content="tree">
 <meta property="og:type" content="article">
-<meta property="og:title" content="167.两数之和II-输入有序数组">
-<meta property="og:url" content="http://yoursite.com/2018/07/14/167-两数之和II-输入有序数组/index.html">
+<meta property="og:title" content="110.平衡二叉树">
+<meta property="og:url" content="http://yoursite.com/2018/07/17/110-平衡二叉树/index.html">
 <meta property="og:site_name" content="Always Be Coding">
-<meta property="og:description" content="给定一个已按照升序排列 的有序数组，找到两个数使得它们相加之和等于目标数。 函数应该返回这两个下标值 index1 和 index2，其中 index1 必须小于 index2。 说明:  返回的下标值（index1 和 index2）不是从零开始的。 你可以假设每个输入只对应唯一的答案，而且你不可以重复使用相同的元素。  示例: 123输入: numbers = [2, 7, 11, 15],">
+<meta property="og:description" content="给定一个二叉树，判断它是否是高度平衡的二叉树。 本题中，一棵高度平衡二叉树定义为：一个二叉树每个节点 的左右两个子树的高度差的绝对值不超过1。 示例 1: 给定二叉树 [3,9,20,null,null,15,7] 12345  3 / \9  20  /  \ 15   7 返回 true 。 示例 2: 给定二叉树 [1,2,2,3,3,null,null,4,4] 1234567   1">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-14T08:17:09.681Z">
+<meta property="og:updated_time" content="2018-07-17T07:59:32.622Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="167.两数之和II-输入有序数组">
-<meta name="twitter:description" content="给定一个已按照升序排列 的有序数组，找到两个数使得它们相加之和等于目标数。 函数应该返回这两个下标值 index1 和 index2，其中 index1 必须小于 index2。 说明:  返回的下标值（index1 和 index2）不是从零开始的。 你可以假设每个输入只对应唯一的答案，而且你不可以重复使用相同的元素。  示例: 123输入: numbers = [2, 7, 11, 15],">
+<meta name="twitter:title" content="110.平衡二叉树">
+<meta name="twitter:description" content="给定一个二叉树，判断它是否是高度平衡的二叉树。 本题中，一棵高度平衡二叉树定义为：一个二叉树每个节点 的左右两个子树的高度差的绝对值不超过1。 示例 1: 给定二叉树 [3,9,20,null,null,15,7] 12345  3 / \9  20  /  \ 15   7 返回 true 。 示例 2: 给定二叉树 [1,2,2,3,3,null,null,4,4] 1234567   1">
   
     <link rel="alternate" href="/atom.xml" title="Always Be Coding" type="application/atom+xml">
   
@@ -65,10 +65,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-167-两数之和II-输入有序数组" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-110-平衡二叉树" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/07/14/167-两数之和II-输入有序数组/" class="article-date">
-  <time datetime="2018-07-14T08:15:24.000Z" itemprop="datePublished">2018-07-14</time>
+    <a href="/2018/07/17/110-平衡二叉树/" class="article-date">
+  <time datetime="2018-07-17T07:54:54.000Z" itemprop="datePublished">2018-07-17</time>
 </a>
     
   </div>
@@ -79,7 +79,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      167.两数之和II-输入有序数组
+      110.平衡二叉树
     </h1>
   
 
@@ -87,25 +87,25 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>给定一个已按照升序排列 的有序数组，找到两个数使得它们相加之和等于目标数。</p>
-<p>函数应该返回这两个下标值 index1 和 index2，其中 index1 必须小于 index2。</p>
-<p>说明:</p>
-<ul>
-<li>返回的下标值（index1 和 index2）不是从零开始的。</li>
-<li>你可以假设每个输入只对应唯一的答案，而且你不可以重复使用相同的元素。</li>
-</ul>
-<p>示例:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: numbers = [2, 7, 11, 15], target = 9</span><br><span class="line">输出: [1,2]</span><br><span class="line">解释: 2 与 7 之和等于目标数 9 。因此 index1 = 1, index2 = 2 。</span><br></pre></td></tr></table></figure>
+        <p>给定一个二叉树，判断它是否是高度平衡的二叉树。</p>
+<p>本题中，一棵高度平衡二叉树定义为：<br>一个二叉树每个节点 的左右两个子树的高度差的绝对值不超过1。</p>
+<p>示例 1:</p>
+<p>给定二叉树 [3,9,20,null,null,15,7]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  3</span><br><span class="line"> / \</span><br><span class="line">9  20</span><br><span class="line">  /  \</span><br><span class="line"> 15   7</span><br></pre></td></tr></table></figure>
+<p>返回 true 。</p>
+<p>示例 2:</p>
+<p>给定二叉树 [1,2,2,3,3,null,null,4,4]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">   1</span><br><span class="line">     / \</span><br><span class="line">    2   2</span><br><span class="line">   / \</span><br><span class="line">  3   3</span><br><span class="line"> / \</span><br><span class="line">4   4</span><br></pre></td></tr></table></figure>
+<p>返回 false 。</p>
 <p>题解：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; twoSum(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; numbers, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        assert(numbers.size() &gt;= <span class="number">2</span>);</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, j = numbers.size()<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; j) &#123;</span><br><span class="line">            <span class="keyword">if</span> (numbers[i] + numbers[j] == target) &#123;</span><br><span class="line">                <span class="keyword">int</span> res[<span class="number">2</span>] = &#123;i+<span class="number">1</span>, j+<span class="number">1</span>&#125;;</span><br><span class="line">                <span class="keyword">return</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(res, res+<span class="number">2</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span> (numbers[i] + numbers[j] &lt; target)</span><br><span class="line">                i++;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                j--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isBalanced(TreeNode* root) &#123;</span><br><span class="line">        if (root == NULL)</span><br><span class="line">            return true;</span><br><span class="line">        int leftHeight = height(root-&gt;left);</span><br><span class="line">        int rightHeight = height(root-&gt;right);</span><br><span class="line">        </span><br><span class="line">        return abs(leftHeight-rightHeight) &lt;= 1 &amp;&amp; isBalanced(root-&gt;left) &amp;&amp; isBalanced(root-&gt;right);</span><br><span class="line">    &#125;</span><br><span class="line">    int height(TreeNode* root) &#123;</span><br><span class="line">        if (root == NULL)</span><br><span class="line">            return 0;</span><br><span class="line">        return max(height(root-&gt;left), height(root-&gt;right)) + 1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/167-两数之和II-输入有序数组/" data-id="cjjpeqavf000f8s8oeux1rfsm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/17/110-平衡二叉树/" data-id="cjjpeqaus00008s8o2qgowxob" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/">tree</a></li></ul>
 
     </footer>
   </div>
@@ -113,19 +113,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/07/14/215-数组中的第K个最大元素/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          215.数组中的第K个最大元素
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/07/13/88-合并两个有序数组/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/07/17/222-完全二叉树的节点个数/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">88.合并两个有序数组</div>
+      <div class="article-nav-title">222.完全二叉树的节点个数</div>
     </a>
   
 </nav>
