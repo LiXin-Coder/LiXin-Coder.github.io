@@ -62,6 +62,50 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-345-反转字符串中的元音字母" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/14/345-反转字符串中的元音字母/" class="article-date">
+  <time datetime="2018-07-14T08:59:40.000Z" itemprop="datePublished">2018-07-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/14/345-反转字符串中的元音字母/">345.反转字符串中的元音字母</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>编写一个函数，以字符串作为输入，反转该字符串中的元音字母。</p>
+<p>示例 1：<br>给定 s = “hello”, 返回 “holle”.</p>
+<p>示例 2：<br>给定 s = “leetcode”, 返回 “leotcede”.</p>
+<p>注意:<br>元音字母不包括 “y”.</p>
+<p>题解：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">reverseVowels</span><span class="params">(<span class="built_in">string</span> str)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">set</span>&lt;<span class="keyword">char</span>&gt; vowels = &#123;<span class="string">'a'</span>,<span class="string">'e'</span>,<span class="string">'i'</span>,<span class="string">'o'</span>,<span class="string">'u'</span>,<span class="string">'A'</span>,<span class="string">'E'</span>,<span class="string">'I'</span>,<span class="string">'O'</span>,<span class="string">'U'</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> i= <span class="number">0</span>, j = str.size()<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; j)&#123;</span><br><span class="line">            <span class="keyword">while</span>(vowels.find(str[i])==vowels.end() &amp;&amp; i &lt; j) </span><br><span class="line">                i++;</span><br><span class="line">            <span class="keyword">while</span>(vowels.find(str[j])==vowels.end() &amp;&amp; i &lt; j) </span><br><span class="line">                j--;</span><br><span class="line">            <span class="keyword">if</span>(i &gt;= j) </span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            swap(str[i],str[j]);</span><br><span class="line">            i++;</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/14/345-反转字符串中的元音字母/" data-id="cjjpdpdi8000w158o3d42vmqv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-344-反转字符串" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/14/344-反转字符串/" class="article-date">
@@ -93,7 +137,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/344-反转字符串/" data-id="cjjpbd5dp000qpq8oi4ru4wh9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/14/344-反转字符串/" data-id="cjjpdpdi5000r158ost77khhi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -138,7 +182,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/125-验证回文串/" data-id="cjjpbd5dc0008pq8oqkgr01is" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/14/125-验证回文串/" data-id="cjjpdpdhs0008158ofg6xpeqc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -184,7 +228,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/215-数组中的第K个最大元素/" data-id="cjjpbd5dh000epq8oosg25h7u" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/14/215-数组中的第K个最大元素/" data-id="cjjpdpdi0000i158o6khx62yk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -233,7 +277,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/167-两数之和II-输入有序数组/" data-id="cjjpbd5de000apq8olidb26u9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/14/167-两数之和II-输入有序数组/" data-id="cjjpdpdhw000d158ospwsbiaj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -282,7 +326,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/13/88-合并两个有序数组/" data-id="cjjpbd5du0010pq8or32quje9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/13/88-合并两个有序数组/" data-id="cjjpdpdid0015158o6wm3jcnp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -329,7 +373,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/13/75-分类颜色/" data-id="cjjpbd5ds000xpq8o8m638ihv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/13/75-分类颜色/" data-id="cjjpdpdi9000y158o4g9bsp3m" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -374,7 +418,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/13/80-删除排序数组中的重复项II/" data-id="cjjpbd5dr000vpq8o4kk6eb19" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/13/80-删除排序数组中的重复项II/" data-id="cjjpdpdic0012158o8gqeyioo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -420,7 +464,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/13/26-删除排序数组中重复项/" data-id="cjjpbd5dk000ipq8onw0zscf4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/13/26-删除排序数组中重复项/" data-id="cjjpdpdi2000m158ojttfuwg5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -469,71 +513,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/12/283-移动零/" data-id="cjjpbd5dm000lpq8oobiwih3a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/12/283-移动零/" data-id="cjjpdpdi4000o158o2wx6kxjz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-比特币闪电网络" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/12/比特币闪电网络/" class="article-date">
-  <time datetime="2018-07-12T13:00:04.000Z" itemprop="datePublished">2018-07-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/12/比特币闪电网络/">比特币闪电网络</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>比特币的处理能力非常弱，程序员在不断的探索优化代码（优化编译、改进算法、调整数据结构）方面下了很多功夫，但是见效甚微，交易处理能力和区块链数据容量似乎是一对无可调和的矛盾。思路决定出路，常规方法找不到出路，就逼得社区换一个思路考虑这个问题。既然在比特币区块链中优化性能如此艰难，为何不尽可能将交易放到链外执行？于是就有了闪电网络。</p>
-<p>闪电网络在链下实现点对点微支付，处理能力的瓶颈被彻底打破，时延、最终性、容量甚至隐私问题也迎刃而解，社区甚至认为：“闪电网络”的论文（The Bitcoin Lightning Network: Scalable Off-Chain Instant Payments）对比特币的重要性仅在中本聪的创世论文之下，排名第二。</p>
-<p>要理解闪电网络，只要理解“链下点对点微支付”两个部分：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.微支付</span><br><span class="line">2.链下点对点</span><br></pre></td></tr></table></figure>
-<p>1.微支付</p>
-<p>微支付是基于这样一个假设，假设是单次支付的金额足够小，即使一方违约另一方的损失也非常小，风险可以承受。因此使用时必须注意“微支付”这个前提。多少资金算“微”，显然应该根据业务而定。一笔大的支付可以切成小的微支付多次支付来达成。</p>
-<p>2.链下点对点</p>
-<p>闪电网络的基础是交易双方之间的双向微支付通道，这条通道并不是由比特币主网创建的，而是点对点机制创建的。假如一次微支付张三要给不认识的王五支付0.07个比特币，那么会经过下面三部：</p>
-<p>1）建立链下通道，假设李四跟王五之前有直接通道，同时张三跟李四之间正好也有直接支付通道，那么现在张三可以间接的通过李四寻找到了王五，建立一条三个节点的通道：</p>
-<p><img src="http://ww1.sinaimg.cn/large/007330Aply1ft7dohdhnrj313s0dsmyp.jpg" alt=""></p>
-<p>2）传递一个暗号</p>
-<p>由王五创建并传递给张三一个加密过的接头暗号“8bff37e78b38d2d470be8361058e4c50”，这个暗号是王五用哈希函数加密的，任何人不能由这个密文推倒出明文，所以张三并不知道明文是什么，到现在为止只有王五一个人知道明文。如果自己想玩一下哈希加密去这里：<a href="http://www.kjson.com/encrypt/hash/?fm=map" target="_blank" rel="noopener">http://www.kjson.com/encrypt/hash/?fm=map</a><br><img src="http://ww1.sinaimg.cn/large/007330Aply1ft7eawysckj312w0e8dhn.jpg" alt=""><br>3）用暗号达成合约</p>
-<p>张三利用加密过的暗号8bff37e78b38d2d470be8361058e4c50和李四之间达成一个合约，只要李四在两天之内告诉他暗号的明文，他将支付给李四0.071个 btc，此时张三有0.071个 btc 被冻结。如果李四做不到，合约终止，两天之后张三0.071个 btc解除冻结。</p>
-<p>李四利用加密过的暗号8bff37e78b38d2d470be8361058e4c50和王五之间达成一个合约，只要王五在一天之内告诉他哈希值的明文，他将支付给王五0.07个 btc，此时李四有0.07个 btc 被冻结，如果王五做不到，合约终止，一天之后，李四0.07个 btc 解除冻结。<br><img src="http://ww1.sinaimg.cn/large/007330Aply1ft7ebogwc8j312c0eqwg3.jpg" alt=""><br>4）遵守合约，交易达成</p>
-<p>一切就绪之后，</p>
-<p>1.王五告诉了李四，暗号的明文是“Bitchain”，因为王五当时是这么做的（实际上的约定的比特币加密可能不是这个）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MD5(Bitchain) = 8bff37e78b38d2d470be8361058e4c50</span><br></pre></td></tr></table></figure></p>
-<p>2.李四利用上文的公式检查正确性后没问题，按照约定支付王五0.07个 btc，</p>
-<ol start="3">
-<li>李四因为已经支付给王五0.07个比特币了，必然会立马告诉张三明文是“Bitchain”，不然自己亏损了0.07个 btc，</li>
-</ol>
-<p>4.张三用上文的加密公式检查正确性后没问题按照约定支付李四0.071个 btc。 李四作为中间商遵守了承诺，获得0.001个 btc 作为中介佣金。</p>
-<p>以上4步骤如图所示：<br><img src="http://ww1.sinaimg.cn/large/007330Aply1ft7ed7zktbj31160emabu.jpg" alt=""><br>整个过程中的全部动作都发生在比特币区块链之外，只是第四步发生之后，把最终结果上报给比特币网络登记。</p>
-<p>因为有中间商可以赚佣金，闪电网络的支付通道未来也可能逐渐向少数大型中介集中，变成若干大型中介彼此互联、普通用户直连大型中介的形式。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/12/比特币闪电网络/" data-id="cjjpbd5em002epq8ouc3lkmd0" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bitcoin/">bitcoin</a></li></ul>
 
     </footer>
   </div>
@@ -570,7 +553,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Linked-List/" style="font-size: 17.5px;">Linked List</a> <a href="/tags/arrays/" style="font-size: 20px;">arrays</a> <a href="/tags/bitcoin/" style="font-size: 10px;">bitcoin</a> <a href="/tags/blockchain/" style="font-size: 15px;">blockchain</a> <a href="/tags/cryptocurrency/" style="font-size: 10px;">cryptocurrency</a> <a href="/tags/golang/" style="font-size: 12.5px;">golang</a> <a href="/tags/hyperledger-fabric/" style="font-size: 10px;">hyperledger-fabric</a> <a href="/tags/leetcode/" style="font-size: 15px;">leetcode</a> <a href="/tags/stack-queue/" style="font-size: 12.5px;">stack&&queue</a> <a href="/tags/tree/" style="font-size: 17.5px;">tree</a>
+      <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Linked-List/" style="font-size: 16px;">Linked List</a> <a href="/tags/arrays/" style="font-size: 20px;">arrays</a> <a href="/tags/bitcoin/" style="font-size: 10px;">bitcoin</a> <a href="/tags/blockchain/" style="font-size: 14px;">blockchain</a> <a href="/tags/cryptocurrency/" style="font-size: 10px;">cryptocurrency</a> <a href="/tags/golang/" style="font-size: 12px;">golang</a> <a href="/tags/hyperledger-fabric/" style="font-size: 10px;">hyperledger-fabric</a> <a href="/tags/leetcode/" style="font-size: 14px;">leetcode</a> <a href="/tags/stack-queue/" style="font-size: 12px;">stack&&queue</a> <a href="/tags/tree/" style="font-size: 18px;">tree</a>
     </div>
   </div>
 
@@ -592,6 +575,10 @@
       <ul>
         
           <li>
+            <a href="/2018/07/17/222-完全二叉树的节点个数/">222.完全二叉树的节点个数</a>
+          </li>
+        
+          <li>
             <a href="/2018/07/17/101-对称二叉树/">101.对称二叉树</a>
           </li>
         
@@ -605,10 +592,6 @@
         
           <li>
             <a href="/2018/07/17/111-二叉树的最小深度/">111.二叉树的最小深度</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/17/104-二叉树的最大深度/">104.二叉树的最大深度</a>
           </li>
         
       </ul>
