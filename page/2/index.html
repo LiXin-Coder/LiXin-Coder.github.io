@@ -62,6 +62,51 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-3-无重复字符的最长子串" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/14/3-无重复字符的最长子串/" class="article-date">
+  <time datetime="2018-07-14T12:32:11.000Z" itemprop="datePublished">2018-07-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/14/3-无重复字符的最长子串/">3.无重复字符的最长子串</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>给定一个字符串，找出不含有重复字符的最长子串的长度。</p>
+<p>示例：</p>
+<p>给定 “abcabcbb” ，没有重复字符的最长子串是 “abc” ，那么长度就是3。</p>
+<p>给定 “bbbbb” ，最长的子串就是 “b” ，长度是1。</p>
+<p>给定 “pwwkew” ，最长子串是 “wke” ，长度是3。请注意答案必须是一个子串，”pwke” 是 子序列  而不是子串。</p>
+<p>题解：<br>滑动窗口</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>, r = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> freq[<span class="number">256</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> (l &lt; s.size()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (r + <span class="number">1</span> &lt; s.size() &amp;&amp; freq[s[r+<span class="number">1</span>]] == <span class="number">0</span>)</span><br><span class="line">                freq[s[++r]]++;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                freq[s[l++]]--;</span><br><span class="line">            res = max(res, r-l+<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/14/3-无重复字符的最长子串/" data-id="cjjpgsbx4000tm48o4lkpb5j8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-209-长度最小的子数组" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/14/209-长度最小的子数组/" class="article-date">
@@ -93,7 +138,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/209-长度最小的子数组/" data-id="cjjpfdeg9000if48o7ldtlhi4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/14/209-长度最小的子数组/" data-id="cjjpgsbwx000hm48oxysbbnv4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -135,7 +180,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/11-盛最多水的容器/" data-id="cjjpfdeg20008f48o4271or2b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/14/11-盛最多水的容器/" data-id="cjjpgsbwk0003m48ouqwfrgv8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -179,7 +224,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/345-反转字符串中的元音字母/" data-id="cjjpfdegj0010f48oqjuqfhdt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/14/345-反转字符串中的元音字母/" data-id="cjjpgsbx7000xm48ohttv7grl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -222,7 +267,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/344-反转字符串/" data-id="cjjpfdegi000yf48ovlrzgzox" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/14/344-反转字符串/" data-id="cjjpgsbx5000vm48ofotxtsrt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -267,7 +312,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/125-验证回文串/" data-id="cjjpfdeg5000df48orro33wem" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/14/125-验证回文串/" data-id="cjjpgsbwt000dm48og7rvr3kx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -313,7 +358,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/215-数组中的第K个最大元素/" data-id="cjjpfdega000kf48o9m4t0zi0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/14/215-数组中的第K个最大元素/" data-id="cjjpgsbwy000jm48opa7dgsqc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -362,7 +407,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/167-两数之和II-输入有序数组/" data-id="cjjpfdeg7000ff48oatwko5s8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/14/167-两数之和II-输入有序数组/" data-id="cjjpgsbwv000fm48o7qkwsu0w" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -411,7 +456,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/13/88-合并两个有序数组/" data-id="cjjpfdegm0016f48o0pg810l1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/13/88-合并两个有序数组/" data-id="cjjpgsbxd0018m48oadjl85uh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -458,52 +503,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/13/75-分类颜色/" data-id="cjjpfdegk0012f48o115hkv1k" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-80-删除排序数组中的重复项II" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/13/80-删除排序数组中的重复项II/" class="article-date">
-  <time datetime="2018-07-13T07:11:33.000Z" itemprop="datePublished">2018-07-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/13/80-删除排序数组中的重复项II/">80.删除排序数组中的重复项II</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素最多出现两次，返回移除后数组的新长度。</p>
-<p>不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。</p>
-<p>示例 1:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">给定 nums = [1,1,1,2,2,3],</span><br><span class="line"></span><br><span class="line">函数应返回新长度 length = 5, 并且原数组的前五个元素被修改为 1, 1, 2, 2, 3 。</span><br><span class="line"></span><br><span class="line">你不需要考虑数组中超出新长度后面的元素。</span><br></pre></td></tr></table></figure>
-<p>示例 2:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">给定 nums = [0,0,1,1,1,1,2,3,3],</span><br><span class="line"></span><br><span class="line">函数应返回新长度 length = 7, 并且原数组的前五个元素被修改为 0, 0, 1, 1, 2, 3, 3 。</span><br><span class="line"></span><br><span class="line">你不需要考虑数组中超出新长度后面的元素。</span><br></pre></td></tr></table></figure>
-<p>题解：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int removeDuplicates(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        if (nums.size() == 0)</span><br><span class="line">            return 0;</span><br><span class="line">        if (nums.size() &lt; 2)</span><br><span class="line">            return nums.size();</span><br><span class="line">        int i = 0; //[0, i]中有效</span><br><span class="line">        int count = 1;</span><br><span class="line">        for (int j = 1; j &lt; nums.size(); ++j) &#123;</span><br><span class="line">            if (nums[j] != nums[j-1]) &#123;</span><br><span class="line">                nums[++i] = nums[j];</span><br><span class="line">                count = 1;</span><br><span class="line">            &#125;else &#123;</span><br><span class="line">                if (count &lt; 2) &#123;</span><br><span class="line">                    ++count;</span><br><span class="line">                    nums[++i] = nums[j];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;    </span><br><span class="line">        &#125;</span><br><span class="line">        return i + 1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/13/80-删除排序数组中的重复项II/" data-id="cjjpfdegl0014f48owbfbfxu1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/13/75-分类颜色/" data-id="cjjpgsbxb0013m48okxianzyk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -565,6 +565,10 @@
       <ul>
         
           <li>
+            <a href="/2018/07/17/404-左叶子之和/">404.左叶子之和</a>
+          </li>
+        
+          <li>
             <a href="/2018/07/17/112-路径总和/">112.路径总和</a>
           </li>
         
@@ -578,10 +582,6 @@
         
           <li>
             <a href="/2018/07/17/101-对称二叉树/">101.对称二叉树</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/17/100-相同的树/">100.相同的树</a>
           </li>
         
       </ul>
