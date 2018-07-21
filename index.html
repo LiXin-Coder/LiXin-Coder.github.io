@@ -62,6 +62,85 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-goroutine" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/21/goroutine/" class="article-date">
+  <time datetime="2018-07-21T14:17:11.000Z" itemprop="datePublished">2018-07-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/21/goroutine/">goroutine</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Go语言的主要的功能在于令人简易使用的并行设计，这个方法叫做Goroutine，通过Goroutine能够让你的程序以异步的方式运行，而不需要担心一个函数导致程序中断，因此Go语言也非常地适合网络服务。</p>
+<p>我们通过go让其中一个函数同步运行，如此就不需要等待该函数运行完后才能运行下一个函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">func main() &#123;</span><br><span class="line">    // 通过 `go`，我们可以把这个函数异步执行，这样就不会阻塞往下执行。</span><br><span class="line">    go loop()</span><br><span class="line">    // 执行 Other</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Goroutine是类似线程的概念（但Goroutine并不是线程）。线程属于系统层面，通常来说创建一个新的线程会消耗较多的资源且管理不易。而 Goroutine就像轻量级的线程，但我们称其为并发，一个Go程序可以运行超过数万个 Goroutine，并且这些性能都是原生级的，随时都能够关闭、结束。一个核心里面可以有多个Goroutine，通过GOMAXPROCS参数你能够限制Gorotuine可以占用几个系统线程来避免失控。</p>
+<p>在内置的官方包中也不时能够看见Goroutine的应用，像是net/http中用来监听网络服务的函数实际上是创建一个不断运行循环的Goroutine。</p>
+<h3 id="设置同时执行的cpu数（GOMAXPROCS）"><a href="#设置同时执行的cpu数（GOMAXPROCS）" class="headerlink" title="设置同时执行的cpu数（GOMAXPROCS）"></a>设置同时执行的cpu数（GOMAXPROCS）</h3><p>GOMAXPROCS 在调度程序优化后会去掉，默认用系统所有资源。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">func main() &#123;</span><br><span class="line">    num := runtime.NumCPU()    //本地机器的逻辑CPU个数</span><br><span class="line">    runtime.GOMAXPROCS(num)    //设置可同时执行的最大CPU数，并返回先前的设置</span><br><span class="line">    fmt.Println(num)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Goroutine中使用recover"><a href="#Goroutine中使用recover" class="headerlink" title="Goroutine中使用recover"></a>Goroutine中使用recover</h3><p>应用场景，如果某个goroutine panic了，而且这个goroutine里面没有捕获(recover)，那么整个进程就会挂掉。所以，好的习惯是每当go产生一个goroutine，就需要写下recover。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">var (</span><br><span class="line">    domainSyncChan = make(chan int, 10)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func domainPut(num int) &#123;</span><br><span class="line">    defer func() &#123;</span><br><span class="line">        err := recover()</span><br><span class="line">        if err != nil &#123;</span><br><span class="line">            fmt.Println(&quot;error to chan put.&quot;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;()</span><br><span class="line">    domainSyncChan &lt;- num</span><br><span class="line">    </span><br><span class="line">    panic(&quot;error....&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">    for i := 0; i &lt; 10; i++ &#123;</span><br><span class="line">        domainName := i</span><br><span class="line">        go domainPut(domainName)</span><br><span class="line">    &#125;</span><br><span class="line">    time.Sleep(time.Second * 2)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Goroutine-例子"><a href="#Goroutine-例子" class="headerlink" title="Goroutine 例子"></a>Goroutine 例子</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">    &quot;fmt&quot;</span><br><span class="line">    &quot;sync&quot;</span><br><span class="line">    &quot;time&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">var (</span><br><span class="line">    m    = make(map[int]uint64)</span><br><span class="line">    lock sync.Mutex //申明一个互斥锁</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">type task struct &#123;</span><br><span class="line">    n int</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func calc(t *task) &#123;</span><br><span class="line">    defer func() &#123;</span><br><span class="line">        err := recover()</span><br><span class="line">        if err != nil &#123;</span><br><span class="line">            fmt.Println(&quot;error...&quot;)</span><br><span class="line">            return</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;()</span><br><span class="line"></span><br><span class="line">    var sum uint64</span><br><span class="line">    sum = 1</span><br><span class="line">    for i := 1; i &lt; t.n; i++ &#123;</span><br><span class="line">        sum *= uint64(i)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    lock.Lock() //写全局数据加互斥锁</span><br><span class="line">    m[t.n] = sum</span><br><span class="line">    lock.Unlock() //解锁</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">    for i := 0; i &lt; 10; i++ &#123;</span><br><span class="line">        t := &amp;task&#123;n: i&#125;</span><br><span class="line">        go calc(t) // Goroutine来执行任务</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    time.Sleep(time.Second) // Goroutine异步，所以等一秒到任务完成</span><br><span class="line"></span><br><span class="line">    lock.Lock() //读全局数据加锁</span><br><span class="line">    for k, v := range m &#123;</span><br><span class="line">        fmt.Printf(&quot;%d! = %v\n&quot;, k, v)</span><br><span class="line">    &#125;</span><br><span class="line">    fmt.Println(len(m))</span><br><span class="line">    lock.Unlock() //解锁</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Goroutine-例子（等待所有任务退出主程序再退出）"><a href="#Goroutine-例子（等待所有任务退出主程序再退出）" class="headerlink" title="Goroutine 例子（等待所有任务退出主程序再退出）"></a>Goroutine 例子（等待所有任务退出主程序再退出）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">    &quot;sync&quot;</span><br><span class="line">    &quot;fmt&quot;</span><br><span class="line">    &quot;time&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func calc(w *sync.WaitGroup, i int)  &#123;</span><br><span class="line">    fmt.Println(&quot;calc: &quot;, i)</span><br><span class="line">    time.Sleep(time.Second)</span><br><span class="line">    w.Done()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main()  &#123;</span><br><span class="line">    wg := sync.WaitGroup&#123;&#125;</span><br><span class="line">    for i:=0; i&lt;10; i++ &#123;</span><br><span class="line">        wg.Add(1)</span><br><span class="line">        go calc(&amp;wg, i)</span><br><span class="line">    &#125;</span><br><span class="line">    wg.Wait()</span><br><span class="line">    fmt.Println(&quot;all goroutine finish&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Channel"><a href="#Channel" class="headerlink" title="Channel"></a>Channel</h3><p>channel，管道、队列，先进先出，用来异步传递数据。channel加上goroutine，就形成了一种既简单又强大的请求处理模型，使高并发和线程同步之间代码的编写变得异常简单。</p>
+<p>线程安全，多个goroutine同时访问，不需要加锁。</p>
+<p>channel是有类型的，一个整数的channel只能存放整数。</p>
+<h3 id="channel使用"><a href="#channel使用" class="headerlink" title="channel使用"></a>channel使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//chan申明</span><br><span class="line">var userChan chan interface&#123;&#125;          // chan里面放interface类型</span><br><span class="line">userChan = make(chan interface&#123;&#125;, 10)  // make初始化，大小为10</span><br><span class="line"></span><br><span class="line">var readOnlyChan &lt;-chan int            // 只读chan</span><br><span class="line">var writeOnlyChan chan&lt;- int           // 只写chan</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//chan放取数据</span><br><span class="line">userChan &lt;- &quot;nick&quot;</span><br><span class="line">name := &lt;- userChan</span><br><span class="line">name, ok := &lt;- userChan</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//关闭chan</span><br><span class="line">intChan := make(chan int, 1)</span><br><span class="line">intChan &lt;- 9</span><br><span class="line">close(intChan)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// range chan</span><br><span class="line">intChan := make(chan int, 10)</span><br><span class="line">for i := 0; i &lt; 10; i++ &#123;</span><br><span class="line">    intChan &lt;- i</span><br><span class="line">&#125;</span><br><span class="line">close(intChan)</span><br><span class="line"></span><br><span class="line">for v := range intChan &#123;</span><br><span class="line">    fmt.Println(v)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="放入chan数据个数超过初始化指定大小会怎样？"><a href="#放入chan数据个数超过初始化指定大小会怎样？" class="headerlink" title="放入chan数据个数超过初始化指定大小会怎样？"></a>放入chan数据个数超过初始化指定大小会怎样？</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">userChan := make(chan interface&#123;&#125;)</span><br><span class="line">userChan &lt;- &quot;nick&quot;</span><br><span class="line">// 错误！fatal error: all goroutines are asleep - deadlock!</span><br><span class="line">// 开启race会一直阻塞</span><br></pre></td></tr></table></figure>
+<p>开启一个goroutine来放入初始化未指定大小的chan不会报错。<br>即放即走，在等放入时有来拿数据的，就直接拿走。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">userChan := make(chan interface&#123;&#125;)</span><br><span class="line">go func() &#123;</span><br><span class="line">    userChan &lt;- &quot;nick&quot;</span><br><span class="line">&#125;()</span><br><span class="line">name := &lt;- userChan</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">userChan := make(chan interface&#123;&#125;)</span><br><span class="line">go func() &#123;</span><br><span class="line">    for &#123;</span><br><span class="line">        userChan &lt;- &quot;nick&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;()</span><br><span class="line">for &#123;</span><br><span class="line">    name := &lt;- userChan</span><br><span class="line">    fmt.Println(name)</span><br><span class="line">    time.Sleep(time.Millisecond)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="chan关闭与不关闭"><a href="#chan关闭与不关闭" class="headerlink" title="chan关闭与不关闭"></a>chan关闭与不关闭</h3><p>关闭chan后再放入数据会 panic: send on closed channel。</p>
+<p>chan不关闭取超数据的情况会报 deadlock</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">func main() &#123;</span><br><span class="line">    intChan := make(chan int, 10)</span><br><span class="line"></span><br><span class="line">    for i := 0; i &lt; 10; i++ &#123;</span><br><span class="line">        intChan &lt;- i</span><br><span class="line">    &#125;</span><br><span class="line">    for &#123;</span><br><span class="line">        //十次后 fatal error: all goroutines are asleep - deadlock!</span><br><span class="line">        i := &lt;- intChan</span><br><span class="line">        fmt.Println(i)</span><br><span class="line">        time.Sleep(time.Second)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="chan关闭的情况取超出值为类型默认值，如int为0"><a href="#chan关闭的情况取超出值为类型默认值，如int为0" class="headerlink" title="chan关闭的情况取超出值为类型默认值，如int为0"></a>chan关闭的情况取超出值为类型默认值，如int为0</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">func main() &#123;</span><br><span class="line">    intChan := make(chan int, 10)</span><br><span class="line"></span><br><span class="line">    for i := 0; i &lt; 10; i++ &#123;</span><br><span class="line">        intChan &lt;- i</span><br><span class="line">    &#125;</span><br><span class="line">    close(intChan)</span><br><span class="line"></span><br><span class="line">    for &#123;</span><br><span class="line">        i := &lt;- intChan</span><br><span class="line">        //十次后i值都为0，不报错</span><br><span class="line">        time.Sleep(time.Second)</span><br><span class="line">        fmt.Println(i)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="判断chan是否取完"><a href="#判断chan是否取完" class="headerlink" title="判断chan是否取完"></a>判断chan是否取完</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">func main() &#123;</span><br><span class="line">    intChan := make(chan int, 10)</span><br><span class="line"></span><br><span class="line">    for i := 0; i &lt; 10; i++ &#123;</span><br><span class="line">        intChan &lt;- i</span><br><span class="line">    &#125;</span><br><span class="line">    close(intChan)</span><br><span class="line"></span><br><span class="line">    for &#123;</span><br><span class="line">        i, ok := &lt;- intChan</span><br><span class="line">        if !ok &#123;</span><br><span class="line">            fmt.Println(&quot;channel is close.&quot;)</span><br><span class="line">            return</span><br><span class="line">        &#125;</span><br><span class="line">        fmt.Println(i)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="channel-例子"><a href="#channel-例子" class="headerlink" title="channel 例子"></a>channel 例子</h3><h3 id="例子1"><a href="#例子1" class="headerlink" title="例子1"></a>例子1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">func sendData(ch chan&lt;- string) &#123;</span><br><span class="line">    ch &lt;- &quot;go&quot;</span><br><span class="line">    ch &lt;- &quot;java&quot;</span><br><span class="line">    ch &lt;- &quot;c&quot;</span><br><span class="line">    ch &lt;- &quot;c++&quot;</span><br><span class="line">    ch &lt;- &quot;python&quot;</span><br><span class="line">    close(ch)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func getData(ch &lt;-chan string, chColse chan bool) &#123;</span><br><span class="line">    for &#123;</span><br><span class="line">        str, ok := &lt;-ch</span><br><span class="line">        if !ok &#123;</span><br><span class="line">            fmt.Println(&quot;chan is close.&quot;)</span><br><span class="line">            break</span><br><span class="line">        &#125;</span><br><span class="line">        fmt.Println(str)</span><br><span class="line">    &#125;</span><br><span class="line">    chColse &lt;- true</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">    ch := make(chan string, 10)</span><br><span class="line">    chColse := make(chan bool, 1)</span><br><span class="line">    go sendData(ch)</span><br><span class="line">    go getData(ch, chColse)</span><br><span class="line">    &lt;-chColse</span><br><span class="line">    close(chColse)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="例子2-：interface类型chan，取出后转化为对应类型。"><a href="#例子2-：interface类型chan，取出后转化为对应类型。" class="headerlink" title="例子2 ：interface类型chan，取出后转化为对应类型。"></a>例子2 ：interface类型chan，取出后转化为对应类型。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">type user struct &#123;</span><br><span class="line">    Name string</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">    userChan := make(chan interface&#123;&#125;, 1)</span><br><span class="line"></span><br><span class="line">    u := user&#123;Name: &quot;nick&quot;&#125;</span><br><span class="line">    userChan &lt;- &amp;u</span><br><span class="line">    close(userChan)</span><br><span class="line"></span><br><span class="line">    var u1 interface&#123;&#125;</span><br><span class="line">    u1 = &lt;-userChan</span><br><span class="line"></span><br><span class="line">    var u2 *user</span><br><span class="line">    u2, ok := u1.(*user)</span><br><span class="line">    if !ok &#123;</span><br><span class="line">        fmt.Println(&quot;cant not convert.&quot;)</span><br><span class="line">        return</span><br><span class="line">    &#125;</span><br><span class="line">    fmt.Println(u2)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="channel-超时处理"><a href="#channel-超时处理" class="headerlink" title="channel 超时处理"></a>channel 超时处理</h3><p>利用select来处理chan超时。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">for &#123;</span><br><span class="line">    select &#123;</span><br><span class="line">    case v := &lt;-chan1:</span><br><span class="line">        fmt.Println(v)</span><br><span class="line">    case v := &lt;-chan2:</span><br><span class="line">        fmt.Println(v)</span><br><span class="line">    default:</span><br><span class="line">        time.Sleep(time.Second)</span><br><span class="line">        fmt.Println(&quot;timeout...&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>time.After()定时器来做处理。</p>
+<p>在time.After()计时器触发之前，底层计时器不会被垃圾收集器回收。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">select &#123;</span><br><span class="line">case m := &lt;-c:</span><br><span class="line">    handle(m)</span><br><span class="line">case &lt;-time.After(5 * time.Minute):</span><br><span class="line">    fmt.Println(&quot;timed out&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">t := time.NewTicker(time.Second)</span><br><span class="line">    fmt.Println(t)</span><br><span class="line">    for v := range t.C &#123;</span><br><span class="line">        fmt.Println(v)</span><br><span class="line">    &#125;</span><br><span class="line">    t.Stop()</span><br></pre></td></tr></table></figure>
+<h3 id="Goroutine-Channel-例子"><a href="#Goroutine-Channel-例子" class="headerlink" title="Goroutine+Channel 例子"></a>Goroutine+Channel 例子</h3><h3 id="例子一"><a href="#例子一" class="headerlink" title="例子一"></a>例子一</h3><p>多个goroutine处理任务；</p>
+<p>等待一组channel的返回结果。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">func calc(taskChan, resChan chan int, exitChan chan bool) &#123;</span><br><span class="line">    defer func() &#123;</span><br><span class="line">        err := recover()</span><br><span class="line">        if err != nil &#123;</span><br><span class="line">            fmt.Println(&quot;error...&quot;)</span><br><span class="line">            return </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;()</span><br><span class="line">    </span><br><span class="line">    for v := range taskChan &#123;</span><br><span class="line">        // 任务处理逻辑</span><br><span class="line">        flag := true</span><br><span class="line">        for i := 2; i &lt; v; i++ &#123;</span><br><span class="line">            if v%i == 0 &#123;</span><br><span class="line">                flag = false</span><br><span class="line">                break</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if flag &#123;</span><br><span class="line">            //结果进chan</span><br><span class="line">            resChan &lt;- v</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //处理完进退出chan</span><br><span class="line">    exitChan &lt;- true</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">    //任务chan</span><br><span class="line">    intChan := make(chan int, 1000)</span><br><span class="line">    //结果chan</span><br><span class="line">    resChan := make(chan int, 1000)</span><br><span class="line">    //退出chan</span><br><span class="line">    exitChan := make(chan bool, 8)</span><br><span class="line"></span><br><span class="line">    go func() &#123;</span><br><span class="line">        for i := 0; i &lt; 1000; i++ &#123;</span><br><span class="line">            intChan &lt;- i</span><br><span class="line">        &#125;</span><br><span class="line">        close(intChan)</span><br><span class="line">    &#125;()</span><br><span class="line"></span><br><span class="line">    //启动8个goroutine做任务</span><br><span class="line">    for i := 0; i &lt; 8; i++ &#123;</span><br><span class="line">        go calc(intChan, resChan, exitChan)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    go func() &#123;</span><br><span class="line">        //等所有goroutine结束</span><br><span class="line">        for i := 0; i &lt; 8; i++ &#123;</span><br><span class="line">            &lt;-exitChan</span><br><span class="line">        &#125;</span><br><span class="line">        close(resChan)</span><br><span class="line">        close(exitChan)</span><br><span class="line">    &#125;()</span><br><span class="line"></span><br><span class="line">    for v := range resChan &#123;</span><br><span class="line">        fmt.Println(v)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="例子二"><a href="#例子二" class="headerlink" title="例子二"></a>例子二</h3><p>等待一组channel的返回结果 sync.WaitGroup 的解决方法。</p>
+<p>WaitGroup用于等待一组线程的结束。父线程调用Add方法来设定应等待的线程的数量。每个被等待的线程在结束时应调用Done方法。同时，主线程里可以调用Wait方法阻塞至所有线程结束。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">func merge(cs &lt;-chan int) &lt;-chan int &#123;</span><br><span class="line">    var wg sync.WaitGroup</span><br><span class="line">    out := make(chan int)</span><br><span class="line"></span><br><span class="line">    output := func(c &lt;-chan int) &#123;</span><br><span class="line">        for n := range c &#123;</span><br><span class="line">            out &lt;- n</span><br><span class="line">        &#125;</span><br><span class="line">        wg.Done()</span><br><span class="line">    &#125;</span><br><span class="line">    wg.Add(len(cs))</span><br><span class="line"></span><br><span class="line">    for _, c := range cs &#123;</span><br><span class="line">        go output(c)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    go func() &#123;</span><br><span class="line">        wg.Wait()</span><br><span class="line">        close(out)</span><br><span class="line">    &#125;()</span><br><span class="line">    return out</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/21/goroutine/" data-id="cjjvid93c001onh8ocuw06dku" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-构建微型区块链" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/19/构建微型区块链/" class="article-date">
@@ -97,7 +176,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/19/构建微型区块链/" data-id="cjjsirqfm00294q8ozo95q7fy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/19/构建微型区块链/" data-id="cjjvid93q002inh8okaltxkxb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blockchain/">blockchain</a></li></ul>
@@ -219,7 +298,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/以太坊入门/" data-id="cjjsirqfo002d4q8o3iyxlv06" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/17/以太坊入门/" data-id="cjjvid93n002cnh8ok16mo6zv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ethereum/">ethereum</a></li></ul>
@@ -269,7 +348,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/404-左叶子之和/" data-id="cjjsirqev000x4q8ojgtz7k9x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/17/404-左叶子之和/" data-id="cjjvid9300010nh8ou7iz85pk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/">tree</a></li></ul>
@@ -314,7 +393,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/112-路径总和/" data-id="cjjsirqeg000a4q8oeh7kuz25" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/17/112-路径总和/" data-id="cjjvid92n000dnh8oml6t7hsf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/">tree</a></li></ul>
@@ -363,7 +442,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/110-平衡二叉树/" data-id="cjjsirqec00054q8ogjndh7zh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/17/110-平衡二叉树/" data-id="cjjvid92h0005nh8oocpj3zvw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/">tree</a></li></ul>
@@ -408,7 +487,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/222-完全二叉树的节点个数/" data-id="cjjsirqeq000n4q8ouivo6zrt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/17/222-完全二叉树的节点个数/" data-id="cjjvid92t000mnh8o35bhdpc4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/">tree</a></li></ul>
@@ -462,7 +541,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/101-对称二叉树/" data-id="cjjsirqe500014q8oljvpdqu0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/17/101-对称二叉树/" data-id="cjjvid92b0001nh8ouwa9nga3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/">tree</a></li></ul>
@@ -510,7 +589,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/100-相同的树/" data-id="cjjsirqe100004q8okkztuhqo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/17/100-相同的树/" data-id="cjjvid9260000nh8o1ecexzxi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/">tree</a></li></ul>
@@ -556,54 +635,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/226-翻转二叉树/" data-id="cjjsirqer000p4q8o0i7n3pwf" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/">tree</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-111-二叉树的最小深度" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/17/111-二叉树的最小深度/" class="article-date">
-  <time datetime="2018-07-17T05:29:46.000Z" itemprop="datePublished">2018-07-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/17/111-二叉树的最小深度/">111.二叉树的最小深度</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>给定一个二叉树，找出其最小深度。</p>
-<p>最小深度是从根节点到最近叶子节点的最短路径上的节点数量。</p>
-<p>说明: 叶子节点是指没有子节点的节点。</p>
-<p>示例:</p>
-<p>给定二叉树 [3,9,20,null,null,15,7],</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line"> / \</span><br><span class="line">9  20</span><br><span class="line">  /  \</span><br><span class="line"> 15   7</span><br></pre></td></tr></table></figure>
-<p>返回它的最小深度  2.</p>
-<p>题解：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minDepth</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">NULL</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> L = minDepth(root-&gt;left);</span><br><span class="line">        <span class="keyword">int</span> R = minDepth(root-&gt;right);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + (min(L, R) &gt; <span class="number">0</span> ? min(L, R) : max(L, R));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/111-二叉树的最小深度/" data-id="cjjsirqef00084q8owj66f9cf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/17/226-翻转二叉树/" data-id="cjjvid92u000onh8o6qx9asip" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/">tree</a></li></ul>
@@ -643,7 +675,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Linked-List/" style="font-size: 16.67px;">Linked List</a> <a href="/tags/arrays/" style="font-size: 20px;">arrays</a> <a href="/tags/bitcoin/" style="font-size: 10px;">bitcoin</a> <a href="/tags/blockchain/" style="font-size: 15px;">blockchain</a> <a href="/tags/cryptocurrency/" style="font-size: 10px;">cryptocurrency</a> <a href="/tags/ethereum/" style="font-size: 10px;">ethereum</a> <a href="/tags/golang/" style="font-size: 11.67px;">golang</a> <a href="/tags/hyperledger-fabric/" style="font-size: 10px;">hyperledger-fabric</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/stack-queue/" style="font-size: 11.67px;">stack&&queue</a> <a href="/tags/tree/" style="font-size: 18.33px;">tree</a>
+      <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Linked-List/" style="font-size: 16.67px;">Linked List</a> <a href="/tags/arrays/" style="font-size: 20px;">arrays</a> <a href="/tags/bitcoin/" style="font-size: 10px;">bitcoin</a> <a href="/tags/blockchain/" style="font-size: 15px;">blockchain</a> <a href="/tags/cryptocurrency/" style="font-size: 10px;">cryptocurrency</a> <a href="/tags/ethereum/" style="font-size: 10px;">ethereum</a> <a href="/tags/golang/" style="font-size: 13.33px;">golang</a> <a href="/tags/hyperledger-fabric/" style="font-size: 10px;">hyperledger-fabric</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/stack-queue/" style="font-size: 11.67px;">stack&&queue</a> <a href="/tags/tree/" style="font-size: 18.33px;">tree</a>
     </div>
   </div>
 
@@ -665,6 +697,10 @@
       <ul>
         
           <li>
+            <a href="/2018/07/21/goroutine/">goroutine</a>
+          </li>
+        
+          <li>
             <a href="/2018/07/19/构建微型区块链/">构建微型区块链</a>
           </li>
         
@@ -678,10 +714,6 @@
         
           <li>
             <a href="/2018/07/17/112-路径总和/">112.路径总和</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/17/110-平衡二叉树/">110.平衡二叉树</a>
           </li>
         
       </ul>
