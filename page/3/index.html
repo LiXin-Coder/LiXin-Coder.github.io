@@ -62,6 +62,51 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-125-验证回文串" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/14/125-验证回文串/" class="article-date">
+  <time datetime="2018-07-14T08:35:54.000Z" itemprop="datePublished">2018-07-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/14/125-验证回文串/">125.验证回文串</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。</p>
+<p>说明：本题中，我们将空字符串定义为有效的回文串。<br>示例 1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;A man, a plan, a canal: Panama&quot;</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
+<p>示例 2:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;race a car&quot;</span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure>
+<p>题解：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPalindrome</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>, r = s.size()<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span> (l &lt; r) &#123;</span><br><span class="line">            <span class="keyword">while</span> (!<span class="built_in">isalnum</span>(s[l]) &amp;&amp; l &lt; r)</span><br><span class="line">                l++;</span><br><span class="line">            <span class="keyword">while</span> (!<span class="built_in">isalnum</span>(s[r]) &amp;&amp; l &lt; r)</span><br><span class="line">                r--;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">toupper</span>(s[l]) != <span class="built_in">toupper</span>(s[r]))</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            l++;</span><br><span class="line">            r--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/14/125-验证回文串/" data-id="cjk2pndau000dkx8op6py0qkc" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-215-数组中的第K个最大元素" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/14/215-数组中的第K个最大元素/" class="article-date">
@@ -96,7 +141,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/215-数组中的第K个最大元素/" data-id="cjjzsibi6000k788o4tleu6f0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/14/215-数组中的第K个最大元素/" data-id="cjk2pndb0000kkx8o0ik4k766" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -145,7 +190,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/167-两数之和II-输入有序数组/" data-id="cjjzsibi5000i788oz4bxkw4j" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/14/167-两数之和II-输入有序数组/" data-id="cjk2pndaw000fkx8obxvcn65f" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -194,7 +239,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/13/88-合并两个有序数组/" data-id="cjjzsibii0018788o7cgfyqmv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/13/88-合并两个有序数组/" data-id="cjk2pndbf0018kx8oyyix6z3r" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -241,7 +286,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/13/75-分类颜色/" data-id="cjjzsibig0014788ou1qnaa6v" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/13/75-分类颜色/" data-id="cjk2pndbc0014kx8ot9b0iqwi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -286,7 +331,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/13/80-删除排序数组中的重复项II/" data-id="cjjzsibig0016788or96k317y" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/13/80-删除排序数组中的重复项II/" data-id="cjk2pndbe0016kx8ojpyq7psy" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -332,7 +377,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/13/26-删除排序数组中重复项/" data-id="cjjzsibi8000p788oq004kopl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/13/26-删除排序数组中重复项/" data-id="cjk2pndb6000skx8o48vihjem" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -381,7 +426,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/12/283-移动零/" data-id="cjjzsibib000u788ojyuz91cy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/12/283-移动零/" data-id="cjk2pndb7000ukx8oyfouynqd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -442,7 +487,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/12/比特币闪电网络/" data-id="cjjzsibja002t788ofr28q3ii" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/12/比特币闪电网络/" data-id="cjk2pndch002ukx8ozqy213de" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bitcoin/">bitcoin</a></li></ul>
@@ -489,54 +534,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/11/二叉树层次遍历II/" data-id="cjjzsibj2002e788ovcz47cyz" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-二叉树层次遍历I" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/11/二叉树层次遍历I/" class="article-date">
-  <time datetime="2018-07-11T12:39:40.000Z" itemprop="datePublished">2018-07-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/11/二叉树层次遍历I/">二叉树层次遍历I</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>给定一个二叉树，返回其按层次遍历的节点值。 （即逐层地，从左到右访问所有节点）。</p>
-<p>例如:<br>给定二叉树: [3,9,20,null,null,15,7],</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line"> / \</span><br><span class="line">9  20</span><br><span class="line">  /  \</span><br><span class="line"> 15   7</span><br></pre></td></tr></table></figure>
-<p>返回其层次遍历结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  [3],</span><br><span class="line">  [9,20],</span><br><span class="line">  [15,7]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p>思路：</p>
-<p>与普通层次遍历稍微不一样的地方就是，需要分出每一层的结点数据来。</p>
-<p>如果提前知道每一层数据的个数n，那么只需要循环n次即可取出这一层的数据。那么刚好保持队列内一直为同一层的数据即可。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; levelOrder(TreeNode* root) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; result;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">NULL</span>)</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        <span class="built_in">queue</span>&lt;TreeNode*&gt; que;</span><br><span class="line">        que.push(root);</span><br><span class="line">        <span class="keyword">while</span> (!que.empty()) &#123;</span><br><span class="line">            <span class="keyword">int</span> size = que.size();</span><br><span class="line">            <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; temp;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; ++i) &#123;</span><br><span class="line">                TreeNode* node = que.front();</span><br><span class="line">                que.pop();</span><br><span class="line">                temp.push_back(node-&gt;val);</span><br><span class="line">                <span class="keyword">if</span> (node-&gt;left != <span class="literal">NULL</span>)que.push(node-&gt;left);</span><br><span class="line">                <span class="keyword">if</span> (node-&gt;right != <span class="literal">NULL</span>)que.push(node-&gt;right);</span><br><span class="line">            &#125;</span><br><span class="line">            result.push_back(temp);</span><br><span class="line">        &#125;</span><br><span class="line">         <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/11/二叉树层次遍历I/" data-id="cjjzsibj1002b788o6u1606lv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/11/二叉树层次遍历II/" data-id="cjk2pndc4002gkx8omzh8s2vc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
@@ -566,7 +564,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linked-List/">Linked List</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/arrays/">arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitcoin/">bitcoin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blockchain/">blockchain</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cryptocurrency/">cryptocurrency</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ethereum/">ethereum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/golang/">golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hyperledger-fabric/">hyperledger-fabric</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stack-queue/">stack&&queue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linked-List/">Linked List</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/arrays/">arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitcoin/">bitcoin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blockchain/">blockchain</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cryptocurrency/">cryptocurrency</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ethererum/">ethererum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ethereum/">ethereum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/golang/">golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hyperledger-fabric/">hyperledger-fabric</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stack-queue/">stack&&queue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a></li></ul>
     </div>
   </div>
 
@@ -576,7 +574,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Linked-List/" style="font-size: 16.67px;">Linked List</a> <a href="/tags/arrays/" style="font-size: 20px;">arrays</a> <a href="/tags/bitcoin/" style="font-size: 10px;">bitcoin</a> <a href="/tags/blockchain/" style="font-size: 15px;">blockchain</a> <a href="/tags/cryptocurrency/" style="font-size: 10px;">cryptocurrency</a> <a href="/tags/ethereum/" style="font-size: 10px;">ethereum</a> <a href="/tags/golang/" style="font-size: 15px;">golang</a> <a href="/tags/hyperledger-fabric/" style="font-size: 10px;">hyperledger-fabric</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/stack-queue/" style="font-size: 11.67px;">stack&&queue</a> <a href="/tags/tree/" style="font-size: 18.33px;">tree</a>
+      <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Linked-List/" style="font-size: 16.67px;">Linked List</a> <a href="/tags/arrays/" style="font-size: 20px;">arrays</a> <a href="/tags/bitcoin/" style="font-size: 10px;">bitcoin</a> <a href="/tags/blockchain/" style="font-size: 15px;">blockchain</a> <a href="/tags/cryptocurrency/" style="font-size: 10px;">cryptocurrency</a> <a href="/tags/ethererum/" style="font-size: 10px;">ethererum</a> <a href="/tags/ethereum/" style="font-size: 10px;">ethereum</a> <a href="/tags/golang/" style="font-size: 15px;">golang</a> <a href="/tags/hyperledger-fabric/" style="font-size: 10px;">hyperledger-fabric</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/stack-queue/" style="font-size: 11.67px;">stack&&queue</a> <a href="/tags/tree/" style="font-size: 18.33px;">tree</a>
     </div>
   </div>
 
@@ -598,6 +596,10 @@
       <ul>
         
           <li>
+            <a href="/2018/07/26/truffle安装以及基本指令/">truffle安装以及基本指令</a>
+          </li>
+        
+          <li>
             <a href="/2018/07/24/go-test初体验/">go_test初体验</a>
           </li>
         
@@ -611,10 +613,6 @@
         
           <li>
             <a href="/2018/07/17/以太坊入门/">以太坊入门</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/17/404-左叶子之和/">404.左叶子之和</a>
           </li>
         
       </ul>

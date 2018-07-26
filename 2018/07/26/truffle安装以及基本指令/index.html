@@ -5,15 +5,20 @@
   
 
   
-  <title>Tag: Linked List | Always Be Coding</title>
+  <title>truffle安装以及基本指令 | Always Be Coding</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Always Be Coding">
-<meta property="og:url" content="http://yoursite.com/tags/Linked-List/index.html">
+  <meta name="description" content="linux下安装方式  1$ npm install -g truffle  创建工程：  12345$ mkdir testdir　$ cd testdir　$　truffle init 1分别是 创建testdir目录， 进入testdir目录，  创建一个truffle工程  contracts/ - Truffle 默认的合约文件存放地址。  migrations/ - 存放发布脚本">
+<meta name="keywords" content="ethererum">
+<meta property="og:type" content="article">
+<meta property="og:title" content="truffle安装以及基本指令">
+<meta property="og:url" content="http://yoursite.com/2018/07/26/truffle安装以及基本指令/index.html">
 <meta property="og:site_name" content="Always Be Coding">
+<meta property="og:description" content="linux下安装方式  1$ npm install -g truffle  创建工程：  12345$ mkdir testdir　$ cd testdir　$　truffle init 1分别是 创建testdir目录， 进入testdir目录，  创建一个truffle工程  contracts/ - Truffle 默认的合约文件存放地址。  migrations/ - 存放发布脚本">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-26T15:25:53.342Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Always Be Coding">
+<meta name="twitter:title" content="truffle安装以及基本指令">
+<meta name="twitter:description" content="linux下安装方式  1$ npm install -g truffle  创建工程：  12345$ mkdir testdir　$ cd testdir　$　truffle init 1分别是 创建testdir目录， 进入testdir目录，  创建一个truffle工程  contracts/ - Truffle 默认的合约文件存放地址。  migrations/ - 存放发布脚本">
   
     <link rel="alternate" href="/atom.xml" title="Always Be Coding" type="application/atom+xml">
   
@@ -60,116 +65,72 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/08/CopyListWithRandomPointer/" class="archive-article-date">
-  <time datetime="2018-06-08T08:22:55.000Z" itemprop="datePublished">Jun 8</time>
+        <section id="main"><article id="post-truffle安装以及基本指令" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/26/truffle安装以及基本指令/" class="article-date">
+  <time datetime="2018-07-26T15:22:05.000Z" itemprop="datePublished">2018-07-26</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/08/CopyListWithRandomPointer/">Copy List with Random Pointer</a>
+    <h1 class="article-title" itemprop="name">
+      truffle安装以及基本指令
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/06/LinkedListCycleII/" class="archive-article-date">
-  <time datetime="2018-06-06T12:41:49.000Z" itemprop="datePublished">Jun 6</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/06/LinkedListCycleII/">Linked List Cycle II</a>
-    </h1>
-  
+        <ol>
+<li>linux下安装方式</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g truffle</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>创建工程：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir testdir</span><br><span class="line"></span><br><span class="line">　$ cd testdir</span><br><span class="line"></span><br><span class="line">　$　truffle init</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">分别是 创建testdir目录， 进入testdir目录，  创建一个truffle工程</span><br></pre></td></tr></table></figure>
+<p> contracts/ - Truffle 默认的合约文件存放地址。</p>
+<p> migrations/ - 存放发布脚本文件</p>
+<p> test/ - 用来测试应用和合约的测试文件</p>
+<p> truffle.js - Truffle 的配置文件 </p>
+<p>3.编译工程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　truffle compile</span><br></pre></td></tr></table></figure>
+<p>编译的输出位于 build/contarcts 目录</p>
+<p>4.执行移植 :  (移植是由一些Javascript文件组成来协助发布到以太坊网络)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">truffle migrate</span><br></pre></td></tr></table></figure>
+<p>这个命令会执行所有的位于migrations目录内的移植脚本。如果你之前的移植是成功执行的。truffle migrate仅会执行新创建的移植。如果没有新的移植脚本，这个命令不同执行任何操作。可以使用选项–reset来从头执行移植脚本。</p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/06/IntersectionOfTwoLinkedLists/" class="archive-article-date">
-  <time datetime="2018-06-06T12:25:31.000Z" itemprop="datePublished">Jun 6</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/06/IntersectionOfTwoLinkedLists/">Intersection of Two Linked Lists</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/06/ReverseLinkedListII/" class="archive-article-date">
-  <time datetime="2018-06-06T11:45:26.000Z" itemprop="datePublished">Jun 6</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/26/truffle安装以及基本指令/" data-id="cjk2pndc1002bkx8orxxiokgl" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/06/ReverseLinkedListII/">Reverse Linked List II</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/06/ReverseLinkedList/" class="archive-article-date">
-  <time datetime="2018-06-06T08:13:37.000Z" itemprop="datePublished">Jun 6</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/06/ReverseLinkedList/">Reverse Linked List</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ethererum/">ethererum</a></li></ul>
 
-    </header>
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/07/24/go-test初体验/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">go_test初体验</div>
+    </a>
   
+</nav>
 
+  
+</article>
 
 </section>
         
