@@ -62,6 +62,49 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-CopyListWithRandomPointer" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/08/CopyListWithRandomPointer/" class="article-date">
+  <time datetime="2018-06-08T08:22:55.000Z" itemprop="datePublished">2018-06-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/08/CopyListWithRandomPointer/">Copy List with Random Pointer</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="138-Copy-List-with-Random-Pointer"><a href="#138-Copy-List-with-Random-Pointer" class="headerlink" title="138. Copy List with Random Pointer"></a>138. Copy List with Random Pointer</h2><p>A linked list is given such that each node contains an additional random pointer which could point to any node in the list or null.</p>
+<p>Return a deep copy of the list.</p>
+<p>题目描述：<br>深拷贝一个链表，其中该链表有next指针和random指针。<br><img src="http://ww1.sinaimg.cn/large/007330Aply1fs3umrp52sj317w080mz3.jpg" alt=""></p>
+<p>思路：<br><img src="http://ww1.sinaimg.cn/large/007330Aply1fs3uo8d2ttj31fg0xckad.jpg" alt=""></p>
+<p>利用map来保存节点地址与序号的映射,vec保存序号和地址的映射。通过查找map来判断后续的random指针指向。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list with a random pointer.</span></span><br><span class="line"><span class="comment"> * struct RandomListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int label;</span></span><br><span class="line"><span class="comment"> *     RandomListNode *next, *random;</span></span><br><span class="line"><span class="comment"> *     RandomListNode(int x) : label(x), next(NULL), random(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">RandomListNode *<span class="title">copyRandomList</span><span class="params">(RandomListNode *head)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">map</span>&lt;RandomListNode *, <span class="keyword">int</span>&gt; node_map;</span><br><span class="line">        <span class="built_in">vector</span>&lt;RandomListNode *&gt; node_vec;</span><br><span class="line">        RandomListNode *ptr = head;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (ptr) &#123;</span><br><span class="line">            node_vec.push_back(<span class="keyword">new</span> RandomListNode(ptr-&gt;label));</span><br><span class="line">            node_map[ptr] = i;</span><br><span class="line">            i++;</span><br><span class="line">            ptr = ptr-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        node_vec.push_back(<span class="number">0</span>);</span><br><span class="line">        ptr = head;</span><br><span class="line">        i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (ptr) &#123;</span><br><span class="line">            node_vec[i]-&gt;next = node_vec[i+<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span> (ptr-&gt;random) &#123;</span><br><span class="line">                <span class="keyword">int</span> id = node_map[ptr-&gt;random];</span><br><span class="line">                node_vec[i]-&gt;random = node_vec[id];</span><br><span class="line">            &#125;</span><br><span class="line">            i++;</span><br><span class="line">            ptr = ptr-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> node_vec[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/06/08/CopyListWithRandomPointer/" data-id="cjk5lnmuy001bvu8olcbcb3sq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linked-List/">Linked List</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-rails" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/06/07/rails/" class="article-date">
@@ -100,7 +143,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/07/rails/" data-id="cjk2pndc00029kx8osz436ury" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/07/rails/" data-id="cjk5lnmvi0027vu8ocxlc4bsh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/stack-queue/">stack&&queue</a></li></ul>
@@ -145,7 +188,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/06/LinkedListCycleII/" data-id="cjk2pndbp001pkx8oqhxful1v" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/06/LinkedListCycleII/" data-id="cjk5lnmv5001kvu8o47t4jnid" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linked-List/">Linked List</a></li></ul>
@@ -196,7 +239,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/06/IntersectionOfTwoLinkedLists/" data-id="cjk2pndbl001jkx8ormwxv444" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/06/IntersectionOfTwoLinkedLists/" data-id="cjk5lnmv2001gvu8o211033f4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linked-List/">Linked List</a></li></ul>
@@ -239,7 +282,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/06/ReverseLinkedListII/" data-id="cjk2pndbq001rkx8otxmvg7q6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/06/ReverseLinkedListII/" data-id="cjk5lnmv7001pvu8or5zb06qt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linked-List/">Linked List</a></li></ul>
@@ -281,7 +324,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/06/ReverseLinkedList/" data-id="cjk2pndbo001nkx8oiplk7vdb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/06/ReverseLinkedList/" data-id="cjk5lnmv6001nvu8od3ist2kk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linked-List/">Linked List</a></li></ul>
@@ -349,7 +392,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/03/hyperledger-fabric02/" data-id="cjk2pndbu001zkx8ounabfroe" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/05/03/hyperledger-fabric02/" data-id="cjk5lnmvf0021vu8oyf48jskz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -408,7 +451,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/03/hyperledger-fabric01/" data-id="cjk2pndbw0021kx8oxitxfukt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/05/03/hyperledger-fabric01/" data-id="cjk5lnmvb001xvu8oloi1n375" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hyperledger-fabric/">hyperledger-fabric</a></li></ul>
@@ -455,7 +498,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/03/hello-world/" data-id="cjk2pndbs001ukx8oc2debbew" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/05/03/hello-world/" data-id="cjk5lnmvd001zvu8o17sn9bb0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -493,7 +536,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Linked-List/" style="font-size: 16.67px;">Linked List</a> <a href="/tags/arrays/" style="font-size: 20px;">arrays</a> <a href="/tags/bitcoin/" style="font-size: 10px;">bitcoin</a> <a href="/tags/blockchain/" style="font-size: 15px;">blockchain</a> <a href="/tags/cryptocurrency/" style="font-size: 10px;">cryptocurrency</a> <a href="/tags/ethererum/" style="font-size: 10px;">ethererum</a> <a href="/tags/ethereum/" style="font-size: 10px;">ethereum</a> <a href="/tags/golang/" style="font-size: 15px;">golang</a> <a href="/tags/hyperledger-fabric/" style="font-size: 10px;">hyperledger-fabric</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/stack-queue/" style="font-size: 11.67px;">stack&&queue</a> <a href="/tags/tree/" style="font-size: 18.33px;">tree</a>
+      <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Linked-List/" style="font-size: 16.67px;">Linked List</a> <a href="/tags/arrays/" style="font-size: 20px;">arrays</a> <a href="/tags/bitcoin/" style="font-size: 10px;">bitcoin</a> <a href="/tags/blockchain/" style="font-size: 15px;">blockchain</a> <a href="/tags/cryptocurrency/" style="font-size: 10px;">cryptocurrency</a> <a href="/tags/ethererum/" style="font-size: 10px;">ethererum</a> <a href="/tags/ethereum/" style="font-size: 11.67px;">ethereum</a> <a href="/tags/golang/" style="font-size: 15px;">golang</a> <a href="/tags/hyperledger-fabric/" style="font-size: 10px;">hyperledger-fabric</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/stack-queue/" style="font-size: 11.67px;">stack&&queue</a> <a href="/tags/tree/" style="font-size: 18.33px;">tree</a>
     </div>
   </div>
 
@@ -515,6 +558,10 @@
       <ul>
         
           <li>
+            <a href="/2018/07/28/智能合约源文件的基本要素概览/">智能合约源文件的基本要素概览</a>
+          </li>
+        
+          <li>
             <a href="/2018/07/26/truffle安装以及基本指令/">truffle安装以及基本指令</a>
           </li>
         
@@ -528,10 +575,6 @@
         
           <li>
             <a href="/2018/07/19/构建微型区块链/">构建微型区块链</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/17/以太坊入门/">以太坊入门</a>
           </li>
         
       </ul>
