@@ -62,6 +62,51 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-222-完全二叉树的节点个数" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/17/222-完全二叉树的节点个数/" class="article-date">
+  <time datetime="2018-07-17T07:29:41.000Z" itemprop="datePublished">2018-07-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/17/222-完全二叉树的节点个数/">222.完全二叉树的节点个数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>给出一个完全二叉树，求出该树的节点个数。</p>
+<p>说明：</p>
+<p>完全二叉树的定义如下：在完全二叉树中，除了最底层节点可能没填满外，其余每层节点数都达到最大值，并且最下面一层的节点都集中在该层最左边的若干位置。若最底层为第 h 层，则该层包含 1~ 2h 个节点。</p>
+<p>示例:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入: </span><br><span class="line">    <span class="number">1</span></span><br><span class="line">   / \</span><br><span class="line">  <span class="number">2</span>   <span class="number">3</span></span><br><span class="line"> / \  /</span><br><span class="line"><span class="number">4</span>  <span class="number">5</span> <span class="number">6</span></span><br><span class="line"></span><br><span class="line">输出: <span class="number">6</span></span><br></pre></td></tr></table></figure>
+<p>题解：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">countNodes</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">NULL</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> leftDepth = <span class="number">0</span>, rightDepth = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (TreeNode *node = root; node; node = node-&gt;left)</span><br><span class="line">            leftDepth++;</span><br><span class="line">        <span class="keyword">for</span> (TreeNode *node = root; node; node = node-&gt;right)</span><br><span class="line">            rightDepth++;</span><br><span class="line">        <span class="keyword">if</span> (leftDepth == rightDepth)</span><br><span class="line">            <span class="keyword">return</span> (<span class="number">1</span> &lt;&lt; leftDepth) - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + countNodes(root-&gt;left) + countNodes(root-&gt;right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/17/222-完全二叉树的节点个数/" data-id="cjk6dlz0h000ncj8ojtlasxnk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/">tree</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-101-对称二叉树" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/17/101-对称二叉树/" class="article-date">
@@ -104,7 +149,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/101-对称二叉树/" data-id="cjk5lpiwf0001xa8o98ko08og" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/17/101-对称二叉树/" data-id="cjk6dlz010003cj8oxfcqign7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/">tree</a></li></ul>
@@ -152,7 +197,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/100-相同的树/" data-id="cjk5lpiwb0000xa8ovzr0tcnn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/17/100-相同的树/" data-id="cjk6dlyzs0000cj8ovlkcr8u6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/">tree</a></li></ul>
@@ -198,7 +243,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/226-翻转二叉树/" data-id="cjk5lpix2000pxa8o991nx2wv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/17/226-翻转二叉树/" data-id="cjk6dlz0i000pcj8oy62opl3o" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/">tree</a></li></ul>
@@ -245,7 +290,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/111-二叉树的最小深度/" data-id="cjk5lpiwq0008xa8ofy5myw31" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/17/111-二叉树的最小深度/" data-id="cjk6dlz070008cj8oedcg4mok" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/">tree</a></li></ul>
@@ -291,7 +336,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/104-二叉树的最大深度/" data-id="cjk5lpiwk0003xa8ow2rndqkp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/17/104-二叉树的最大深度/" data-id="cjk6dlyzx0001cj8owmhkcmm5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/">tree</a></li></ul>
@@ -340,7 +385,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/区块链中的软分叉与硬分叉详解/" data-id="cjk5lpiy7002jxa8ou3zg5x7e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/14/区块链中的软分叉与硬分叉详解/" data-id="cjk6dlz1p002ncj8op0spyrf7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blockchain/">blockchain</a></li></ul>
@@ -385,7 +430,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/3-无重复字符的最长子串/" data-id="cjk5lpix7000wxa8otvc6374n" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/14/3-无重复字符的最长子串/" data-id="cjk6dlz0m000wcj8o3isifk5l" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -428,7 +473,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/209-长度最小的子数组/" data-id="cjk5lpiwy000ixa8oi30y28sh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/14/209-长度最小的子数组/" data-id="cjk6dlz0e000icj8ozr3sl4j3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -470,51 +515,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/11-盛最多水的容器/" data-id="cjk5lpiwl0004xa8o74l8q77k" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-345-反转字符串中的元音字母" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/14/345-反转字符串中的元音字母/" class="article-date">
-  <time datetime="2018-07-14T08:59:40.000Z" itemprop="datePublished">2018-07-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/14/345-反转字符串中的元音字母/">345.反转字符串中的元音字母</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>编写一个函数，以字符串作为输入，反转该字符串中的元音字母。</p>
-<p>示例 1：<br>给定 s = “hello”, 返回 “holle”.</p>
-<p>示例 2：<br>给定 s = “leetcode”, 返回 “leotcede”.</p>
-<p>注意:<br>元音字母不包括 “y”.</p>
-<p>题解：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">reverseVowels</span><span class="params">(<span class="built_in">string</span> str)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">set</span>&lt;<span class="keyword">char</span>&gt; vowels = &#123;<span class="string">'a'</span>,<span class="string">'e'</span>,<span class="string">'i'</span>,<span class="string">'o'</span>,<span class="string">'u'</span>,<span class="string">'A'</span>,<span class="string">'E'</span>,<span class="string">'I'</span>,<span class="string">'O'</span>,<span class="string">'U'</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> i= <span class="number">0</span>, j = str.size()<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; j)&#123;</span><br><span class="line">            <span class="keyword">while</span>(vowels.find(str[i])==vowels.end() &amp;&amp; i &lt; j) </span><br><span class="line">                i++;</span><br><span class="line">            <span class="keyword">while</span>(vowels.find(str[j])==vowels.end() &amp;&amp; i &lt; j) </span><br><span class="line">                j--;</span><br><span class="line">            <span class="keyword">if</span>(i &gt;= j) </span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            swap(str[i],str[j]);</span><br><span class="line">            i++;</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/345-反转字符串中的元音字母/" data-id="cjk5lpix90010xa8oq8mkb0jx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/14/11-盛最多水的容器/" data-id="cjk6dlz020004cj8o8esnw4ke" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
@@ -554,7 +555,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Linked-List/" style="font-size: 16.67px;">Linked List</a> <a href="/tags/arrays/" style="font-size: 20px;">arrays</a> <a href="/tags/bitcoin/" style="font-size: 10px;">bitcoin</a> <a href="/tags/blockchain/" style="font-size: 15px;">blockchain</a> <a href="/tags/cryptocurrency/" style="font-size: 10px;">cryptocurrency</a> <a href="/tags/ethererum/" style="font-size: 10px;">ethererum</a> <a href="/tags/ethereum/" style="font-size: 11.67px;">ethereum</a> <a href="/tags/golang/" style="font-size: 15px;">golang</a> <a href="/tags/hyperledger-fabric/" style="font-size: 10px;">hyperledger-fabric</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/stack-queue/" style="font-size: 11.67px;">stack&&queue</a> <a href="/tags/tree/" style="font-size: 18.33px;">tree</a>
+      <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Linked-List/" style="font-size: 16.67px;">Linked List</a> <a href="/tags/arrays/" style="font-size: 20px;">arrays</a> <a href="/tags/bitcoin/" style="font-size: 11.67px;">bitcoin</a> <a href="/tags/blockchain/" style="font-size: 15px;">blockchain</a> <a href="/tags/cryptocurrency/" style="font-size: 10px;">cryptocurrency</a> <a href="/tags/ethererum/" style="font-size: 10px;">ethererum</a> <a href="/tags/ethereum/" style="font-size: 11.67px;">ethereum</a> <a href="/tags/golang/" style="font-size: 15px;">golang</a> <a href="/tags/hyperledger-fabric/" style="font-size: 10px;">hyperledger-fabric</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/stack-queue/" style="font-size: 11.67px;">stack&&queue</a> <a href="/tags/tree/" style="font-size: 18.33px;">tree</a>
     </div>
   </div>
 
@@ -576,6 +577,10 @@
       <ul>
         
           <li>
+            <a href="/2018/07/29/比特币区块为什么是1M大小？/">比特币区块为什么是1M大小？</a>
+          </li>
+        
+          <li>
             <a href="/2018/07/28/智能合约基本中的基本元素/">智能合约源文件的基本要素概览</a>
           </li>
         
@@ -589,10 +594,6 @@
         
           <li>
             <a href="/2018/07/21/GoroutineAndChannel/">GoroutineAndChannel</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/19/构建微型区块链/">构建微型区块链</a>
           </li>
         
       </ul>
