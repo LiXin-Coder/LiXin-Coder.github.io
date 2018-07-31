@@ -62,6 +62,84 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-solidity中storage与memory区别" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/01/solidity中storage与memory区别/" class="article-date">
+  <time datetime="2018-07-31T16:28:49.000Z" itemprop="datePublished">2018-08-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/01/solidity中storage与memory区别/">solidity中storage与memory区别</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="storage-与-memory-关键字的作用"><a href="#storage-与-memory-关键字的作用" class="headerlink" title="storage 与 memory 关键字的作用"></a>storage 与 memory 关键字的作用</h3><p>在区块链里，区块链本身就是一个数据库。如果你使用区块链标记物产的所有权，<br>归属信息将会被记录到区块链上，所有人都无法篡改，以标明不可争议的拥有权。<br>在solidity编程中，有一个数据位置的属性用来标识变量是否需要持久化到区块链中。<br>我们可以通过 —— storage 或 memory 这两个关键字来存储变量</p>
+<p>###storage 与 memory 修饰的变量的区别<br>默认情况下，全局点状态变量会保存到区块链上，局部到变量保存在内存当中<br>storage修饰的变量是指永久存储在区块链中的变量。<br>Memory修饰变量则是临时的，当外部函数对某合约调用完成时，内存型变量即被移除。<br>你可以把它想象成存储在你电脑的硬盘或是RAM中数据的关系。<br>但是在很多时候你都用不到这些关键字，默认情况下 Solidity 会自动处理它们。<br>但是很多时候也需要我们进行一些特殊处理,下面我们通过代码来看一下.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">contract Person &#123;</span><br><span class="line">  struct Person &#123;</span><br><span class="line">    string name;</span><br><span class="line">    string sex;</span><br><span class="line">  &#125;</span><br><span class="line">  Person[] persons;</span><br><span class="line">  function eatSandwich(uint _index) public &#123;</span><br><span class="line">    // Person person = persons[_index];</span><br><span class="line">    // ^ 看上去很直接，不过 Solidity 将会给出警告</span><br><span class="line">    // 告诉你应该明确在这里定义 `storage` 或者 `memory`。</span><br><span class="line">    // 所以你应该明确定义 `storage`:</span><br><span class="line">    Person storage myPerson = persons[_index];</span><br><span class="line">    // ...这样 `mySandwich` 是指向 `sandwiches[_index]`的指针</span><br><span class="line">    // 在存储里，另外...</span><br><span class="line">    myPerson.sex = &quot;女!&quot;;</span><br><span class="line">    // ...这将永久把 `sandwiches[_index]` 变为区块链上的存储</span><br><span class="line"></span><br><span class="line">    // 如果你只想要一个副本，可以使用`memory`:</span><br><span class="line">    Person memory anotherPerson = persons[_index + 1];</span><br><span class="line">    // ...这样 `anotherSandwich` 就仅仅是一个内存里的副本了</span><br><span class="line">    // 另外</span><br><span class="line">    anotherPerson.sex = &quot;Eaten!&quot;;</span><br><span class="line">    // ...将仅仅修改临时变量，对 `sandwiches[_index + 1]` 没有任何影响</span><br><span class="line">    // 不过你可以这样做:</span><br><span class="line">    persons[_index + 1] = anotherPerson;</span><br><span class="line">    // ...如果你想把副本的改动保存回区块链存储</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过以上代码，我们就可以在某些场合下也需要你显式地声明 storage 或 memory了！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/01/solidity中storage与memory区别/" data-id="cjk9x4poy0025do8otbii5y65" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ethereum/">ethereum</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="solidity中storage与memory-区别" class="article article-type-solidity中storage与memory" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/01/区别/" class="article-date">
+  <time datetime="2018-07-31T16:22:54.000Z" itemprop="datePublished">2018-08-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/01/区别/">区别</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/01/区别/" data-id="cjk9x4ppa002ido8o4g0i6cky" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-比特币区块为什么是1M大小？" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/29/比特币区块为什么是1M大小？/" class="article-date">
@@ -104,7 +182,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/29/比特币区块为什么是1M大小？/" data-id="cjk6dlz1q002ocj8okcykseqg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/29/比特币区块为什么是1M大小？/" data-id="cjk9x4ppf002tdo8op9qz2r24" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bitcoin/">bitcoin</a></li></ul>
@@ -162,7 +240,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/28/智能合约基本中的基本元素/" data-id="cjk6dlz1s002tcj8oii9bk5mc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/28/智能合约基本中的基本元素/" data-id="cjk9x4pph002ydo8ocwoi5uz6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ethereum/">ethereum</a></li></ul>
@@ -219,7 +297,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/26/truffle安装以及基本指令/" data-id="cjk6dlz1f0025cj8oxnhf5ovx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/26/truffle安装以及基本指令/" data-id="cjk9x4pp00027do8oucdy1kv7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ethererum/">ethererum</a></li></ul>
@@ -266,7 +344,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/24/go-test初体验/" data-id="cjk6dlz17001scj8o00ns75ff" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/24/go-test初体验/" data-id="cjk9x4por001sdo8o6gbxeu9i" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li></ul>
@@ -345,7 +423,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/21/GoroutineAndChannel/" data-id="cjk6dlz0z001fcj8oq42iuit2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/21/GoroutineAndChannel/" data-id="cjk9x4pok001fdo8o4my34xb9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li></ul>
@@ -392,7 +470,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/19/构建微型区块链/" data-id="cjk6dlz1w0030cj8ov0vj7ep7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/19/构建微型区块链/" data-id="cjk9x4ppk0034do8onnlnag30" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blockchain/">blockchain</a></li></ul>
@@ -514,7 +592,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/以太坊入门/" data-id="cjk6dlz1m002jcj8ou5w7ozmm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/17/以太坊入门/" data-id="cjk9x4ppd002pdo8obe7kq5a3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ethereum/">ethereum</a></li></ul>
@@ -564,101 +642,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/404-左叶子之和/" data-id="cjk6dlz0r0012cj8ofzoxn64q" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/">tree</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-112-路径总和" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/17/112-路径总和/" class="article-date">
-  <time datetime="2018-07-17T08:15:54.000Z" itemprop="datePublished">2018-07-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/17/112-路径总和/">112.路径总和</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>给定一个二叉树和一个目标和，判断该树中是否存在根节点到叶子节点的路径，这条路径上所有节点值相加等于目标和。</p>
-<p>说明: 叶子节点是指没有子节点的节点。</p>
-<p>示例:<br>给定如下二叉树，以及目标和 sum = 22，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">        / \</span><br><span class="line">       4   8</span><br><span class="line">      /   / \</span><br><span class="line">     11  13  4</span><br><span class="line">    /  \      \</span><br><span class="line">   7    2      1</span><br></pre></td></tr></table></figure>
-<p>返回 true, 因为存在目标和为 22 的根节点到叶子节点的路径 5-&gt;4-&gt;11-&gt;2。</p>
-<p>题解：<br>//注意是根到“叶子”节点的路径！</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool hasPathSum(TreeNode* root, int sum) &#123;</span><br><span class="line">        if (root == NULL)</span><br><span class="line">            return false;</span><br><span class="line">        if (root-&gt;left == NULL &amp;&amp; root-&gt;right == NULL)</span><br><span class="line">            return root-&gt;val == sum;</span><br><span class="line">        return hasPathSum(root-&gt;left, sum - (root-&gt;val)) || hasPathSum(root-&gt;right, sum - (root-&gt;val));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/112-路径总和/" data-id="cjk6dlz09000acj8ol676ykgi" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/">tree</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-110-平衡二叉树" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/17/110-平衡二叉树/" class="article-date">
-  <time datetime="2018-07-17T07:54:54.000Z" itemprop="datePublished">2018-07-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/17/110-平衡二叉树/">110.平衡二叉树</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>给定一个二叉树，判断它是否是高度平衡的二叉树。</p>
-<p>本题中，一棵高度平衡二叉树定义为：<br>一个二叉树每个节点 的左右两个子树的高度差的绝对值不超过1。</p>
-<p>示例 1:</p>
-<p>给定二叉树 [3,9,20,null,null,15,7]</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  3</span><br><span class="line"> / \</span><br><span class="line">9  20</span><br><span class="line">  /  \</span><br><span class="line"> 15   7</span><br></pre></td></tr></table></figure>
-<p>返回 true 。</p>
-<p>示例 2:</p>
-<p>给定二叉树 [1,2,2,3,3,null,null,4,4]</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">   1</span><br><span class="line">     / \</span><br><span class="line">    2   2</span><br><span class="line">   / \</span><br><span class="line">  3   3</span><br><span class="line"> / \</span><br><span class="line">4   4</span><br></pre></td></tr></table></figure>
-<p>返回 false 。</p>
-<p>题解：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isBalanced(TreeNode* root) &#123;</span><br><span class="line">        if (root == NULL)</span><br><span class="line">            return true;</span><br><span class="line">        int leftHeight = height(root-&gt;left);</span><br><span class="line">        int rightHeight = height(root-&gt;right);</span><br><span class="line">        </span><br><span class="line">        return abs(leftHeight-rightHeight) &lt;= 1 &amp;&amp; isBalanced(root-&gt;left) &amp;&amp; isBalanced(root-&gt;right);</span><br><span class="line">    &#125;</span><br><span class="line">    int height(TreeNode* root) &#123;</span><br><span class="line">        if (root == NULL)</span><br><span class="line">            return 0;</span><br><span class="line">        return max(height(root-&gt;left), height(root-&gt;right)) + 1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/110-平衡二叉树/" data-id="cjk6dlz040005cj8oc5v3ko09" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/17/404-左叶子之和/" data-id="cjk9x4poc0012do8o07k9wtzd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/">tree</a></li></ul>
@@ -674,7 +658,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -698,7 +682,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Linked-List/" style="font-size: 16.67px;">Linked List</a> <a href="/tags/arrays/" style="font-size: 20px;">arrays</a> <a href="/tags/bitcoin/" style="font-size: 11.67px;">bitcoin</a> <a href="/tags/blockchain/" style="font-size: 15px;">blockchain</a> <a href="/tags/cryptocurrency/" style="font-size: 10px;">cryptocurrency</a> <a href="/tags/ethererum/" style="font-size: 10px;">ethererum</a> <a href="/tags/ethereum/" style="font-size: 11.67px;">ethereum</a> <a href="/tags/golang/" style="font-size: 15px;">golang</a> <a href="/tags/hyperledger-fabric/" style="font-size: 10px;">hyperledger-fabric</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/stack-queue/" style="font-size: 11.67px;">stack&&queue</a> <a href="/tags/tree/" style="font-size: 18.33px;">tree</a>
+      <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Linked-List/" style="font-size: 16.67px;">Linked List</a> <a href="/tags/arrays/" style="font-size: 20px;">arrays</a> <a href="/tags/bitcoin/" style="font-size: 11.67px;">bitcoin</a> <a href="/tags/blockchain/" style="font-size: 15px;">blockchain</a> <a href="/tags/cryptocurrency/" style="font-size: 10px;">cryptocurrency</a> <a href="/tags/ethererum/" style="font-size: 10px;">ethererum</a> <a href="/tags/ethereum/" style="font-size: 13.33px;">ethereum</a> <a href="/tags/golang/" style="font-size: 15px;">golang</a> <a href="/tags/hyperledger-fabric/" style="font-size: 10px;">hyperledger-fabric</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/stack-queue/" style="font-size: 11.67px;">stack&&queue</a> <a href="/tags/tree/" style="font-size: 18.33px;">tree</a>
     </div>
   </div>
 
@@ -707,7 +691,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
     </div>
   </div>
 
@@ -720,6 +704,14 @@
       <ul>
         
           <li>
+            <a href="/2018/08/01/solidity中storage与memory区别/">solidity中storage与memory区别</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/01/区别/">区别</a>
+          </li>
+        
+          <li>
             <a href="/2018/07/29/比特币区块为什么是1M大小？/">比特币区块为什么是1M大小？</a>
           </li>
         
@@ -729,14 +721,6 @@
         
           <li>
             <a href="/2018/07/26/truffle安装以及基本指令/">truffle安装以及基本指令</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/24/go-test初体验/">go_test初体验</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/21/GoroutineAndChannel/">GoroutineAndChannel</a>
           </li>
         
       </ul>

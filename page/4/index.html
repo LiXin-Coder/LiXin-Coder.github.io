@@ -62,6 +62,101 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-26-删除排序数组中重复项" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/13/26-删除排序数组中重复项/" class="article-date">
+  <time datetime="2018-07-13T02:35:48.000Z" itemprop="datePublished">2018-07-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/13/26-删除排序数组中重复项/">26.删除排序数组中重复项</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
+<p>不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。</p>
+<p>示例 1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">给定数组 nums = [1,1,2], </span><br><span class="line"></span><br><span class="line">函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 </span><br><span class="line"></span><br><span class="line">你不需要考虑数组中超出新长度后面的元素。</span><br></pre></td></tr></table></figure>
+<p>示例 2:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">给定 nums = [0,0,1,1,1,2,2,3,3,4],</span><br><span class="line"></span><br><span class="line">函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。</span><br><span class="line"></span><br><span class="line">你不需要考虑数组中超出新长度后面的元素。</span><br></pre></td></tr></table></figure>
+<p>题解：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.size() == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;<span class="comment">//[0, i]中是符合要求的项</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; nums.size(); ++j) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] != nums[j])</span><br><span class="line">                nums[++i] = nums[j];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> i + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/13/26-删除排序数组中重复项/" data-id="cjk9x4po4000pdo8ogg0j1gvm" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-283-移动零" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/12/283-移动零/" class="article-date">
+  <time datetime="2018-07-12T14:30:10.000Z" itemprop="datePublished">2018-07-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/12/283-移动零/">283.移动零</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。<br>示例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [0,1,0,3,12]</span><br><span class="line">输出: [1,3,12,0,0]</span><br></pre></td></tr></table></figure>
+<p>说明:</p>
+<pre><code>1. 必须在原数组上操作，不能拷贝额外的数组。
+2. 尽量减少操作次数。
+</code></pre><p>题解一：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">moveZeroes</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; temp;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i])</span><br><span class="line">                temp.push_back(nums[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; temp.size(); ++i)</span><br><span class="line">            nums[i] = temp[i];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = temp.size(); i &lt; nums.size(); ++i)</span><br><span class="line">            nums[i] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>题解二：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">moveZeroes</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] != <span class="number">0</span>) &#123;</span><br><span class="line">                nums[p++] = nums[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = p; i &lt; nums.size(); ++ i)</span><br><span class="line">            nums[i] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>题解三：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">moveZeroes</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> p = <span class="number">0</span>; <span class="comment">// [0, p)为非0元素， [p, i）为0元素</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] != <span class="number">0</span>) &#123;</span><br><span class="line">                swap(nums[p++],nums[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/12/283-移动零/" data-id="cjk9x4po7000udo8oxqiuqhpa" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-比特币闪电网络" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/12/比特币闪电网络/" class="article-date">
@@ -111,7 +206,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/12/比特币闪电网络/" data-id="cjk6dlz1u002xcj8oltzc4p59" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/12/比特币闪电网络/" data-id="cjk9x4ppj0032do8o72iz1csf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bitcoin/">bitcoin</a></li></ul>
@@ -158,7 +253,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/11/二叉树层次遍历II/" data-id="cjk6dlz1l002hcj8ogg8bbg2j" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/11/二叉树层次遍历II/" data-id="cjk9x4pp5002gdo8o2w0tbm4o" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
@@ -205,7 +300,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/11/二叉树层次遍历I/" data-id="cjk6dlz1k002ecj8okpgsvppk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/11/二叉树层次遍历I/" data-id="cjk9x4ppb002kdo8oh5j7yn9a" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
@@ -256,7 +351,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/11/strStr/" data-id="cjk6dlz1j002ccj8ozseab6hi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/11/strStr/" data-id="cjk9x4pp3002ddo8o3ud2v67p" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
@@ -299,7 +394,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/09/golang-container/" data-id="cjk6dlz19001vcj8ots674efd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/09/golang-container/" data-id="cjk9x4pot001wdo8op7rwbzgk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li></ul>
@@ -349,7 +444,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/09/数字货币简单分类/" data-id="cjk6dlz1r002rcj8oxr3rf8jx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/09/数字货币简单分类/" data-id="cjk9x4ppe002rdo8ocz0gd64j" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cryptocurrency/">cryptocurrency</a></li></ul>
@@ -409,7 +504,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/07/比特币区块结构剖析/" data-id="cjk6dlz1t002wcj8ol3vwc5vd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/07/比特币区块结构剖析/" data-id="cjk9x4ppi002zdo8ox8fqtxs7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blockchain/">blockchain</a></li></ul>
@@ -497,105 +592,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/05/51-攻击/" data-id="cjk6dlz0w001acj8oqradqzv0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/05/51-攻击/" data-id="cjk9x4poe0016do8oxcwwl6zl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blockchain/">blockchain</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-learn-golang" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/02/learn-golang/" class="article-date">
-  <time datetime="2018-07-02T10:09:20.000Z" itemprop="datePublished">2018-07-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/02/learn-golang/">learn_golang</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>变量定义</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">variableZeroValue</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> a <span class="keyword">int</span> <span class="comment">//变量名在前，类型在后</span></span><br><span class="line">	<span class="keyword">var</span> s <span class="keyword">string</span></span><br><span class="line">	fmt.Printf(<span class="string">"%d %q\n"</span>, a, s)<span class="comment">//%q表示quotation的意思，会打出引号</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">variableInitialValue</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> a, b <span class="keyword">int</span> = <span class="number">3</span>, <span class="number">4</span><span class="comment">//可以连续定义多个变量并分别赋初值</span></span><br><span class="line">	<span class="keyword">var</span> s <span class="keyword">string</span> = <span class="string">"abc"</span></span><br><span class="line">	fmt.Println(a, b, s)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">variableTypeDeduction</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> a, b, c, s = <span class="number">3</span>, <span class="number">4</span>, <span class="literal">true</span>, <span class="string">"def"</span><span class="comment">//不同类型的变量可以定义在同一行，并且具有类型推断</span></span><br><span class="line">	fmt.Println(a, b, c, s)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">variableShorter</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a, b, c, s := <span class="number">3</span>, <span class="number">4</span>, <span class="literal">true</span>, <span class="string">"def"</span><span class="comment">//定义时可以省略var关键字，用:=来表示定义</span></span><br><span class="line">	b = <span class="number">5</span></span><br><span class="line">	fmt.Println(a, b, c, s)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//可以定义变量在函数外，该变量的作用域为包内部。此时不可以用:=来定义，只能通过var关键字。</span></span><br><span class="line"><span class="keyword">var</span> (</span><br><span class="line">	aa = <span class="number">3</span></span><br><span class="line">	ss = <span class="string">"bb"</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>内建变量类型</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">bool, string</span><br><span class="line">(u)int, (u)int8, (u)int16, (u)int32, (u)int64, uintptr</span><br><span class="line">byte//8位, rune//类似char,占32位</span><br><span class="line">float32, float64, complex64, complex128</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">func triangle() &#123;</span><br><span class="line">	var a, b int = 3, 4</span><br><span class="line">	fmt.Println(calcTriangle(a, b))//类型转换必须是手动添加，强制的</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>常量定义</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">const filename = &quot;abc.txt&quot;</span><br><span class="line">const a, b = 3, 4//const数值可作为各种类型使用</span><br><span class="line">var c int = int(math.Sqrt(a*a + b*b))</span><br><span class="line"></span><br><span class="line">//iota是golang语言的常量计数器,只能在常量的表达式中使用。</span><br><span class="line"></span><br><span class="line">//iota在const关键字出现时将被重置为0(const内部的第一行之前)，const中每新增一行常量声明将使iota计数一次(iota可理解为const语句块中的行索引)。</span><br><span class="line"></span><br><span class="line">//使用iota能简化定义，在定义枚举时很有用。</span><br><span class="line"></span><br><span class="line">type AudioOutput int</span><br><span class="line"></span><br><span class="line">const ( </span><br><span class="line">    OutMute AudioOutput = iota // 0 </span><br><span class="line">    OutMono                    // 1 </span><br><span class="line">    OutStereo                  // 2 </span><br><span class="line">    _ </span><br><span class="line">    _ </span><br><span class="line">    OutSurround                // 5 </span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">type Allergen int</span><br><span class="line"></span><br><span class="line">const ( </span><br><span class="line">    IgEggs Allergen = 1 &lt;&lt; iota // 1 &lt;&lt; 0 which is 00000001 </span><br><span class="line">    IgChocolate                         // 1 &lt;&lt; 1 which is 00000010 </span><br><span class="line">    IgNuts                              // 1 &lt;&lt; 2 which is 00000100 </span><br><span class="line">    IgStrawberries                      // 1 &lt;&lt; 3 which is 00001000 </span><br><span class="line">    IgShellfish                         // 1 &lt;&lt; 4 which is 00010000 </span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">const (</span><br><span class="line">    Apple, Banana = iota + 1, iota + 2</span><br><span class="line">    Cherimoya, Durian</span><br><span class="line">    Elderberry, Fig</span><br><span class="line">)</span><br><span class="line">//iota 在下一行增长，而不是立即取得它的引用。</span><br><span class="line"></span><br><span class="line">// Apple: 1 </span><br><span class="line">// Banana: 2 </span><br><span class="line">// Cherimoya: 2 </span><br><span class="line">// Durian: 3 </span><br><span class="line">// Elderberry: 3 </span><br><span class="line">// Fig: 4</span><br><span class="line"></span><br><span class="line">//中间插队</span><br><span class="line">const ( </span><br><span class="line">    i = iota </span><br><span class="line">    j = 3.14 </span><br><span class="line">    k = iota </span><br><span class="line">    l </span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">//那么打印出来的结果是 i=0,j=3.14,k=2,l=3</span><br></pre></td></tr></table></figure>
-<ul>
-<li>条件分支</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//读取文件内容</span><br><span class="line">//if条件不用加括号，用法有点像C语言的for</span><br><span class="line">const filename = &quot;abc.txt&quot;</span><br><span class="line">	if contents, err := ioutil.ReadFile(filename); err != nil &#123;</span><br><span class="line">		fmt.Println(err)</span><br><span class="line">	&#125; else &#123;</span><br><span class="line">		fmt.Printf(&quot;%s\n&quot;, contents)</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/02/learn-golang/" data-id="cjk6dlz1g0027cj8oyyo25ett" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-变量内存地址分析" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/06/20/变量内存地址分析/" class="article-date">
-  <time datetime="2018-06-20T13:46:16.000Z" itemprop="datePublished">2018-06-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/20/变量内存地址分析/">变量内存地址分析</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>话不多说，直接上代码做实验</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX_SIZE 10</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a;</span><br><span class="line"><span class="keyword">int</span> b = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> st1;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> st2 = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> e = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> src1[MAX_SIZE];</span><br><span class="line"><span class="keyword">char</span> src2[MAX_SIZE] = &#123;<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> c;</span><br><span class="line">    <span class="keyword">int</span> d = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> f = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> st3;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> st4 = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span> src3[MAX_SIZE];</span><br><span class="line">    <span class="keyword">char</span> src4[MAX_SIZE] = &#123;<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; &amp;a &lt;&lt; <span class="string">" "</span> &lt;&lt; &amp;b &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; &amp;st1 &lt;&lt; <span class="string">" "</span> &lt;&lt; &amp;st2&lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; &amp;st3 &lt;&lt; <span class="string">" "</span> &lt;&lt; &amp;st4 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; &amp;src1 &lt;&lt; <span class="string">" "</span> &lt;&lt; &amp;src2 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"------"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; &amp;e &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"------"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; &amp;c &lt;&lt; <span class="string">" "</span> &lt;&lt; &amp;d &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; &amp;f &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; &amp;src3 &lt;&lt; <span class="string">" "</span> &lt;&lt; &amp;src4 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/Users/hypermind/CLionProjects/namespace_test/cmake-build-debug/namespace_test</span><br><span class="line"><span class="number">0x10a3db108</span> <span class="number">0x10a3db0f0</span> <span class="comment">//全局变量a和b</span></span><br><span class="line"><span class="number">0x10a3db11c</span> <span class="number">0x10a3db104</span> <span class="comment">//静态全局变量st1和st2</span></span><br><span class="line"><span class="number">0x10a3db118</span> <span class="number">0x10a3db100</span> <span class="comment">//静态局部变量st3和st4</span></span><br><span class="line"><span class="number">0x10a3db10c</span> <span class="number">0x10a3db0f4</span> <span class="comment">//全局数组src1和src2</span></span><br><span class="line">------</span><br><span class="line"><span class="number">0x10a3daf08</span> <span class="comment">// 常全局变量e</span></span><br><span class="line">------</span><br><span class="line"><span class="number">0x7ffee5827988</span> <span class="number">0x7ffee5827984</span> <span class="comment">//局部变量c和d</span></span><br><span class="line"><span class="number">0x7ffee5827980</span> <span class="comment">//常局部变量f</span></span><br><span class="line"><span class="number">0x7ffee5827a3e</span> <span class="number">0x7ffee5827a34</span> <span class="comment">//局部数组src3和src4</span></span><br><span class="line"></span><br><span class="line">Process finished with <span class="built_in">exit</span> code <span class="number">0</span></span><br></pre></td></tr></table></figure>
-<p>代码跑在MAC OS系统下，从测试结果可以明显看到，常全局变量在一个区域；局部变量、常局部变量、局部数组在一个区域；静态局部变量、全部变量、全局数组在一个区域。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/20/变量内存地址分析/" data-id="cjk6dlz1n002kcj8ofmzlrspl" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li></ul>
 
     </footer>
   </div>
@@ -608,7 +608,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -632,7 +632,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Linked-List/" style="font-size: 16.67px;">Linked List</a> <a href="/tags/arrays/" style="font-size: 20px;">arrays</a> <a href="/tags/bitcoin/" style="font-size: 11.67px;">bitcoin</a> <a href="/tags/blockchain/" style="font-size: 15px;">blockchain</a> <a href="/tags/cryptocurrency/" style="font-size: 10px;">cryptocurrency</a> <a href="/tags/ethererum/" style="font-size: 10px;">ethererum</a> <a href="/tags/ethereum/" style="font-size: 11.67px;">ethereum</a> <a href="/tags/golang/" style="font-size: 15px;">golang</a> <a href="/tags/hyperledger-fabric/" style="font-size: 10px;">hyperledger-fabric</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/stack-queue/" style="font-size: 11.67px;">stack&&queue</a> <a href="/tags/tree/" style="font-size: 18.33px;">tree</a>
+      <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Linked-List/" style="font-size: 16.67px;">Linked List</a> <a href="/tags/arrays/" style="font-size: 20px;">arrays</a> <a href="/tags/bitcoin/" style="font-size: 11.67px;">bitcoin</a> <a href="/tags/blockchain/" style="font-size: 15px;">blockchain</a> <a href="/tags/cryptocurrency/" style="font-size: 10px;">cryptocurrency</a> <a href="/tags/ethererum/" style="font-size: 10px;">ethererum</a> <a href="/tags/ethereum/" style="font-size: 13.33px;">ethereum</a> <a href="/tags/golang/" style="font-size: 15px;">golang</a> <a href="/tags/hyperledger-fabric/" style="font-size: 10px;">hyperledger-fabric</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/stack-queue/" style="font-size: 11.67px;">stack&&queue</a> <a href="/tags/tree/" style="font-size: 18.33px;">tree</a>
     </div>
   </div>
 
@@ -641,7 +641,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
     </div>
   </div>
 
@@ -654,6 +654,14 @@
       <ul>
         
           <li>
+            <a href="/2018/08/01/solidity中storage与memory区别/">solidity中storage与memory区别</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/01/区别/">区别</a>
+          </li>
+        
+          <li>
             <a href="/2018/07/29/比特币区块为什么是1M大小？/">比特币区块为什么是1M大小？</a>
           </li>
         
@@ -663,14 +671,6 @@
         
           <li>
             <a href="/2018/07/26/truffle安装以及基本指令/">truffle安装以及基本指令</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/24/go-test初体验/">go_test初体验</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/21/GoroutineAndChannel/">GoroutineAndChannel</a>
           </li>
         
       </ul>

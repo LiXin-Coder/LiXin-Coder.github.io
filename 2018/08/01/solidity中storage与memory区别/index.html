@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>solidity中storage与memory区别 | Always Be Coding</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="storage 与 memory 关键字的作用在区块链里，区块链本身就是一个数据库。如果你使用区块链标记物产的所有权，归属信息将会被记录到区块链上，所有人都无法篡改，以标明不可争议的拥有权。在solidity编程中，有一个数据位置的属性用来标识变量是否需要持久化到区块链中。我们可以通过 —— storage 或 memory 这两个关键字来存储变量 ###storage 与 memory 修饰的变">
+<meta name="keywords" content="ethereum">
+<meta property="og:type" content="article">
+<meta property="og:title" content="solidity中storage与memory区别">
+<meta property="og:url" content="http://yoursite.com/2018/08/01/solidity中storage与memory区别/index.html">
+<meta property="og:site_name" content="Always Be Coding">
+<meta property="og:description" content="storage 与 memory 关键字的作用在区块链里，区块链本身就是一个数据库。如果你使用区块链标记物产的所有权，归属信息将会被记录到区块链上，所有人都无法篡改，以标明不可争议的拥有权。在solidity编程中，有一个数据位置的属性用来标识变量是否需要持久化到区块链中。我们可以通过 —— storage 或 memory 这两个关键字来存储变量 ###storage 与 memory 修饰的变">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-31T16:30:01.493Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="solidity中storage与memory区别">
+<meta name="twitter:description" content="storage 与 memory 关键字的作用在区块链里，区块链本身就是一个数据库。如果你使用区块链标记物产的所有权，归属信息将会被记录到区块链上，所有人都无法篡改，以标明不可争议的拥有权。在solidity编程中，有一个数据位置的属性用来标识变量是否需要持久化到区块链中。我们可以通过 —— storage 或 memory 这两个关键字来存储变量 ###storage 与 memory 修饰的变">
+  
+    <link rel="alternate" href="/atom.xml" title="Always Be Coding" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Always Be Coding</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-solidity中storage与memory区别" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/01/solidity中storage与memory区别/" class="article-date">
+  <time datetime="2018-07-31T16:28:49.000Z" itemprop="datePublished">2018-08-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      solidity中storage与memory区别
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="storage-与-memory-关键字的作用"><a href="#storage-与-memory-关键字的作用" class="headerlink" title="storage 与 memory 关键字的作用"></a>storage 与 memory 关键字的作用</h3><p>在区块链里，区块链本身就是一个数据库。如果你使用区块链标记物产的所有权，<br>归属信息将会被记录到区块链上，所有人都无法篡改，以标明不可争议的拥有权。<br>在solidity编程中，有一个数据位置的属性用来标识变量是否需要持久化到区块链中。<br>我们可以通过 —— storage 或 memory 这两个关键字来存储变量</p>
+<p>###storage 与 memory 修饰的变量的区别<br>默认情况下，全局点状态变量会保存到区块链上，局部到变量保存在内存当中<br>storage修饰的变量是指永久存储在区块链中的变量。<br>Memory修饰变量则是临时的，当外部函数对某合约调用完成时，内存型变量即被移除。<br>你可以把它想象成存储在你电脑的硬盘或是RAM中数据的关系。<br>但是在很多时候你都用不到这些关键字，默认情况下 Solidity 会自动处理它们。<br>但是很多时候也需要我们进行一些特殊处理,下面我们通过代码来看一下.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">contract Person &#123;</span><br><span class="line">  struct Person &#123;</span><br><span class="line">    string name;</span><br><span class="line">    string sex;</span><br><span class="line">  &#125;</span><br><span class="line">  Person[] persons;</span><br><span class="line">  function eatSandwich(uint _index) public &#123;</span><br><span class="line">    // Person person = persons[_index];</span><br><span class="line">    // ^ 看上去很直接，不过 Solidity 将会给出警告</span><br><span class="line">    // 告诉你应该明确在这里定义 `storage` 或者 `memory`。</span><br><span class="line">    // 所以你应该明确定义 `storage`:</span><br><span class="line">    Person storage myPerson = persons[_index];</span><br><span class="line">    // ...这样 `mySandwich` 是指向 `sandwiches[_index]`的指针</span><br><span class="line">    // 在存储里，另外...</span><br><span class="line">    myPerson.sex = &quot;女!&quot;;</span><br><span class="line">    // ...这将永久把 `sandwiches[_index]` 变为区块链上的存储</span><br><span class="line"></span><br><span class="line">    // 如果你只想要一个副本，可以使用`memory`:</span><br><span class="line">    Person memory anotherPerson = persons[_index + 1];</span><br><span class="line">    // ...这样 `anotherSandwich` 就仅仅是一个内存里的副本了</span><br><span class="line">    // 另外</span><br><span class="line">    anotherPerson.sex = &quot;Eaten!&quot;;</span><br><span class="line">    // ...将仅仅修改临时变量，对 `sandwiches[_index + 1]` 没有任何影响</span><br><span class="line">    // 不过你可以这样做:</span><br><span class="line">    persons[_index + 1] = anotherPerson;</span><br><span class="line">    // ...如果你想把副本的改动保存回区块链存储</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过以上代码，我们就可以在某些场合下也需要你显式地声明 storage 或 memory了！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/01/solidity中storage与memory区别/" data-id="cjk9x4poy0025do8otbii5y65" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ethereum/">ethereum</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/08/01/区别/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">区别</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linked-List/">Linked List</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/arrays/">arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitcoin/">bitcoin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blockchain/">blockchain</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cryptocurrency/">cryptocurrency</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ethererum/">ethererum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ethereum/">ethereum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/golang/">golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hyperledger-fabric/">hyperledger-fabric</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stack-queue/">stack&&queue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Linked-List/" style="font-size: 16.67px;">Linked List</a> <a href="/tags/arrays/" style="font-size: 20px;">arrays</a> <a href="/tags/bitcoin/" style="font-size: 11.67px;">bitcoin</a> <a href="/tags/blockchain/" style="font-size: 15px;">blockchain</a> <a href="/tags/cryptocurrency/" style="font-size: 10px;">cryptocurrency</a> <a href="/tags/ethererum/" style="font-size: 10px;">ethererum</a> <a href="/tags/ethereum/" style="font-size: 13.33px;">ethereum</a> <a href="/tags/golang/" style="font-size: 15px;">golang</a> <a href="/tags/hyperledger-fabric/" style="font-size: 10px;">hyperledger-fabric</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/stack-queue/" style="font-size: 11.67px;">stack&&queue</a> <a href="/tags/tree/" style="font-size: 18.33px;">tree</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/01/solidity中storage与memory区别/">solidity中storage与memory区别</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/01/区别/">区别</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/29/比特币区块为什么是1M大小？/">比特币区块为什么是1M大小？</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/28/智能合约基本中的基本元素/">智能合约源文件的基本要素概览</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/26/truffle安装以及基本指令/">truffle安装以及基本指令</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
