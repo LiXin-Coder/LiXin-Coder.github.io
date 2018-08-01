@@ -62,6 +62,56 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-404-左叶子之和" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/17/404-左叶子之和/" class="article-date">
+  <time datetime="2018-07-17T08:40:34.000Z" itemprop="datePublished">2018-07-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/17/404-左叶子之和/">404.左叶子之和</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>计算给定二叉树的所有左叶子之和。<br>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">  / \</span><br><span class="line"> 9  20</span><br><span class="line">   /  \</span><br><span class="line">  15   7</span><br></pre></td></tr></table></figure>
+<p>在这个二叉树中，有两个左叶子，分别是 9 和 15，所以返回 24</p>
+<p>题解：</p>
+<ol>
+<li>递归：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int sumOfLeftLeaves(TreeNode* root) &#123;</span><br><span class="line">        if (root == NULL)</span><br><span class="line">            return 0;</span><br><span class="line">        int sum = 0;</span><br><span class="line">        if(root-&gt;left != NULL) &#123;</span><br><span class="line">            if (root-&gt;left-&gt;left == NULL &amp;&amp; root-&gt;left-&gt;right == NULL)</span><br><span class="line">                sum += root-&gt;left-&gt;val;</span><br><span class="line">            else</span><br><span class="line">                sum += sumOfLeftLeaves(root-&gt;left);</span><br><span class="line">        &#125;</span><br><span class="line">        sum += sumOfLeftLeaves(root-&gt;right);</span><br><span class="line">        return sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>非递归</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int sumOfLeftLeaves(TreeNode* root) &#123;</span><br><span class="line">        if (root == NULL)</span><br><span class="line">            return 0;</span><br><span class="line">        int sum = 0;</span><br><span class="line">        stack&lt;TreeNode*&gt; s;</span><br><span class="line">        s.push(root);</span><br><span class="line">        </span><br><span class="line">        //Here for each node in the tree we check whether its left child is a leaf. If it is true, we add its value to answer, otherwise add left child to the stack to process it later. For right child we add it to stack only if it is not a leaf.</span><br><span class="line">        </span><br><span class="line">        while (!s.empty()) &#123;</span><br><span class="line">            TreeNode* node = s.top();</span><br><span class="line">            s.pop();</span><br><span class="line">            if (node-&gt;left != NULL) &#123;</span><br><span class="line">                if (node-&gt;left-&gt;left == NULL &amp;&amp; node-&gt;left-&gt;right == NULL)</span><br><span class="line">                    sum += node-&gt;left-&gt;val;</span><br><span class="line">                else</span><br><span class="line">                    s.push(node-&gt;left);</span><br><span class="line">            &#125;</span><br><span class="line">            if (node-&gt;right != NULL) &#123;</span><br><span class="line">                if (node-&gt;right-&gt;left != NULL || node-&gt;right-&gt;right != NULL)</span><br><span class="line">                    s.push(node-&gt;right);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        return sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/17/404-左叶子之和/" data-id="cjkb0g4510012mu8ord9izqwb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/">tree</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-112-路径总和" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/17/112-路径总和/" class="article-date">
@@ -95,7 +145,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/112-路径总和/" data-id="cjk9x4pnv000ado8o8slhpk5r" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/17/112-路径总和/" data-id="cjkb0g44c000amu8oxoexbb0i" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/">tree</a></li></ul>
@@ -144,7 +194,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/110-平衡二叉树/" data-id="cjk9x4pnq0005do8olqvz63rg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/17/110-平衡二叉树/" data-id="cjkb0g4460005mu8o0pzi7b0z" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/">tree</a></li></ul>
@@ -189,7 +239,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/222-完全二叉树的节点个数/" data-id="cjk9x4po3000ndo8op4lqj1so" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/17/222-完全二叉树的节点个数/" data-id="cjkb0g44m000kmu8oifdr43er" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/">tree</a></li></ul>
@@ -243,7 +293,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/101-对称二叉树/" data-id="cjk9x4pnh0001do8onhvu4hvr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/17/101-对称二叉树/" data-id="cjkb0g43v0001mu8owz1vypjf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/">tree</a></li></ul>
@@ -291,7 +341,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/100-相同的树/" data-id="cjk9x4pnc0000do8owp4f5vj0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/17/100-相同的树/" data-id="cjkb0g43p0000mu8okrrn6djv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/">tree</a></li></ul>
@@ -337,7 +387,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/226-翻转二叉树/" data-id="cjk9x4po6000sdo8oyzdwyprq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/17/226-翻转二叉树/" data-id="cjkb0g44r000pmu8ou737ywqe" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/">tree</a></li></ul>
@@ -384,7 +434,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/111-二叉树的最小深度/" data-id="cjk9x4pnt0008do8o2446h1oj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/17/111-二叉树的最小深度/" data-id="cjkb0g44a0008mu8o4ejxqcof" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/">tree</a></li></ul>
@@ -430,7 +480,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/104-二叉树的最大深度/" data-id="cjk9x4pnm0003do8odhtxxj9x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/17/104-二叉树的最大深度/" data-id="cjkb0g4420003mu8ootgpau5p" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/">tree</a></li></ul>
@@ -479,55 +529,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/区块链中的软分叉与硬分叉详解/" data-id="cjk9x4ppc002mdo8o4spuhe21" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/14/区块链中的软分叉与硬分叉详解/" data-id="cjkb0g467002omu8o3revm90b" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blockchain/">blockchain</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-3-无重复字符的最长子串" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/14/3-无重复字符的最长子串/" class="article-date">
-  <time datetime="2018-07-14T12:32:11.000Z" itemprop="datePublished">2018-07-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/14/3-无重复字符的最长子串/">3.无重复字符的最长子串</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>给定一个字符串，找出不含有重复字符的最长子串的长度。</p>
-<p>示例：</p>
-<p>给定 “abcabcbb” ，没有重复字符的最长子串是 “abc” ，那么长度就是3。</p>
-<p>给定 “bbbbb” ，最长的子串就是 “b” ，长度是1。</p>
-<p>给定 “pwwkew” ，最长子串是 “wke” ，长度是3。请注意答案必须是一个子串，”pwke” 是 子序列  而不是子串。</p>
-<p>题解：<br>滑动窗口</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>, r = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> freq[<span class="number">256</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> (l &lt; s.size()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (r + <span class="number">1</span> &lt; s.size() &amp;&amp; freq[s[r+<span class="number">1</span>]] == <span class="number">0</span>)</span><br><span class="line">                freq[s[++r]]++;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                freq[s[l++]]--;</span><br><span class="line">            res = max(res, r-l+<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/14/3-无重复字符的最长子串/" data-id="cjk9x4po8000wdo8oaa3txxe9" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arrays/">arrays</a></li></ul>
 
     </footer>
   </div>
@@ -564,7 +569,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Linked-List/" style="font-size: 16.67px;">Linked List</a> <a href="/tags/arrays/" style="font-size: 20px;">arrays</a> <a href="/tags/bitcoin/" style="font-size: 11.67px;">bitcoin</a> <a href="/tags/blockchain/" style="font-size: 15px;">blockchain</a> <a href="/tags/cryptocurrency/" style="font-size: 10px;">cryptocurrency</a> <a href="/tags/ethererum/" style="font-size: 10px;">ethererum</a> <a href="/tags/ethereum/" style="font-size: 13.33px;">ethereum</a> <a href="/tags/golang/" style="font-size: 15px;">golang</a> <a href="/tags/hyperledger-fabric/" style="font-size: 10px;">hyperledger-fabric</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/stack-queue/" style="font-size: 11.67px;">stack&&queue</a> <a href="/tags/tree/" style="font-size: 18.33px;">tree</a>
+      <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Linked-List/" style="font-size: 16.67px;">Linked List</a> <a href="/tags/arrays/" style="font-size: 20px;">arrays</a> <a href="/tags/bitcoin/" style="font-size: 11.67px;">bitcoin</a> <a href="/tags/blockchain/" style="font-size: 15px;">blockchain</a> <a href="/tags/cryptocurrency/" style="font-size: 10px;">cryptocurrency</a> <a href="/tags/ethererum/" style="font-size: 10px;">ethererum</a> <a href="/tags/ethereum/" style="font-size: 15px;">ethereum</a> <a href="/tags/golang/" style="font-size: 15px;">golang</a> <a href="/tags/hyperledger-fabric/" style="font-size: 10px;">hyperledger-fabric</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/stack-queue/" style="font-size: 11.67px;">stack&&queue</a> <a href="/tags/tree/" style="font-size: 18.33px;">tree</a>
     </div>
   </div>
 
@@ -586,6 +591,10 @@
       <ul>
         
           <li>
+            <a href="/2018/08/01/solidity中constantpureview的区别/">solidity中constantpureview的区别</a>
+          </li>
+        
+          <li>
             <a href="/2018/08/01/solidity中storage与memory区别/">solidity中storage与memory区别</a>
           </li>
         
@@ -599,10 +608,6 @@
         
           <li>
             <a href="/2018/07/28/智能合约基本中的基本元素/">智能合约源文件的基本要素概览</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/26/truffle安装以及基本指令/">truffle安装以及基本指令</a>
           </li>
         
       </ul>
