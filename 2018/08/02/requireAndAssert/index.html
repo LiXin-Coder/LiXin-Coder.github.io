@@ -5,15 +5,20 @@
   
 
   
-  <title>Archives | Always Be Coding</title>
+  <title>Solidity 中Require(), Assert(), Revert()的用法和区别 | Always Be Coding</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Always Be Coding">
-<meta property="og:url" content="http://yoursite.com/archives/page/5/index.html">
+  <meta name="description" content="在Solidity0.4.10之前，if…throw普遍利用于判断一个条件是否满足，如果不满足则终断运行。但这throw了之后它会撤回所有的状态转变，用光你所有的gas，所以这并不是一个好的操作。 之后，assert(), require(), and revert() 三个函数代替了if…throw的功能，并对gas有了更好的处理。原文章中提到的例子： if(msg.sender != owne">
+<meta name="keywords" content="ethereum">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Solidity 中Require(), Assert(), Revert()的用法和区别">
+<meta property="og:url" content="http://yoursite.com/2018/08/02/requireAndAssert/index.html">
 <meta property="og:site_name" content="Always Be Coding">
+<meta property="og:description" content="在Solidity0.4.10之前，if…throw普遍利用于判断一个条件是否满足，如果不满足则终断运行。但这throw了之后它会撤回所有的状态转变，用光你所有的gas，所以这并不是一个好的操作。 之后，assert(), require(), and revert() 三个函数代替了if…throw的功能，并对gas有了更好的处理。原文章中提到的例子： if(msg.sender != owne">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-02T10:19:19.538Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Always Be Coding">
+<meta name="twitter:title" content="Solidity 中Require(), Assert(), Revert()的用法和区别">
+<meta name="twitter:description" content="在Solidity0.4.10之前，if…throw普遍利用于判断一个条件是否满足，如果不满足则终断运行。但这throw了之后它会撤回所有的状态转变，用光你所有的gas，所以这并不是一个好的操作。 之后，assert(), require(), and revert() 三个函数代替了if…throw的功能，并对gas有了更好的处理。原文章中提到的例子： if(msg.sender != owne">
   
     <link rel="alternate" href="/atom.xml" title="Always Be Coding" type="application/atom+xml">
   
@@ -60,216 +65,87 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/07/07/比特币区块结构剖析/" class="archive-article-date">
-  <time datetime="2018-07-07T15:05:37.000Z" itemprop="datePublished">Jul 7</time>
+        <section id="main"><article id="post-requireAndAssert" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/02/requireAndAssert/" class="article-date">
+  <time datetime="2018-08-02T10:16:29.000Z" itemprop="datePublished">2018-08-02</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/07/比特币区块结构剖析/">比特币区块结构剖析</a>
+    <h1 class="article-title" itemprop="name">
+      Solidity 中Require(), Assert(), Revert()的用法和区别
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/07/05/51-攻击/" class="archive-article-date">
-  <time datetime="2018-07-05T15:27:58.000Z" itemprop="datePublished">Jul 5</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/05/51-攻击/">51%攻击</a>
-    </h1>
-  
+        <p>在Solidity0.4.10之前，if…throw普遍利用于判断一个条件是否满足，如果不满足则终断运行。但这throw了之后它会撤回所有的状态转变，用光你所有的gas，所以这并不是一个好的操作。</p>
+<p>之后，assert(), require(), and revert() 三个函数代替了if…throw的功能，并对gas有了更好的处理。原文章中提到的例子：</p>
+<p>if(msg.sender != owner) { revert(); }</p>
+<p>assert(msg.sender == owner);</p>
+<p>require(msg.sender == owner);</p>
+<p>这三个函数在功能上是与if(msg.sender != owner) { throw; }是等价的。下面具体说说这三个函数的区别。</p>
+<h3 id="Require-and-assert"><a href="#Require-and-assert" class="headerlink" title="Require and assert"></a>Require and assert</h3><p>同样作为判断一个条件是否满足的函数，require会退回剩下的gas，而assert会烧掉所有的gas。对于两个函数应该在什么情况下使用，这里引用一段原文：</p>
+<blockquote>
+</blockquote>
+<p>”The require function should be used to ensure valid conditions, such as inputs, or contract state variables are met, or to validate return values from calls to external contracts. If used properly, analysis tools can evaluate your contract to identify the conditions and function calls which will reach a failing assert. Properly functioning code should never reach a failing assert statement; if this happens there is a bug in your contract which you should fix.“</p>
+<blockquote>
+</blockquote>
+<h3 id="Revert"><a href="#Revert" class="headerlink" title="Revert"></a>Revert</h3><p>revert的用法和throw很像，也会撤回所有的状态转变。但是它有两点不同：</p>
+<ol>
+<li><p>它允许你返回一个值；</p>
+</li>
+<li><p>它会把所有剩下的gas退回给caller</p>
+</li>
+</ol>
+<p>调用起来就像这样子：</p>
+<p>revert(‘Something bad happened’);</p>
+<p>require(condition, ‘Something bad happened’);</p>
+<h3 id="适合用Require的时候："><a href="#适合用Require的时候：" class="headerlink" title="适合用Require的时候："></a>适合用Require的时候：</h3><p>验证一个用户的输入是否合法：ie. require(input&lt;20);</p>
+<p>验证一个外部协议的回应：require(external.send(amount));</p>
+<p>判断执行一段语句的前置条件： ie. require(block.number &gt; SOME_BLOCK_NUMBER) or require(balance[msg.sender]&gt;=amount)；</p>
+<p>require应该被最常使用到；</p>
+<p>一般用于函数的开头处。</p>
+<h3 id="适合用Revert的时候："><a href="#适合用Revert的时候：" class="headerlink" title="适合用Revert的时候："></a>适合用Revert的时候：</h3><p>和require（）应用场景差不多，适合用在逻辑复杂的情况下。</p>
+<h3 id="适合用Assert的时候："><a href="#适合用Assert的时候：" class="headerlink" title="适合用Assert的时候："></a>适合用Assert的时候：</h3><p>检查有没有上溢或者是下溢： ie. c = a+b; assert(c &gt; b)</p>
+<p>检查常数： ie. assert(this.balance &gt;= totalSupply);</p>
+<p>在完成变化后检查状态</p>
+<p>避免本不应该发生的情况出现，如程序的bug</p>
+<p>assert不应该被经常利用到；</p>
+<p>一般用于函数结尾处</p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/07/02/learn-golang/" class="archive-article-date">
-  <time datetime="2018-07-02T10:09:20.000Z" itemprop="datePublished">Jul 2</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/02/learn-golang/">learn_golang</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/20/变量内存地址分析/" class="archive-article-date">
-  <time datetime="2018-06-20T13:46:16.000Z" itemprop="datePublished">Jun 20</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/02/requireAndAssert/" data-id="cjkcernlp0022av8o8nx1m58x" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/20/变量内存地址分析/">变量内存地址分析</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/08/ImplementStackusingQueues/" class="archive-article-date">
-  <time datetime="2018-06-08T09:34:51.000Z" itemprop="datePublished">Jun 8</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/08/ImplementStackusingQueues/">Implement Stack using Queues</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ethereum/">ethereum</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/08/01/solidity中constantpureview的区别/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">solidity中constantpureview的区别</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/08/CopyListWithRandomPointer/" class="archive-article-date">
-  <time datetime="2018-06-08T08:22:55.000Z" itemprop="datePublished">Jun 8</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/08/CopyListWithRandomPointer/">Copy List with Random Pointer</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/07/rails/" class="archive-article-date">
-  <time datetime="2018-06-07T12:56:27.000Z" itemprop="datePublished">Jun 7</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/07/rails/">Rails</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/06/LinkedListCycleII/" class="archive-article-date">
-  <time datetime="2018-06-06T12:41:49.000Z" itemprop="datePublished">Jun 6</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/06/LinkedListCycleII/">Linked List Cycle II</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/06/IntersectionOfTwoLinkedLists/" class="archive-article-date">
-  <time datetime="2018-06-06T12:25:31.000Z" itemprop="datePublished">Jun 6</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/06/IntersectionOfTwoLinkedLists/">Intersection of Two Linked Lists</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/06/ReverseLinkedListII/" class="archive-article-date">
-  <time datetime="2018-06-06T11:45:26.000Z" itemprop="datePublished">Jun 6</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/06/ReverseLinkedListII/">Reverse Linked List II</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/archives/page/4/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/archives/page/6/">6</a><a class="extend next" rel="next" href="/archives/page/6/">Next &raquo;</a>
-  </nav>
 
 </section>
         
