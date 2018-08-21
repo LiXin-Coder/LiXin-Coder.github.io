@@ -62,6 +62,53 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-构建微型区块链" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/19/构建微型区块链/" class="article-date">
+  <time datetime="2018-07-19T12:06:35.000Z" itemprop="datePublished">2018-07-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/19/构建微型区块链/">构建微型区块链</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>经过一段时间对区块链理论知识的学习，了解到区块链中的每个区块的基本结构由区块头和区块体构成，并了解了其中每部分包含的结构。本文在理论学习的基础上通过Python语言动手实现一个微型的区块链系统。</p>
+<p>在区块链中，每个区块都需要一个时间戳 (timestamp) 和一个可选的索引 (index)。在tinyblockchain中，我们会同时存储这两项。为了确保区块链的完整性，每个区块都需要有一个能够识别自身身份的哈希 (hash)。在比特币中，每个区块的哈希对区块索引、时间戳、数据和前一区块哈希所有内容的一个加密哈希。此外，数据可以是任何你想要存储的任何内容。</p>
+<p>已经有了区块结构，但是我们构建的是一个区块链。所以，我们需要将区块添加到真正的链上。正如前文所说，每个区块都需要前一个区块的信息。如此一来，就出现了一个问题：区块链中的第一个区块是如何而来？ 第一个区块，或者一般叫做创始块(genesis block), 这是一个十分特殊的块。在很多情况下，它是通过手动或是一些特殊的逻辑添加到区块链中。</p>
+<p>为简便起见，我们创建一个简单返回创世块的函数。创始块的索引为 0，有一个任意的数据值，一个属于 “前一个哈希” 参数的任意值。</p>
+<p>现在我们已经创建一个创世块，接下来我们需要一个能够在区块链中生成后续区块的函数。这个函数接受区块链中的前一个区块作为参数，创建所要生成区块的数据，然后返回带有数据的新区块。当新区块对前面的区块信息进行哈希时，区块链的完整性将会得到进一步增强。如果我们不对以前的区块信息进行哈希，那么第三者就能够轻易地“篡改历史”，用一个他们自己的链替换我们的链。区块链的哈希就像是一个加密证明，它能够保证一旦一个区块被加入到区块链中，那么这个区块就永远无法被替换或者移除。</p>
+<p>在我们的案例中，区块链其实仅仅是一个 Python 的列表。列表的第一个元素是创世块。当然了，我们需要增加后续区块。因为这只是一个极简的区块链模型，我们仅添加 20 个新的区块。可以通过一个循环来添加。</p>
+<p>全部源码如下：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> hashlib <span class="keyword">as</span> hasher</span><br><span class="line"><span class="keyword">import</span> datetime <span class="keyword">as</span> date</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Block</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, index, timestamp, data, previous_hash)</span>:</span></span><br><span class="line">        self.index = index</span><br><span class="line">        self.timestamp = timestamp</span><br><span class="line">        self.data = data</span><br><span class="line">        self.previous_hash = previous_hash</span><br><span class="line">        self.hash = self.hash_block()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hash_block</span><span class="params">(self)</span>:</span></span><br><span class="line">        sha = hasher.sha256()</span><br><span class="line">        sha.update(</span><br><span class="line">            bytes(</span><br><span class="line">                str(self.index) + str(self.timestamp) + str(self.data) + str(</span><br><span class="line">                    self.previous_hash), <span class="string">'utf-8'</span>))</span><br><span class="line">        <span class="keyword">return</span> sha.hexdigest()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_genesis_block</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment">#  Manually construct a block with index 0 and arbitrary previous hash</span></span><br><span class="line">    <span class="keyword">return</span> Block(<span class="number">0</span>, date.datetime.now(), <span class="string">"Genesis Block"</span>, <span class="string">"0"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">next_block</span><span class="params">(last_block)</span>:</span></span><br><span class="line">    this_index = last_block.index + <span class="number">1</span></span><br><span class="line">    this_timestamp = date.datetime.now()</span><br><span class="line">    this_data = <span class="string">"Hey! I'm block "</span> + str(this_index)</span><br><span class="line">    this_hash = last_block.hash</span><br><span class="line">    <span class="keyword">return</span> Block(this_index, this_timestamp, this_data, this_hash)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment">#  Create the blockchain and add the genesis block</span></span><br><span class="line">    blockchain = [create_genesis_block()]</span><br><span class="line">    previous_block = blockchain[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment">#  How many blocks should we add to the chain after the genesis block</span></span><br><span class="line">    num_of_blocks_to_add = <span class="number">20</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, num_of_blocks_to_add):</span><br><span class="line">        block_to_add = next_block(previous_block)</span><br><span class="line">        blockchain.append(block_to_add)</span><br><span class="line">        previous_block = block_to_add</span><br><span class="line">        <span class="comment">#  Tell everyone about it!</span></span><br><span class="line">        print(<span class="string">"Block #&#123;&#125; has been added to the "</span></span><br><span class="line">              <span class="string">"blockchain!"</span>.format(block_to_add.index))</span><br><span class="line">        print(<span class="string">"Hash: &#123;&#125;\n"</span>.format(block_to_add.hash))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<p>运行部分截图：<br><img src="http://ww1.sinaimg.cn/large/007330Aply1ftffkde631j31a00t6dq6.jpg" alt=""><br>可以看出我们的链已经如期工作了，第一条微型区块链正式完成！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/19/构建微型区块链/" data-id="cjl3ouzbd0034nu8otdbqdb4e" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blockchain/">blockchain</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-以太坊入门" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/17/以太坊入门/" class="article-date">
@@ -172,7 +219,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/以太坊入门/" data-id="cjkcernm3002tav8obp216nrt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/17/以太坊入门/" data-id="cjl3ouzb5002pnu8oa3pw0zy1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ethereum/">ethereum</a></li></ul>
@@ -222,7 +269,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/404-左叶子之和/" data-id="cjkcernl60012av8oeg0i690k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/17/404-左叶子之和/" data-id="cjl3ouza20012nu8oj4zjtbvq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/">tree</a></li></ul>
@@ -267,7 +314,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/112-路径总和/" data-id="cjkcernkl0008av8o9wjx4bei" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/17/112-路径总和/" data-id="cjl3ouz9h000anu8ovhb2zjz9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/">tree</a></li></ul>
@@ -316,7 +363,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/110-平衡二叉树/" data-id="cjkcernki0005av8ot0mjicah" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/17/110-平衡二叉树/" data-id="cjl3ouz9c0005nu8oekzkdssd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/">tree</a></li></ul>
@@ -361,7 +408,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/222-完全二叉树的节点个数/" data-id="cjkcernkv000nav8oonkzoqcl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/17/222-完全二叉树的节点个数/" data-id="cjl3ouz9t000nnu8o8irii8p5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/">tree</a></li></ul>
@@ -415,7 +462,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/101-对称二叉树/" data-id="cjkcernkb0001av8ol9xxa3zb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/17/101-对称二叉树/" data-id="cjl3ouz950001nu8ocb2olfwn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/">tree</a></li></ul>
@@ -463,7 +510,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/100-相同的树/" data-id="cjkcernk60000av8o4o7fqdei" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/17/100-相同的树/" data-id="cjl3ouz900000nu8o1up25sjq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/">tree</a></li></ul>
@@ -509,7 +556,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/226-翻转二叉树/" data-id="cjkcernkz000uav8om9jo5ma8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/17/226-翻转二叉树/" data-id="cjl3ouz9u000pnu8oi6gae2dl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/">tree</a></li></ul>
@@ -556,53 +603,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/111-二叉树的最小深度/" data-id="cjkcernko000dav8orcfc01hs" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/">tree</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-104-二叉树的最大深度" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/17/104-二叉树的最大深度/" class="article-date">
-  <time datetime="2018-07-17T04:30:39.000Z" itemprop="datePublished">2018-07-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/17/104-二叉树的最大深度/">104.二叉树的最大深度</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>给定一个二叉树，找出其最大深度。</p>
-<p>二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。</p>
-<p>说明: 叶子节点是指没有子节点的节点。</p>
-<p>示例：<br>给定二叉树 [3,9,20,null,null,15,7]，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line"> / \</span><br><span class="line">9  20</span><br><span class="line">  /  \</span><br><span class="line"> 15   7</span><br></pre></td></tr></table></figure>
-<p>返回它的最大深度 3 。</p>
-<p>题解：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">NULL</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> leftMaxDepth = maxDepth(root-&gt;left);</span><br><span class="line">        <span class="keyword">int</span> rightMaxDepth = maxDepth(root-&gt;right);</span><br><span class="line">        <span class="keyword">return</span> max(leftMaxDepth, rightMaxDepth) + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/104-二叉树的最大深度/" data-id="cjkcernkf0003av8of65pum3r" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/17/111-二叉树的最小深度/" data-id="cjl3ouz9f0008nu8o0gairq9j" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/">tree</a></li></ul>
@@ -642,7 +643,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Linked-List/" style="font-size: 16.67px;">Linked List</a> <a href="/tags/arrays/" style="font-size: 20px;">arrays</a> <a href="/tags/bitcoin/" style="font-size: 11.67px;">bitcoin</a> <a href="/tags/blockchain/" style="font-size: 15px;">blockchain</a> <a href="/tags/cryptocurrency/" style="font-size: 10px;">cryptocurrency</a> <a href="/tags/ethererum/" style="font-size: 10px;">ethererum</a> <a href="/tags/ethereum/" style="font-size: 16.67px;">ethereum</a> <a href="/tags/golang/" style="font-size: 15px;">golang</a> <a href="/tags/hyperledger-fabric/" style="font-size: 10px;">hyperledger-fabric</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/stack-queue/" style="font-size: 11.67px;">stack&&queue</a> <a href="/tags/tree/" style="font-size: 18.33px;">tree</a>
+      <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Linked-List/" style="font-size: 16.67px;">Linked List</a> <a href="/tags/arrays/" style="font-size: 20px;">arrays</a> <a href="/tags/bitcoin/" style="font-size: 11.67px;">bitcoin</a> <a href="/tags/blockchain/" style="font-size: 15px;">blockchain</a> <a href="/tags/cryptocurrency/" style="font-size: 10px;">cryptocurrency</a> <a href="/tags/ethererum/" style="font-size: 10px;">ethererum</a> <a href="/tags/ethereum/" style="font-size: 16.67px;">ethereum</a> <a href="/tags/golang/" style="font-size: 16.67px;">golang</a> <a href="/tags/hyperledger-fabric/" style="font-size: 10px;">hyperledger-fabric</a> <a href="/tags/leetcode/" style="font-size: 13.33px;">leetcode</a> <a href="/tags/stack-queue/" style="font-size: 11.67px;">stack&&queue</a> <a href="/tags/tree/" style="font-size: 18.33px;">tree</a>
     </div>
   </div>
 
@@ -664,6 +665,10 @@
       <ul>
         
           <li>
+            <a href="/2018/08/21/Go语言中的byte和rune/">Go语言中的byte和rune</a>
+          </li>
+        
+          <li>
             <a href="/2018/08/02/requireAndAssert/">Solidity 中Require(), Assert(), Revert()的用法和区别</a>
           </li>
         
@@ -677,10 +682,6 @@
         
           <li>
             <a href="/2018/08/01/区别/">区别</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/29/比特币区块为什么是1M大小？/">比特币区块为什么是1M大小？</a>
           </li>
         
       </ul>
